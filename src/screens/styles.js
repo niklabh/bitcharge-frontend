@@ -101,8 +101,10 @@ const dropdownActive = css`
 `
 
 const dropdownItem = css`
+  display: flex;
+  align-items: center;
   padding: 1em;
-  transition: all 0.3s ease-out;
+  transition: background 0.3s ease-out;
 
   &:hover {
     background: ${colors.primary};
@@ -112,6 +114,19 @@ const dropdownItem = css`
   &:last-child {
     border-bottom: 1px solid ${colors.background};
   }
+`
+
+const dropdownSelectedItem = css`
+  flex-direction: row;
+  align-items: center;
+`
+
+const dropdownItemImage = css`
+  margin-right: 1em;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: 1px solid ${colors.white};
 `
 
 const bodyDataContainer = css`
@@ -154,6 +169,8 @@ const styles = {
   dropdownContainerActive,
   dropdownActive,
   dropdownItem,
+  dropdownSelectedItem,
+  dropdownItemImage,
   bodyDataContainer,
   addressContainer,
   addressHeaderStyle,

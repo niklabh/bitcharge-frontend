@@ -12,7 +12,8 @@ class Root extends Component {
     super(props)
 
     this.state = {
-      dropdownToggle: false
+      dropdownToggle: false,
+      selectedCoin: 'bitcoin'
     }
 
     this.onDropdownPress = this.onDropdownPress.bind(this)
@@ -21,6 +22,10 @@ class Root extends Component {
   onDropdownPress () {
     console.log(this.state)
     this.setState({ dropdownToggle: !this.state.dropdownToggle })
+  }
+
+  onDropdownItemPress (e) {
+
   }
 
   render () {
@@ -39,12 +44,12 @@ class Root extends Component {
               </Container>
             </Container>
             <Container style={styles.cardBodyContainer}>
-              <Container fluid onClick={this.onDropdownPress} style={cx(styles.coinDropdownContainer, {[styles.dropdownContainerActive]: this.state.dropdownToggle})}>
-                <Text tag='h5' unstyled>Choose currency</Text>
+              <Container fluid onClick={this.onDropdownPress} style={cx(styles.coinDropdownContainer, {[styles.dropdownContainerActive]: this.state.dropdownToggle})} data-toggle='dropdown' role='button' aria-expanded={this.state.dropdownToggle}>
+                <Container style={styles.dropdownSelectedItem}><img src={require('../assets/images/bitcoin-logo.png')} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>Bitcoin</Text></Container>
                 <ul className={cx(styles.coinDropdown, {[styles.dropdownActive]: this.state.dropdownToggle})}>
-                  <li className={cx(styles.dropdownItem)}><Text tag='h5' unstyled>Bitcoin</Text></li>
-                  <li className={cx(styles.dropdownItem)}><Text tag='h5' unstyled>Ethereum</Text></li>
-                  <li className={cx(styles.dropdownItem)}><Text tag='h5' unstyled>Litecoin</Text></li>
+                  <li className={cx(styles.dropdownItem)}><img src={require('../assets/images/bitcoin-logo.png')} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>Bitcoin</Text></li>
+                  <li className={cx(styles.dropdownItem)}><img src={require('../assets/images/eth-logo.png')} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>Ethereum</Text></li>
+                  <li className={cx(styles.dropdownItem)}><img src={require('../assets/images/litecoin-logo.png')} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>Litecoin</Text></li>
                 </ul>
               </Container>
               <Container fluid style={styles.bodyDataContainer}>

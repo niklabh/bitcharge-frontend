@@ -9,10 +9,10 @@ const Navbar = () => {
   return (
     <Container fluid content style={styles.mainContainer}>
       <Container>
-        <Text tag='h6' style={styles.logoTextStyle}>Bitcharge</Text>
+        <Text tag='h5' style={styles.logoTextStyle} unstyled>Bitcharge</Text>
       </Container>
       <Container>
-        <Text tag='h6'>My Bitcharge</Text>
+        <Text tag='h5' unstyled>My Bitcharge</Text>
       </Container>
     </Container>
   )
