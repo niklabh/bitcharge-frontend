@@ -140,18 +140,17 @@ const addressContainer = css`
 `
 
 const addressHeaderStyle = css`
-  padding-bottom: 0.3em;
 `
 
 const qrcodeContainer = css`
-  padding: 2em;
+  padding: 1.2em;
   align-items: center;
   justify-content: center;
 `
 
 const qrcodeImage = css`
-  width: 11.5em;
-  height: 11.5em;
+  width: 11em;
+  height: 11em;
 `
 
 const styles = {

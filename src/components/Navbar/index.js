@@ -9,10 +9,10 @@ const Navbar = () => {
   return (
     <Container fluid content style={styles.mainContainer}>
       <Container>
-        <Text tag='h5' style={styles.logoTextStyle} unstyled>Bitcharge</Text>
+        <a href='/'><img src={require('../../assets/images/Logo.png')} /></a>
       </Container>
       <Container>
-        <Text tag='h5' unstyled>My Bitcharge</Text>
+        <Text tag='h6' unstyled>My Bitcharge</Text>
       </Container>
     </Container>
   )
