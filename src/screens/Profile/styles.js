@@ -149,8 +149,8 @@ const qrcodeContainer = css`
 `
 
 const qrcodeImage = css`
-  width: 11em;
-  height: 11em;
+  width: 10em;
+  height: 10em;
 `
 
 const styles = {
