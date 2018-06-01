@@ -7,7 +7,7 @@ import styles from './styles'
 
 const Navbar = () => {
   return (
-    <Container fluid content style={styles.mainContainer}>
+    <Container fluid style={styles.mainContainer}>
       <Container>
         <a href='/'><img src={require('../../assets/images/Logo.png')} /></a>
       </Container>

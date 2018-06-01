@@ -20,8 +20,8 @@ class Home extends Component {
               <Text tag='h1' style={styles.heroHeaderText}>
                 The easiest way to accept crypto payments.
               </Text>
-              <Text tag='h4' style={styles.heroSubHeaderText}>
-                Pick a username, create a link and get paid in your favorite cryptocurrency.
+              <Text tag='h5' style={styles.heroSubHeaderText}>
+                Pick a username, create a link and get paid in your favorite cryptocurrency. It can't get any easier than that.
               </Text>
               <Button tag={Link} to='/signup' primary style={styles.getStartedButton}>Get Started <i className={`icon ion-md-arrow-round-forward ${styles.getStartedButtonIcon}`} /></Button>
             </Container>

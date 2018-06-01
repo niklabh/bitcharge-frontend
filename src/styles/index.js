@@ -6,10 +6,11 @@ const colors = {
   white: '#FFFFFF',
   blackText: '#3A3D42',
   lightText: '#b2b7c4',
-  defaultBorder: '#191b20',
+  defaultBorder: '#CAD7DD',
   lightBorder: '#343944',
   lightGray: '#EFEFEF',
-  linkText: '#3D8CD6'
+  linkText: '#3D8CD6',
+  errorText: '#E74C3C'
 }
 
 const typography = {
@@ -18,7 +19,8 @@ const typography = {
   h3: '1.75rem',
   h4: '1.5rem',
   h5: '1.25rem',
-  h6: '1rem'
+  h6: '1rem',
+  primaryFont: `'CircularStd', sans-serif`
 }
 
 export { colors, typography }

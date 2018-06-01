@@ -4,6 +4,8 @@ import { colors } from '../../styles'
 const mainContainer = css`
   background-color: ${colors.white};
   height: 4.5em;
+  padding-left: 3em;
+  padding-right: 3em;
   color: ${colors.blackText};
   flex-direction: row;
   justify-content: space-between;
