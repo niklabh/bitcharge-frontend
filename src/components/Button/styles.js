@@ -11,12 +11,11 @@ const button = css`
   display: inline-block;
   font-weight: 600;
   text-decoration: none;
-  font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   white-space: nowrap;
   user-select: none;
   border: 1px solid transparent;
-  padding: .6rem 2rem;
+  padding: .8rem 2rem;
   font-size: 1.2rem;
   line-height: 1.5;
   border-radius: .25rem;

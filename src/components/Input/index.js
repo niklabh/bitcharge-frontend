@@ -24,7 +24,7 @@ class Input extends PureComponent {
           }
           <Container style={styles.inputFieldContainer}>
             <input className={inputStyle} name={name} {...props} />
-            <Text style={styles.errorText}>{error || null}</Text>
+            <Text style={styles.errorText}>{error || <span>&nbsp;</span>}</Text>
           </Container>
         </Container>
       </Container>

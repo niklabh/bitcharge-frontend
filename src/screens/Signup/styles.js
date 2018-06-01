@@ -26,6 +26,12 @@ const bodyContainer = css`
   label: signup-body-cntr;
 `
 
+const formContainer = css`
+  padding: 0 4em;
+  width: 100%;
+  label: signup-body-form-cntr;
+`
+
 const heroTextContainer = css`
   flex: 1;
   padding: 4em;
@@ -61,28 +67,28 @@ const heroImage = css`
   label: home-hero-image;
 `
 
-const getStartedButtonIcon = css`
+const submitButtonIcon = css`
   padding-left: 0.5em;
-  label: home-get-started-button-icon;
+  label: signup-submit-button-icon;
 `
 
-const getStartedButton = css`
+const submitButton = css`
   font-size: 1.3em;
-  font-weight: 600;
-  label: home-get-started-button;
+  label: signup-submit-button;
 `
 
 const styles = {
   mainContainer,
   bodyContainer,
+  formContainer,
   heroContainer,
   heroTextContainer,
   heroImageContainer,
   heroHeaderText,
   heroSubHeaderText,
   heroImage,
-  getStartedButton,
-  getStartedButtonIcon
+  submitButton,
+  submitButtonIcon
 }
 
 export default styles

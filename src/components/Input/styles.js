@@ -9,7 +9,7 @@ const mainContainer = css`
 
 const inputContainer = css`
   flex-direction: row;
-  margin: 1em;
+  margin: .5em;
   width: 100%;
   justify-content: flex-start;
 `
@@ -22,13 +22,14 @@ const inputLabelContainer = css`
 `
 
 const inputFieldContainer = css`
-  flex: 7;
+  flex: 5;
   align-items: flex-start;
   justify-content: center;
 `
 
 const inputBaseStyle = css`
-  width: 100%;
+  box-sizing: border-box;
+  width: calc(100% - .8em);
   border: 0.5px solid transparent;
   border-radius: .25rem;
   padding: .8em;
