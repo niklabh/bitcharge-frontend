@@ -8,7 +8,7 @@ import styles from './styles'
 
 class Input extends PureComponent {
   render () {
-    const { label, name, error, ...props } = this.props
+    const { label, name, error, placeholder, ...props } = this.props
     let inputStyle = cx(styles.inputBaseStyle)
 
     if (error) {
@@ -23,7 +23,7 @@ class Input extends PureComponent {
             </Container>
           }
           <Container style={styles.inputFieldContainer}>
-            <input className={inputStyle} name={name} {...props} />
+            <input className={inputStyle} name={name} placeholder={placeholder || label || null} {...props} />
             <Text style={styles.errorText}>{error || <span>&nbsp;</span>}</Text>
           </Container>
         </Container>
@@ -35,7 +35,8 @@ class Input extends PureComponent {
 Input.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
-  error: PropTypes.string
+  error: PropTypes.string,
+  placeholder: PropTypes.string
 }
 
 export default Input

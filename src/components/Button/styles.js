@@ -1,24 +1,36 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, typography } from '../../styles'
 
 import { darken, lighten } from 'polished'
 
 const disabled = css`
+  background-color: ${colors.disabled};
+  border-color: ${colors.defaultBorder};
+  color: ${colors.white};
+`
 
+const link = css`
+background-color: transparent;
+color: ${colors.blackText};
+
+&:hover {
+  color: ${lighten(0.4, colors.blackText)};
+}
 `
 
 const button = css`
   display: inline-block;
   font-weight: 600;
+  font-family: ${typography.primaryFont};
   text-decoration: none;
   text-align: center;
   white-space: nowrap;
   user-select: none;
   border: 1px solid transparent;
-  padding: .8rem 2rem;
+  padding: .7rem 2rem;
   font-size: 1.2rem;
   line-height: 1.5;
-  border-radius: .25rem;
+  border-radius: .25em;
   cursor: pointer;
   text-transform: none;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -70,16 +82,6 @@ const secondaryOutline = css`
   background-color: transparent;
 `
 
-const primaryDisabled = css`
-background-color: ${lighten(0.2, colors.primary)};
-border-color: ${lighten(0.3, colors.primary)};
-`
-
-const secondaryDisabled = css`
-background-color: ${lighten(0.2, colors.secondary)};
-border-color: ${lighten(0.3, colors.secondary)};
-`
-
 const primaryActive = css`
   background-color: ${darken(0.2, colors.primary)};
   border-color: ${darken(0.3, colors.primary)};
@@ -95,10 +97,10 @@ const styles = {
   primary,
   secondary,
   block,
+  disabled,
+  link,
   primaryOutline,
   secondaryOutline,
-  primaryDisabled,
-  secondaryDisabled,
   primaryActive,
   secondaryActive
 }

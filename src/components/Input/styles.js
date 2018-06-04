@@ -44,18 +44,21 @@ const inputBaseStyle = css`
 
 const inputErrorStyle = css`
   border: 0.5px solid ${colors.errorText};
+  transition: all 0.15s ease-out;
 `
 
 const labelText = css`
   font-size: 1rem;
+  font-weight: 400;
   margin-bottom: 1.6rem;
 `
 
 const errorText = css`
   color: ${colors.errorText};
-  font-size: 1rem;
-  margin-top: 0.6em;
+  font-size: .9rem;
+  margin-top: 0.4em;
   font-family: inherit;
+  transition: all 0.15s ease-out;
 `
 
 const styles = {
