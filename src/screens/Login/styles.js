@@ -10,7 +10,7 @@ const mainContainer = css`
 
 const heroContainer = css`
   flex: 2;
-  background-color: ${colors.primary};
+  background-color: ${colors.secondary};
   color: ${colors.white};
   padding: 0 2em;
   label: signup-hero-cntr;
@@ -93,6 +93,7 @@ const buttonContainer = css`
   flex-direction: row;
   justify-content: center;
   padding-top: 1em;
+  margin-left: 1.6em;
 `
 
 const submitButtonIcon = css`
@@ -120,19 +121,19 @@ const cancelButton = css`
   }
 `
 
-const LoginLink = css`
+const SignupLink = css`
   font-weight: 600;
   display: inline-block;
   text-decoration: none;
   color: ${colors.white};
   padding: .3em;
   border-radius: .1em;
-  label: signup-login-link;
+  label: login-signup-link;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
   &:hover {
     background-color: ${colors.white};
-    color: ${colors.primary};
+    color: ${colors.secondary};
   }
 `
 
@@ -154,7 +155,7 @@ const styles = {
   submitButton,
   submitButtonIcon,
   cancelButton,
-  LoginLink,
+  SignupLink,
   spinnerIcon
 }
 

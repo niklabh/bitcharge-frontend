@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Home from './Home'
-import Signup from './Signup'
-import Login from './Login'
-import ForgotPassword from './ForgotPassword'
-import Profile from './Profile'
-import Dashboard from './Dashboard'
-import AddAddress from './AddAddress'
+import Home from '../Home'
+import Signup from '../Signup'
+import Login from '../Login'
+import ForgotPassword from '../ForgotPassword'
+import Profile from '../Profile'
+import Dashboard from '../Dashboard'
+import AddAddress from '../AddAddress'
 
-import Container from '../components/Container'
+import Container from '../../components/Container'
 
 import styles from './styles'
 
