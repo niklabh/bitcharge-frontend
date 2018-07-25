@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { cx } from 'emotion'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
@@ -9,6 +11,9 @@ import Text from '../../components/Text'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import Spinner from '../../components/Spinner'
+
+import { signup as signupAction } from '../../store/actions/auth'
+import API from '../../api'
 
 import styles from './styles'
 
@@ -33,8 +38,16 @@ class Signup extends Component {
     })
   }
 
-  handleSubmit (values, bag) {
-    console.log(values)
+  async handleSubmit (values, bag) {
+    try {
+      const data = await API.signup(values)
+      this.props.signupAction(data.user)
+      bag.setSubmitting(false)
+      this.props.history.push('/address/new')
+    } catch (e) {
+      console.log(e)
+      bag.setSubmitting(false)
+    }
   }
 
   render () {
@@ -114,6 +127,7 @@ class Signup extends Component {
                         disabled={!isValid || isSubmitting}
                         type='submit'
                         style={styles.submitButton}
+                        onClick={handleSubmit}
                       >
                         Submit {isSubmitting && <span className={cx(styles.spinnerIcon)}><Spinner size={20} width={4} /></span>}
                       </Button>
@@ -129,4 +143,9 @@ class Signup extends Component {
   }
 }
 
-export default Signup
+Signup.propTypes = {
+  signupAction: PropTypes.func,
+  history: PropTypes.any
+}
+
+export default connect(null, { signupAction })(Signup)
