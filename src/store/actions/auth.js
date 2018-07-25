@@ -25,6 +25,7 @@ const login = (user) => {
 }
 
 const getAuthUser = () => {
+  console.log('called get auth user action')
   return {
     type: FETCH_AUTH_USER
   }

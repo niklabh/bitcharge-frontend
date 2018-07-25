@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { cx } from 'emotion'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
@@ -45,6 +45,10 @@ class Login extends Component {
   }
 
   render () {
+    if (this.props.isAuthenticated) {
+      return (<Redirect to='/profile' />)
+    }
+
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
         <Container fullHeight style={styles.heroContainer}>
@@ -121,7 +125,14 @@ class Login extends Component {
 
 Login.propTypes = {
   loginAction: PropTypes.func,
-  history: PropTypes.any
+  history: PropTypes.any,
+  isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { loginAction })(Login)
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps, { loginAction })(Login)

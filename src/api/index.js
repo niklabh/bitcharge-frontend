@@ -9,6 +9,8 @@ class API {
     this.axios = axios.create({
       baseURL: `${PUBLIC_URI}/api`
     })
+
+    this.getAuthUser = this.getAuthUser.bind(this)
   }
 
   setAuthHeader (token) {
@@ -42,6 +44,8 @@ class API {
   }
 
   getAuthUser () {
+    console.log('get axios user')
+    console.log(this.axios)
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.get('/profile')

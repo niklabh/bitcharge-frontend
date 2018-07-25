@@ -3,7 +3,7 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects'
 
 import API from '../../api'
-import { SIGNUP, LOGIN, FETCH_AUTH_USER, FETCH_AUTH_USER_ERROR } from '../constants'
+import { SIGNUP, LOGIN, FETCH_AUTH_USER, FETCH_AUTH_USER_SUCCESS, FETCH_AUTH_USER_ERROR } from '../constants'
 
 const getAuthenticatedState = (state) => {
   return state.auth.isAuthenticated
@@ -34,8 +34,8 @@ function * authProfileFlow () {
 
   if (isAuthenticated) {
     try {
-      const user = yield call(API.getAuthUser)
-      yield put({ type: FETCH_AUTH_USER, payload: user })
+      const data = yield call(API.getAuthUser)
+      yield put({ type: FETCH_AUTH_USER_SUCCESS, payload: data.user })
     } catch (e) {
       yield put({
         type: FETCH_AUTH_USER_ERROR,
@@ -50,7 +50,7 @@ function * authProfileFlow () {
 function * authFlow () {
   yield takeLatest(SIGNUP, signupFlow)
   yield takeLatest(LOGIN, loginFlow)
-  yield authProfileFlow(FETCH_AUTH_USER, authProfileFlow)
+  yield takeLatest(FETCH_AUTH_USER, authProfileFlow)
 }
 
 export default authFlow
