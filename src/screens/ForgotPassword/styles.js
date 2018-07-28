@@ -1,6 +1,5 @@
 import { css } from 'react-emotion'
 import { colors } from '../../styles'
-import { lighten } from 'polished'
 
 const mainContainer = css`
   background-color: ${colors.white};
@@ -96,38 +95,6 @@ const heroImage = css`
   label: home-hero-image;
 `
 
-const buttonContainer = css`
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 1em;
-  margin-left: 1.6em;
-`
-
-const submitButtonIcon = css`
-  padding-left: 0.5em;
-  label: signup-submit-button-icon;
-`
-
-const submitButton = css`
-  font-size: 1.3em;
-  margin-right: 1em;
-  label: signup-submit-button;
-`
-
-const spinnerIcon = css`
-  margin-left: 0.2em;
-`
-
-const cancelButton = css`
-  background-color: transparent;
-  color: ${colors.blackText};
-  label: signup-cancel-button;
-
-  &:hover {
-    color: ${lighten(0.4, colors.blackText)};
-  }
-`
-
 const SignupLink = css`
   font-weight: 600;
   display: inline-block;
@@ -158,12 +125,7 @@ const styles = {
   heroHeaderText,
   heroSubHeaderText,
   heroImage,
-  buttonContainer,
-  submitButton,
-  submitButtonIcon,
-  cancelButton,
   SignupLink,
-  spinnerIcon,
   formHeaderText
 }
 

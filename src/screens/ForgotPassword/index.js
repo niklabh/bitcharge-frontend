@@ -3,14 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { cx } from 'emotion'
-import { Formik } from 'formik'
-import * as Yup from 'yup'
 
+import EmailForm from './EmailForm'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
-import Spinner from '../../components/Spinner'
 
 import API from '../../api'
 
@@ -21,11 +17,6 @@ class ForgotPassword extends Component {
     super(props)
 
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.validationSchema = Yup.object().shape({
-      email: Yup.string()
-        .email('Not a valid email')
-        .required('Email is required')
-    })
   }
 
   async handleSubmit (values, bag) {
@@ -59,49 +50,7 @@ class ForgotPassword extends Component {
         </Container>
         <Container fullHeight style={styles.bodyContainer}>
           <Text tag='h1' style={styles.formHeaderText}>We have your back.</Text>
-          <Container style={styles.formContainer}>
-            <Formik
-              initialValues={{ email: '' }}
-              onSubmit={this.handleSubmit}
-              validationSchema={this.validationSchema}
-              render={({
-                values,
-                touched,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                handleReset,
-                errors,
-                isValid,
-                isSubmitting
-              }) => {
-                return (
-                  <React.Fragment>
-                    <Input
-                      name='email'
-                      type='email'
-                      placeholder='awesome@doggo.co'
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.loginField}
-                      error={touched.loginField && errors.loginField}
-                    />
-                    <Container style={styles.buttonContainer}>
-                      <Button
-                        primary
-                        disabled={!isValid || isSubmitting}
-                        type='submit'
-                        style={styles.submitButton}
-                        onClick={handleSubmit}
-                      >
-                        Submit {isSubmitting && <span className={cx(styles.spinnerIcon)}><Spinner size={20} width={4} /></span>}
-                      </Button>
-                      <Button onClick={handleReset} link style={styles.cancelButton}>Reset</Button>
-                    </Container>
-                  </React.Fragment>
-                )
-              }} />
-          </Container>
+          <EmailForm onSubmit={this.handleSubmit} />
         </Container>
       </Container>
     )
