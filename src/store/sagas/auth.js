@@ -3,7 +3,15 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects'
 
 import API from '../../api'
-import { SIGNUP, LOGIN, FETCH_AUTH_USER, FETCH_AUTH_USER_SUCCESS, FETCH_AUTH_USER_ERROR } from '../constants'
+import {
+  SIGNUP,
+  SIGNUP_SUCCESS,
+  LOGIN,
+  LOGIN_SUCCESS,
+  FETCH_AUTH_USER,
+  FETCH_AUTH_USER_SUCCESS,
+  FETCH_AUTH_USER_ERROR
+} from '../constants'
 
 const getAuthenticatedState = (state) => {
   return state.auth.isAuthenticated
@@ -16,7 +24,7 @@ function * signupFlow (action) {
   API.setAuthHeader(token)
   localStorage.setItem('JWT_TOKEN', token)
 
-  yield put({ type: SIGNUP, payload })
+  yield put({ type: SIGNUP_SUCCESS, payload })
 }
 
 function * loginFlow (action) {
@@ -26,7 +34,7 @@ function * loginFlow (action) {
   API.setAuthHeader(token)
   localStorage.setItem('JWT_TOKEN', token)
 
-  yield put({ type: LOGIN, payload })
+  yield put({ type: LOGIN_SUCCESS, payload })
 }
 
 function * authProfileFlow () {
@@ -37,6 +45,7 @@ function * authProfileFlow () {
       const data = yield call(API.getAuthUser)
       yield put({ type: FETCH_AUTH_USER_SUCCESS, payload: data.user })
     } catch (e) {
+      console.log('data in saga', e)
       yield put({
         type: FETCH_AUTH_USER_ERROR,
         payload: {

@@ -35,8 +35,8 @@ class Login extends Component {
   async handleSubmit (values, bag) {
     try {
       const data = await API.login(values)
-      this.props.loginAction(data.user)
       bag.setSubmitting(false)
+      this.props.loginAction(data.user)
       this.props.history.push('/profile')
     } catch (e) {
       console.log(e)
@@ -111,7 +111,7 @@ class Login extends Component {
                       >
                         Submit {isSubmitting && <span className={cx(styles.spinnerIcon)}><Spinner size={20} width={4} /></span>}
                       </Button>
-                      <Button onClick={handleReset} link style={styles.cancelButton}>Reset</Button>
+                      <Button tag={Link} to='/forgot' link style={styles.cancelButton}>Forgot Password</Button>
                     </Container>
                   </React.Fragment>
                 )

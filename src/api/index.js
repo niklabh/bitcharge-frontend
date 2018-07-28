@@ -27,7 +27,7 @@ class API {
         const response = await this.axios.post('/signup', userDetails)
         return resolve(response.data)
       } catch (error) {
-        return reject(error.response.data)
+        return reject(error)
       }
     })
   }
@@ -38,20 +38,22 @@ class API {
         const response = await this.axios.post('/login', userDetails)
         return resolve(response.data)
       } catch (error) {
-        return reject(error.response.data)
+        return reject(error)
       }
     })
   }
 
+  AddAddress () {
+  }
+
   getAuthUser () {
     console.log('get axios user')
-    console.log(this.axios)
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.get('/profile')
         return resolve(response.data)
       } catch (error) {
-        return reject(error.response.data)
+        return reject(error)
       }
     })
   }

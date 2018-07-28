@@ -2,7 +2,7 @@
 import jwtDecode from 'jwt-decode'
 
 import API from '../../api'
-import { SIGNUP, LOGIN, LOGOUT, FETCH_AUTH_USER, FETCH_AUTH_USER_ERROR } from '../constants'
+import { SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT, FETCH_AUTH_USER, FETCH_AUTH_USER_ERROR } from '../constants'
 
 const initialState = {
   isAuthenticated: false,
@@ -32,10 +32,10 @@ const auth = (state = getInitialState(), action) => {
   const { type, payload } = action
 
   switch (type) {
-    case SIGNUP:
+    case SIGNUP_SUCCESS:
       return { ...state, ...payload }
 
-    case LOGIN:
+    case LOGIN_SUCCESS:
       return { ...state, ...payload }
 
     case FETCH_AUTH_USER:
