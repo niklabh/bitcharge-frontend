@@ -4,26 +4,20 @@ import { lighten } from 'polished'
 
 const formContainer = css`
   padding: 0 4em;
-  width: 80%;
-  label: forgot-password-body-form-cntr;
+  width: 100%;
+  label: login-body-form-cntr;
 `
 
 const buttonContainer = css`
   flex-direction: row;
   justify-content: center;
   padding-top: 1em;
-  label: forgot-password-body-form-cntr-btn-cntr;
+  margin-left: 1.6em;
 `
 
 const submitButtonIcon = css`
   padding-left: 0.5em;
-  label: forgot-password-body-form-cntr-btn;
-`
-
-const submitButton = css`
-  font-size: 1.3em;
-  margin-right: 1em;
-  label: signup-submit-button;
+  label: login-submit-button-icon;
 `
 
 const spinnerIcon = css`
@@ -33,7 +27,7 @@ const spinnerIcon = css`
 const cancelButton = css`
   background-color: transparent;
   color: ${colors.blackText};
-  label: signup-cancel-button;
+  label: login-cancel-button;
 
   &:hover {
     color: ${lighten(0.4, colors.blackText)};
@@ -43,10 +37,9 @@ const cancelButton = css`
 const styles = {
   formContainer,
   buttonContainer,
-  submitButton,
   submitButtonIcon,
-  cancelButton,
-  spinnerIcon
+  spinnerIcon,
+  cancelButton
 }
 
 export default styles

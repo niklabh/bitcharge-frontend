@@ -3,14 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { cx } from 'emotion'
-import { Formik } from 'formik'
-import * as Yup from 'yup'
 
+import LoginForm from './LoginForm'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
-import Spinner from '../../components/Spinner'
 
 import API from '../../api'
 import { login as loginAction } from '../../store/actions/auth'
@@ -22,14 +18,6 @@ class Login extends Component {
     super(props)
 
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.validationSchema = Yup.object().shape({
-      loginField: Yup.string()
-        .email('Not a valid email')
-        .required('Email is required'),
-      password: Yup.string()
-        .min(6)
-        .required('Password is required')
-    })
   }
 
   async handleSubmit (values, bag) {
@@ -64,59 +52,7 @@ class Login extends Component {
           </Container>
         </Container>
         <Container fullHeight style={styles.bodyContainer}>
-          <Container style={styles.formContainer}>
-            <Formik
-              initialValues={{ loginField: '', password: '' }}
-              onSubmit={this.handleSubmit}
-              validationSchema={this.validationSchema}
-              render={({
-                values,
-                touched,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                handleReset,
-                errors,
-                isValid,
-                isSubmitting
-              }) => {
-                return (
-                  <React.Fragment>
-                    <Input
-                      label='Username or Email'
-                      name='loginField'
-                      type='email'
-                      placeholder='awesome-doggo'
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.loginField}
-                      error={touched.loginField && errors.loginField}
-                    />
-                    <Input
-                      label='Password'
-                      name='password'
-                      type='password'
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.password}
-                      error={touched.password && errors.password}
-                    />
-                    <Container style={styles.buttonContainer}>
-                      <Button
-                        primary
-                        disabled={!isValid || isSubmitting}
-                        type='submit'
-                        style={styles.submitButton}
-                        onClick={handleSubmit}
-                      >
-                        Submit {isSubmitting && <span className={cx(styles.spinnerIcon)}><Spinner size={20} width={4} /></span>}
-                      </Button>
-                      <Button tag={Link} to='/forgot' link style={styles.cancelButton}>Forgot Password</Button>
-                    </Container>
-                  </React.Fragment>
-                )
-              }} />
-          </Container>
+          <LoginForm onSubmit={this.handleSubmit} />
         </Container>
       </Container>
     )

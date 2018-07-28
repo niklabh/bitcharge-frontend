@@ -4,20 +4,19 @@ import { lighten } from 'polished'
 
 const formContainer = css`
   padding: 0 4em;
-  width: 80%;
-  label: forgot-password-body-form-cntr;
+  width: 100%;
+  label: signup-body-form-cntr;
 `
 
 const buttonContainer = css`
   flex-direction: row;
   justify-content: center;
   padding-top: 1em;
-  label: forgot-password-body-form-cntr-btn-cntr;
 `
 
 const submitButtonIcon = css`
   padding-left: 0.5em;
-  label: forgot-password-body-form-cntr-btn;
+  label: signup-submit-button-icon;
 `
 
 const submitButton = css`
@@ -43,8 +42,8 @@ const cancelButton = css`
 const styles = {
   formContainer,
   buttonContainer,
-  submitButton,
   submitButtonIcon,
+  submitButton,
   cancelButton,
   spinnerIcon
 }
