@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import posed from 'react-pose'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { cx } from 'emotion'
+import { tween } from 'popmotion'
 
 import SignupForm from './SignupForm'
+import SignupSuccess from './SignupSuccess'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 
@@ -16,6 +19,9 @@ import styles from './styles'
 class Signup extends Component {
   constructor (props) {
     super(props)
+    this.state = {
+      isSignupSuccess: false
+    }
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -23,9 +29,9 @@ class Signup extends Component {
   async handleSubmit (values, bag) {
     try {
       const data = await API.signup(values)
-      this.props.signupAction(data.user)
+      console.log(data)
       bag.setSubmitting(false)
-      this.props.history.push('/address/new')
+      this.setState({ isSignupSuccess: true })
     } catch (e) {
       console.log(e)
       bag.setSubmitting(false)
@@ -36,6 +42,16 @@ class Signup extends Component {
     if (this.props.isAuthenticated) {
       return (<Redirect to='/profile' />)
     }
+
+    const PoseSignupForm = posed(SignupForm)({
+      visible: { opacity: 1 },
+      invisible: { opacity: 0, display: 'none' }
+    })
+
+    const PoseSignupSuccess = posed(SignupSuccess)({
+      visible: { opacity: 1 },
+      invisible: { opacity: 0, height: '0%' }
+    })
 
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
@@ -52,7 +68,8 @@ class Signup extends Component {
           </Container>
         </Container>
         <Container fullHeight style={styles.bodyContainer}>
-          <SignupForm onSubmit={this.handleSubmit} />
+          <PoseSignupForm pose={this.state.isSignupSuccess ? 'invisible' : 'visible'} onSubmit={this.handleSubmit} />
+          <PoseSignupSuccess pose={this.state.isSignupSuccess ? 'visible' : 'invisible'} />
         </Container>
       </Container>
     )
@@ -66,8 +83,6 @@ const mapStateToProps = (state) => {
 }
 
 Signup.propTypes = {
-  signupAction: PropTypes.func,
-  history: PropTypes.any,
   isAuthenticated: PropTypes.bool
 }
 

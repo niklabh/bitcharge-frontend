@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import styles from './styles'
 
-const Container = ({ content, fullHeight, fluid, style, children, ...props }) => {
+const Container = ({ content, fullHeight, fluid, style, children, hostRef, ...props }) => {
   let containerStyle = `${styles.base}`
 
   if (content) {
@@ -23,7 +23,7 @@ const Container = ({ content, fullHeight, fluid, style, children, ...props }) =>
   }
 
   return (
-    <div className={containerStyle} {...props}>
+    <div className={containerStyle} ref={hostRef || null} {...props}>
       {children}
     </div>
   )
@@ -33,6 +33,7 @@ Container.propTypes = {
   content: PropTypes.bool,
   fullHeight: PropTypes.bool,
   fluid: PropTypes.bool,
+  hostRef: PropTypes.any,
   style: PropTypes.any,
   children: PropTypes.any
 }

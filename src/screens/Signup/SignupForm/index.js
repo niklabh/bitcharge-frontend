@@ -26,9 +26,9 @@ const validationSchema = Yup.object().shape({
     .required('Confirm password is required')
 })
 
-const SignupForm = ({ onSubmit }) => {
+const SignupForm = ({ onSubmit, hostRef }) => {
   return (
-    <Container style={styles.formContainer}>
+    <Container hostRef={hostRef} style={styles.formContainer}>
       <Formik
         initialValues={{ email: '', username: '', password: '', confirmPassword: '' }}
         onSubmit={onSubmit}
@@ -103,7 +103,8 @@ const SignupForm = ({ onSubmit }) => {
 }
 
 SignupForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  hostRef: PropTypes.any
 }
 
 export default SignupForm

@@ -11,6 +11,7 @@ class API {
     })
 
     this.getAuthUser = this.getAuthUser.bind(this)
+    this.confirmEmail = this.confirmEmail.bind(this)
   }
 
   setAuthHeader (token) {
@@ -25,6 +26,17 @@ class API {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.post('/signup', userDetails)
+        return resolve(response.data)
+      } catch (error) {
+        return reject(error)
+      }
+    })
+  }
+
+  confirmEmail (code) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.get(`/confirm?confirmationCode=${code}`)
         return resolve(response.data)
       } catch (error) {
         return reject(error)
