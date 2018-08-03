@@ -10,19 +10,23 @@ import {
   LOGIN_SUCCESS,
   FETCH_AUTH_USER,
   FETCH_AUTH_USER_SUCCESS,
-  FETCH_AUTH_USER_ERROR
+  FETCH_AUTH_USER_ERROR,
+  CONFIRM_EMAIL
 } from '../constants'
 
 const getAuthenticatedState = (state) => {
   return state.auth.isAuthenticated
 }
 
+const setToken = (token) => {
+  API.setAuthHeader(token)
+  localStorage.setItem('JWT_TOKEN', token)
+}
+
 function * signupFlow (action) {
   const { payload } = action
 
-  const token = payload.user.token
-  API.setAuthHeader(token)
-  localStorage.setItem('JWT_TOKEN', token)
+  setToken(payload.user.token)
 
   yield put({ type: SIGNUP_SUCCESS, payload })
 }
@@ -30,9 +34,7 @@ function * signupFlow (action) {
 function * loginFlow (action) {
   const { payload } = action
 
-  const token = payload.user.token
-  API.setAuthHeader(token)
-  localStorage.setItem('JWT_TOKEN', token)
+  setToken(payload.user.token)
 
   yield put({ type: LOGIN_SUCCESS, payload })
 }
@@ -56,10 +58,19 @@ function * authProfileFlow () {
   }
 }
 
+function * confirmEmailFlow (action) {
+  const { payload } = action
+
+  if (payload.success) {
+    yield put({ type: FETCH_AUTH_USER })
+  }
+}
+
 function * authFlow () {
   yield takeLatest(SIGNUP, signupFlow)
   yield takeLatest(LOGIN, loginFlow)
   yield takeLatest(FETCH_AUTH_USER, authProfileFlow)
+  yield takeLatest(CONFIRM_EMAIL, confirmEmailFlow)
 }
 
 export default authFlow

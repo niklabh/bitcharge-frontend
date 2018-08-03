@@ -4,6 +4,8 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const LOGIN = 'LOGIN'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
+export const CONFIRM_EMAIL = 'CONFIRM_EMAIL'
+
 export const LOGOUT = 'LOGOUT'
 
 export const FETCH_AUTH_USER = 'FETCH_AUTH_USER'

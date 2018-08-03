@@ -10,6 +10,7 @@ import ForgotPassword from '../ForgotPassword'
 import Profile from '../Profile'
 import Dashboard from '../Dashboard'
 import AddAddress from '../AddAddress'
+import SignupConfirmation from '../SignupConfirmation'
 
 import Container from '../../components/Container'
 import PrivateRoute from '../../containers/PrivateRoute'
@@ -19,7 +20,9 @@ import styles from './styles'
 
 class Root extends Component {
   componentDidMount () {
-    this.props.getAuthUser()
+    if (this.props.isAuthenticated) {
+      this.props.getAuthUser()
+    }
   }
   render () {
     return (
@@ -27,6 +30,7 @@ class Root extends Component {
         <Switch>
           <Route path='/signup' component={Signup} />
           <Route path='/login' component={Login} />
+          <Route path='/confirm' component={SignupConfirmation} />
           <Route path='/forgot' component={ForgotPassword} />
           <PrivateRoute path='/profile' component={Dashboard} />
           <PrivateRoute path='/address/new' component={AddAddress} />
@@ -38,8 +42,15 @@ class Root extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  }
+}
+
 Root.propTypes = {
+  isAuthenticated: PropTypes.bool,
   getAuthUser: PropTypes.func
 }
 
-export default withRouter(connect(null, { getAuthUser })(Root))
+export default withRouter(connect(mapStateToProps, { getAuthUser })(Root))

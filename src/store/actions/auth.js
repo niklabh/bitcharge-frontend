@@ -1,7 +1,8 @@
 import {
   SIGNUP,
   LOGIN,
-  FETCH_AUTH_USER
+  FETCH_AUTH_USER,
+  CONFIRM_EMAIL
 } from '../constants'
 
 const signup = (user) => {
@@ -31,8 +32,18 @@ const getAuthUser = () => {
   }
 }
 
+const confirmEmail = (success) => {
+  return {
+    type: CONFIRM_EMAIL,
+    payload: {
+      success
+    }
+  }
+}
+
 export {
   signup,
   login,
-  getAuthUser
+  getAuthUser,
+  confirmEmail
 }

@@ -4,7 +4,6 @@ import posed from 'react-pose'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { cx } from 'emotion'
-import { tween } from 'popmotion'
 
 import SignupForm from './SignupForm'
 import SignupSuccess from './SignupSuccess'
@@ -29,8 +28,8 @@ class Signup extends Component {
   async handleSubmit (values, bag) {
     try {
       const data = await API.signup(values)
-      console.log(data)
       bag.setSubmitting(false)
+      this.props.signupAction(data.user)
       this.setState({ isSignupSuccess: true })
     } catch (e) {
       console.log(e)
@@ -83,6 +82,7 @@ const mapStateToProps = (state) => {
 }
 
 Signup.propTypes = {
+  signupAction: PropTypes.func,
   isAuthenticated: PropTypes.bool
 }
 

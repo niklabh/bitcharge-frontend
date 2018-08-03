@@ -36,8 +36,8 @@ class API {
   confirmEmail (code) {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await this.axios.get(`/confirm?confirmationCode=${code}`)
-        return resolve(response.data)
+        const response = await this.axios.post(`/confirm`, { confirmationCode: code })
+        return resolve(response)
       } catch (error) {
         return reject(error)
       }
