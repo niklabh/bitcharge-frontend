@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react'
+import Select from 'react-select'
+import AsyncSelect from 'react-select/lib/Async'
 import PropTypes from 'prop-types'
 import { cx } from 'emotion'
 
@@ -8,9 +10,16 @@ import styles from './styles'
 
 class Input extends PureComponent {
   render () {
-    const { label, name, error, placeholder, ...props } = this.props
+    const { label, name, type, error, placeholder, ...props } = this.props
     let inputStyle = cx(styles.inputBaseStyle)
+    let Tag = 'input'
 
+    if (type === 'select') {
+      Tag = Select
+    }
+    if (type === 'async-select') {
+      Tag = AsyncSelect
+    }
     if (error) {
       inputStyle = cx(inputStyle, styles.inputErrorStyle)
     }
@@ -23,7 +32,11 @@ class Input extends PureComponent {
             </Container>
           }
           <Container style={styles.inputFieldContainer}>
-            <input className={inputStyle} name={name} placeholder={placeholder || label || null} {...props} />
+            {
+              (type === 'select' || type === 'async-select')
+                ? <Tag name={name} placeholder={placeholder || label || null} {...props} />
+                : <Tag className={inputStyle} name={name} placeholder={placeholder || label || null} {...props} />
+            }
             <Text style={styles.errorText}>{error || <span>&nbsp;</span>}</Text>
           </Container>
         </Container>
@@ -36,7 +49,8 @@ Input.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   error: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  type: PropTypes.string
 }
 
 export default Input

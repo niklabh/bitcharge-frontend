@@ -12,6 +12,7 @@ class API {
 
     this.getAuthUser = this.getAuthUser.bind(this)
     this.confirmEmail = this.confirmEmail.bind(this)
+    this.getCurrencies = this.getCurrencies.bind(this)
   }
 
   setAuthHeader (token) {
@@ -56,6 +57,17 @@ class API {
   }
 
   AddAddress () {
+  }
+
+  getCurrencies () {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.get('/currencies')
+        return resolve(response.data)
+      } catch (error) {
+        return reject(error)
+      }
+    })
   }
 
   getAuthUser () {
