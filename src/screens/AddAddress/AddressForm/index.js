@@ -17,12 +17,11 @@ import API from '../../../api'
 import styles from './styles'
 
 const validationSchema = Yup.object().shape({
-  loginField: Yup.string()
-    .email('Not a valid email')
-    .required('Email is required'),
-  password: Yup.string()
-    .min(6)
-    .required('Password is required')
+  currency: Yup.string()
+    .required('Currency is required'),
+  address: Yup.string()
+    .min(30)
+    .required('Address is required')
 })
 
 const selectStyles = {
@@ -34,7 +33,6 @@ const selectStyles = {
 
 const DropdownItem = (props) => {
   const { isDisabled, data } = props
-  console.log(props)
   return (
     !isDisabled ? (
       <components.Option {...props}>
@@ -55,9 +53,9 @@ const getCurrenciesOption = (inputVaue) => {
   })
 }
 
-const AddressForm = ({ onSubmit }) => {
+const AddressForm = ({ onSubmit, hostRef }) => {
   return (
-    <Container style={styles.formContainer}>
+    <Container hostRef={hostRef} style={styles.formContainer}>
       <Formik
         initialValues={{ currency: '', address: '' }}
         onSubmit={onSubmit}
@@ -69,6 +67,8 @@ const AddressForm = ({ onSubmit }) => {
           handleBlur,
           handleSubmit,
           handleReset,
+          setFieldValue,
+          setFieldTouched,
           errors,
           isValid,
           isSubmitting
@@ -85,12 +85,14 @@ const AddressForm = ({ onSubmit }) => {
                 getOptionValue={({ symbol }) => symbol}
                 cacheOptions
                 defaultOptions
+                onChange={setFieldValue}
+                onBlur={setFieldTouched}
                 error={touched.currency && errors.currency}
                 loadOptions={getCurrenciesOption}
               />
               <Input
                 label='Your address'
-                name='password'
+                name='address'
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
@@ -106,7 +108,7 @@ const AddressForm = ({ onSubmit }) => {
                 >
                   Submit {isSubmitting && <span className={cx(styles.spinnerIcon)}><Spinner size={20} width={4} /></span>}
                 </Button>
-                <Button tag={Link} to='/forgot' link style={styles.cancelButton}>Forgot Password</Button>
+                <Button tag={Link} to='/profile' link style={styles.cancelButton}>Skip</Button>
               </Container>
             </React.Fragment>
           )
@@ -116,7 +118,8 @@ const AddressForm = ({ onSubmit }) => {
 }
 
 AddressForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  hostRef: PropTypes.any
 }
 
 export default AddressForm

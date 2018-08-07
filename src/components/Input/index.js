@@ -9,6 +9,21 @@ import Text from '../Text'
 import styles from './styles'
 
 class Input extends PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.handleSelectChange = this.handleSelectChange.bind(this)
+    this.handleSelectBlur = this.handleSelectBlur.bind(this)
+  }
+
+  handleSelectChange = function (value) {
+    this.props.onChange(this.props.name, value)
+  }
+
+  handleSelectBlur = function () {
+    this.props.onBlur(this.props.name, true)
+  }
+
   render () {
     const { label, name, type, error, placeholder, ...props } = this.props
     let inputStyle = cx(styles.inputBaseStyle)
@@ -34,7 +49,7 @@ class Input extends PureComponent {
           <Container style={styles.inputFieldContainer}>
             {
               (type === 'select' || type === 'async-select')
-                ? <Tag name={name} placeholder={placeholder || label || null} {...props} />
+                ? <Tag name={name} placeholder={placeholder || label || null} {...props} onChange={this.handleSelectChange} onBlur={this.handleSelectBlur} />
                 : <Tag className={inputStyle} name={name} placeholder={placeholder || label || null} {...props} />
             }
             <Text style={styles.errorText}>{error || <span>&nbsp;</span>}</Text>
@@ -50,7 +65,9 @@ Input.propTypes = {
   name: PropTypes.string,
   error: PropTypes.string,
   placeholder: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func
 }
 
 export default Input

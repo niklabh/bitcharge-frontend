@@ -1,25 +1,56 @@
 import React, { Component } from 'react'
 import { cx } from 'emotion'
+import posed from 'react-pose'
 
 import Container from '../../components/Container'
 import Text from '../../components/Text'
-
 import AddressForm from './AddressForm'
+import AddAddressSuccess from './AddAddressSuccess'
+
+import API from '../../api'
 
 import styles from './styles'
 
 class AddAddress extends Component {
   constructor (props) {
     super(props)
-
+    this.state = {
+      isAddAddressSuccess: true
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.onAddNewAddress = this.onAddNewAddress.bind(this)
   }
 
   async handleSubmit (values, bag) {
-    console.log(values)
+    const addressDetails = {
+      currency: values.currency.symbol,
+      address: values.address
+    }
+    try {
+      const data = await API.addAddress(addressDetails)
+      bag.setSubmitting(false)
+      this.setState({ isAddAddressSuccess: true })
+    } catch (e) {
+      console.log(e)
+      bag.setSubmitting(false)
+    }
+  }
+
+  onAddNewAddress () {
+    this.setState({ isAddAddressSuccess: false })
   }
 
   render () {
+    const PoseAddressForm = posed(AddressForm)({
+      visible: { opacity: 1 },
+      invisible: { opacity: 0, display: 'none' }
+    })
+
+    const PoseAddAddressSuccess = posed(AddAddressSuccess)({
+      visible: { opacity: 1 },
+      invisible: { opacity: 0, display: 'none' }
+    })
+
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
         <Container fullHeight style={styles.heroContainer}>
@@ -32,7 +63,8 @@ class AddAddress extends Component {
           </Container>
         </Container>
         <Container fullHeight style={styles.bodyContainer}>
-          <AddressForm onSubmit={this.handleSubmit} />
+          <PoseAddressForm pose={this.state.isAddAddressSuccess ? 'invisible' : 'visible'} onSubmit={this.handleSubmit} />
+          <PoseAddAddressSuccess pose={this.state.isAddAddressSuccess ? 'visible' : 'invisible'} onAddNewAddress={this.onAddNewAddress} />
         </Container>
       </Container>
     )

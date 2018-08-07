@@ -56,7 +56,15 @@ class API {
     })
   }
 
-  AddAddress () {
+  addAddress (addressDetails) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.post('/addresses', addressDetails)
+        return resolve(response.data)
+      } catch (error) {
+        return reject(error)
+      }
+    })
   }
 
   getCurrencies () {
