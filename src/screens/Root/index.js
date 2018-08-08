@@ -33,8 +33,8 @@ class Root extends Component {
           <Route path='/confirm' component={SignupConfirmation} />
           <Route path='/forgot' component={ForgotPassword} />
           <PrivateRoute path='/profile' component={Dashboard} />
-          <PrivateRoute path='/address/new' component={AddAddress} />
           <Route path='/:username' component={Profile} />
+          <PrivateRoute path='/address/new' component={AddAddress} />
           <Route exact path='/' component={Home} />
         </Switch>
       </Container>

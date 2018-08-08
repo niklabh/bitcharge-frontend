@@ -8,6 +8,8 @@ import {
   SIGNUP_SUCCESS,
   LOGIN,
   LOGIN_SUCCESS,
+  LOGOUT,
+  LOGOUT_SUCCESS,
   FETCH_AUTH_USER,
   FETCH_AUTH_USER_SUCCESS,
   FETCH_AUTH_USER_ERROR,
@@ -59,6 +61,12 @@ function * authProfileFlow () {
   }
 }
 
+function * logoutFlow () {
+  API.removeAuthHeader()
+  localStorage.removeItem('JWT_TOKEN')
+  yield put({ type: LOGOUT_SUCCESS })
+}
+
 function * confirmEmailFlow (action) {
   const { payload } = action
 
@@ -70,6 +78,7 @@ function * confirmEmailFlow (action) {
 function * authFlow () {
   yield takeLatest(SIGNUP, signupFlow)
   yield takeLatest(LOGIN, loginFlow)
+  yield takeLatest(LOGOUT, logoutFlow)
   yield takeLatest(FETCH_AUTH_USER, authProfileFlow)
   yield takeLatest(CONFIRM_EMAIL, confirmEmailFlow)
 }

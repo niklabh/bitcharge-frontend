@@ -50,7 +50,7 @@ class Input extends PureComponent {
             {
               (type === 'select' || type === 'async-select')
                 ? <Tag name={name} placeholder={placeholder || label || null} {...props} onChange={this.handleSelectChange} onBlur={this.handleSelectBlur} />
-                : <Tag className={inputStyle} name={name} placeholder={placeholder || label || null} {...props} />
+                : <Tag className={inputStyle} name={name} placeholder={placeholder || label || null} type={type} {...props} />
             }
             <Text style={styles.errorText}>{error || <span>&nbsp;</span>}</Text>
           </Container>

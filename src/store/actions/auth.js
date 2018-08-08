@@ -1,6 +1,7 @@
 import {
   SIGNUP,
   LOGIN,
+  LOGOUT,
   FETCH_AUTH_USER,
   CONFIRM_EMAIL
 } from '../constants'
@@ -25,6 +26,12 @@ const login = (user) => {
   }
 }
 
+const logout = () => {
+  return {
+    type: LOGOUT
+  }
+}
+
 const getAuthUser = () => {
   console.log('called get auth user action')
   return {
@@ -44,6 +51,7 @@ const confirmEmail = (success) => {
 export {
   signup,
   login,
+  logout,
   getAuthUser,
   confirmEmail
 }

@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 
+import UserProfile from '../UserProfile'
+import Addresses from '../Addresses'
+import Settings from '../Settings'
+
+import DashboardNavbar from '../../containers/DashboardNavbar'
 import Container from '../../components/Container'
-import Text from '../../components/Text'
 
 class Dashboard extends Component {
   render () {
     return (
       <Container fluid fullHeight>
-        <Text tag='h1'>Welcome to the Dashboard page</Text>
+        <DashboardNavbar />
+        <Route path='/profile/addresses' component={Addresses} />
+        <Route path='/profile/settings' component={Settings} />
+        <Route exact path='/profile' component={UserProfile} />
       </Container>
     )
   }

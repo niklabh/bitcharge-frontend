@@ -5,7 +5,7 @@ import API from '../../api'
 import {
   SIGNUP_SUCCESS,
   LOGIN_SUCCESS,
-  LOGOUT,
+  LOGOUT_SUCCESS,
   FETCH_AUTH_USER_SUCCESS,
   FETCH_AUTH_USER_ERROR
 } from '../constants'
@@ -50,7 +50,7 @@ const auth = (state = getInitialState(), action) => {
     case FETCH_AUTH_USER_ERROR:
       return { ...state, ...payload }
 
-    case LOGOUT:
+    case LOGOUT_SUCCESS:
       return { ...initialState }
 
     default:

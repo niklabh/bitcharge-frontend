@@ -14,7 +14,6 @@ import styles from './styles'
 
 const validationSchema = Yup.object().shape({
   loginField: Yup.string()
-    .email('Not a valid email')
     .required('Email is required'),
   password: Yup.string()
     .min(6)
