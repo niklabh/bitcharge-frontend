@@ -29,7 +29,7 @@ const Spinner = ({ width, size, color }) => {
     border: ${`${width}px`} solid ${color};
     border-radius: 50%;
     animation: ${rotateDelay} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    border-color: ${color} transparent transparent transparent;
   `
 
   const innerRing2 = css`

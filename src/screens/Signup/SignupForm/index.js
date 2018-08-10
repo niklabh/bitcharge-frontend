@@ -15,6 +15,9 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email('Not a valid email')
     .required('Email is required'),
+  name: Yup.string()
+    .min(3)
+    .required('Name is required'),
   username: Yup.string()
     .min(4)
     .required('Username is required'),
@@ -30,7 +33,7 @@ const SignupForm = ({ onSubmit, hostRef }) => {
   return (
     <Container hostRef={hostRef} style={styles.formContainer}>
       <Formik
-        initialValues={{ email: '', username: '', password: '', confirmPassword: '' }}
+        initialValues={{ email: '', username: '', password: '', confirmPassword: '', name: '' }}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
         render={({
@@ -46,6 +49,15 @@ const SignupForm = ({ onSubmit, hostRef }) => {
         }) => {
           return (
             <React.Fragment>
+              <Input
+                label='Full Name'
+                name='name'
+                placeholder='Doggo Best'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.username}
+                error={touched.name && errors.name}
+              />
               <Input
                 label='Username'
                 name='username'

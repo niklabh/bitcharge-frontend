@@ -8,10 +8,12 @@ import Settings from '../Settings'
 import DashboardNavbar from '../../containers/DashboardNavbar'
 import Container from '../../components/Container'
 
+import styles from './styles'
+
 class Dashboard extends Component {
   render () {
     return (
-      <Container fluid fullHeight>
+      <Container fluid fullHeight style={styles.mainContainer}>
         <DashboardNavbar />
         <Route path='/profile/addresses' component={Addresses} />
         <Route path='/profile/settings' component={Settings} />
