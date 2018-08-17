@@ -38,7 +38,7 @@ const SignupConfirmed = ({ hostRef }) => {
       <Text tag='h1' style={styles.confirmationHeaderText}>Woohoo! You're all set.</Text>
       <Text tag='h5'>Thank you for verifying your account. You can now start adding your addresses.</Text>
       <Container style={styles.buttonContainer}>
-        <Button tag={Link} to='/forgot' primary style={styles.submitButton}>Add an Address</Button>
+        <Button tag={Link} to='/address/new' primary style={styles.submitButton}>Add an Address</Button>
       </Container>
     </Container>
   )

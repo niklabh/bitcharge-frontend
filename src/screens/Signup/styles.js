@@ -22,7 +22,7 @@ const bodyContainer = css`
   flex: 5;
   align-items: center;
   justify-content: center;
-  padding: 2em;
+  padding: 0 2em;
   label: signup-body-cntr;
 `
 

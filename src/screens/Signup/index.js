@@ -29,8 +29,8 @@ class Signup extends Component {
     try {
       const data = await API.signup(values)
       bag.setSubmitting(false)
-      this.props.signupAction(data.user)
       this.setState({ isSignupSuccess: true })
+      this.props.signupAction(data.user)
     } catch (e) {
       console.log(e)
       bag.setSubmitting(false)
@@ -38,7 +38,7 @@ class Signup extends Component {
   }
 
   render () {
-    if (this.props.isAuthenticated) {
+    if (this.props.isAuthenticated && !this.state.isSignupSuccess) {
       return (<Redirect to='/profile' />)
     }
 
@@ -49,7 +49,7 @@ class Signup extends Component {
 
     const PoseSignupSuccess = posed(SignupSuccess)({
       visible: { opacity: 1 },
-      invisible: { opacity: 0, height: '0%' }
+      invisible: { opacity: 0, display: 'none' }
     })
 
     return (

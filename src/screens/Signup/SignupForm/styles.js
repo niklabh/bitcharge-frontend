@@ -3,7 +3,7 @@ import { colors } from '../../../styles'
 import { lighten } from 'polished'
 
 const formContainer = css`
-  padding: 0 4em;
+  padding: 0 2em;
   width: 100%;
   label: signup-body-form-cntr;
 `

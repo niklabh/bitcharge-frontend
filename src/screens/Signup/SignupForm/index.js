@@ -55,7 +55,7 @@ const SignupForm = ({ onSubmit, hostRef }) => {
                 placeholder='Doggo Best'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.username}
+                value={values.name}
                 error={touched.name && errors.name}
               />
               <Input
