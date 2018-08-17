@@ -1,7 +1,9 @@
 import React from 'react'
+import { cx } from 'emotion'
+import { Link } from 'react-router-dom'
 
 import Container from '../Container'
-import Text from '../Text'
+import Button from '../Button'
 
 import styles from './styles'
 
@@ -9,10 +11,10 @@ const Navbar = () => {
   return (
     <Container fluid style={styles.mainContainer}>
       <Container>
-        <a href='/'><img src={require('../../assets/images/Logo.png')} /></a>
+        <a href='/'><img className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-secondary.png' /></a>
       </Container>
       <Container>
-        <Text tag='h6' unstyled>My Bitcharge</Text>
+        <Button tag={Link} link to='/profile' style={styles.profileTextStyle}>My Bitcharge</Button>
       </Container>
     </Container>
   )

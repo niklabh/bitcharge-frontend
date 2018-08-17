@@ -16,9 +16,21 @@ const logoTextStyle = css`
   font-weight: 600;
 `
 
+const profileTextStyle = css`
+  font-weight: 400;
+  font-size: 1em;
+`
+
+const logoImageStyle = css`
+  width: 150px;
+  height: auto;
+`
+
 const styles = {
   mainContainer,
-  logoTextStyle
+  logoTextStyle,
+  logoImageStyle,
+  profileTextStyle
 }
 
 export default styles
