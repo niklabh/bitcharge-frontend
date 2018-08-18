@@ -48,13 +48,19 @@ const addNewAddressButtonIcon = css`
 `
 
 const addressesListContainer = css`
-  margin-top: 3em;
+  margin-top: 1em;
 `
 
 const addressItemContainer = css`
+  padding: 2em 0 1em 0;
+  border-bottom: .5px dotted ${colors.defaultBorder};
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+
+  &:last-child {
+    border-bottom: 0;
+  }
 `
 
 const addressIconContainer = css`

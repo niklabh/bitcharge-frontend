@@ -117,6 +117,11 @@ const AddressForm = ({ onSubmit, hostRef }) => {
   )
 }
 
+DropdownItem.propTypes = {
+  isDisabled: PropTypes.boolean,
+  data: PropTypes.obj
+}
+
 AddressForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   hostRef: PropTypes.any
