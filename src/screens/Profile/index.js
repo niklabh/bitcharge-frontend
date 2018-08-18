@@ -1,31 +1,136 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { cx } from 'emotion'
+import Select from 'react-select'
+import QRCode from 'qrcode.react'
 
+import API from '../../api'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 import Navbar from '../../components/Navbar'
+import Spinner from '../../components/Spinner'
+
+import SingleValue from './SingleValue'
+import DropdownItem from './DropdownItem'
 
 import styles from './styles'
+import { colors } from '../../styles'
 
-class Root extends Component {
+const selectStyles = {
+  control: base => ({ ...base, ...styles.selectStyle }),
+  container: base => ({ ...base, width: '100%' }),
+  indicatorsContainer: base => ({ ...base, transition: 'all 0.3s ease-out' }),
+  indicatorSeparator: base => ({ ...base, backgroundColor: '#FFF' }),
+  dropdownIndicator: base => ({ ...base, color: '#000' }),
+  menu: base => ({ ...base, marginTop: '1px', border: 0, borderRadius: 0 }),
+  option: base => ({ ...styles.dropdownItemStyle }),
+  singleValue: base => ({ ...styles.singleValueStyle }),
+  valueContainer: base => ({ ...base, padding: 0 })
+}
+
+class Profile extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      dropdownToggle: false,
-      selectedCoin: 'bitcoin'
+      isLoading: true,
+      isError: false,
+      user: null,
+      selectedAddress: null
+    }
+  }
+
+  async componentDidMount () {
+    try {
+      const data = await API.getProfile(this.props.match.params.username)
+      this.setState({ isLoading: false, user: data })
+    } catch (e) {
+      this.setState({ isLoading: false, isError: true })
+    }
+  }
+
+  onDropdownItemPress = (value) => {
+    this.setState({ selectedAddress: value })
+  }
+
+  _renderCardBody = (addresses) => {
+    const { selectedAddress } = this.state
+
+    if (!addresses || !addresses.length) {
+      return (
+        <Container style={styles.cardBodyContainer}>
+          <Container fluid style={styles.bodyDataContainer}>
+            <Container style={styles.addressContainer}>
+              <Text tag='h6'>This user has not addded any addresses.</Text>
+            </Container>
+          </Container>
+        </Container>
+      )
     }
 
-    this.onDropdownPress = this.onDropdownPress.bind(this)
+    const addressText = selectedAddress ? selectedAddress.address : addresses[0].address
+    return (
+      <Container style={styles.cardBodyContainer}>
+        <Select
+          options={addresses}
+          defaultValue={addresses[0]}
+          isSearchable={false}
+          components={{ Option: DropdownItem, SingleValue }}
+          getOptionLabel={({ currency }) => currency.name}
+          getOptionValue={({ currency }) => currency.symbol}
+          styles={selectStyles}
+          onChange={this.onDropdownItemPress}
+        />
+        <Container fluid style={styles.bodyDataContainer}>
+          <Container style={styles.addressContainer}>
+            <Text tag='h5' style={styles.addressHeaderStyle}>Wallet Address</Text>
+            <Text tag='h6'>{addressText}</Text>
+          </Container>
+          <Container style={styles.qrcodeContainer}>
+            <QRCode value={addressText} size={172} />
+          </Container>
+        </Container>
+      </Container>
+    )
   }
 
-  onDropdownPress () {
-    console.log(this.state)
-    this.setState({ dropdownToggle: !this.state.dropdownToggle })
+  _renderUser = (user) => {
+    return (
+      <React.Fragment>
+        <Container style={styles.cardHeaderContainer}>
+          <Container style={styles.avatarContainer}>
+            <img className={cx(styles.avatarIconStyle)} src={require('../../assets/images/Panda-icon.png')} />
+          </Container>
+          <Container style={styles.headerTextContainer}>
+            <Text tag='h5' unstyled style={styles.headerTextStyle}>{user.name}</Text>
+            <Text tag='h6' unstyled style={styles.headerSubTextStyle}>{user.intro || user.username}</Text>
+          </Container>
+        </Container>
+        {this._renderCardBody(user.addresses)}
+      </React.Fragment>
+    )
   }
 
-  onDropdownItemPress (e) {
+  _renderLoading = () => {
+    return (
+      <Container style={styles.loadingContainer}>
+        <Spinner size={50} width={7} color={colors.lightText} />
+      </Container>
+    )
+  }
 
+  _renderCard = () => {
+    if (this.state.isLoading) {
+      return this._renderLoading()
+    }
+
+    if (this.state.user) {
+      return this._renderUser(this.state.user)
+    }
+
+    if (this.state.isError) {
+
+    }
   }
 
   render () {
@@ -34,34 +139,7 @@ class Root extends Component {
         <Navbar />
         <Container fluid style={styles.bodyContainer}>
           <Container style={styles.cardContainer}>
-            <Container style={styles.cardHeaderContainer}>
-              <Container style={styles.avatarContainer}>
-                <img className={cx(styles.avatarIconStyle)} src={require('../../assets/images/Panda-icon.png')} />
-              </Container>
-              <Container style={styles.headerTextContainer}>
-                <Text tag='h5' unstyled style={styles.headerTextStyle}>Awesome Panda</Text>
-                <Text tag='h6' unstyled style={styles.headerTextStyle}>You know me.</Text>
-              </Container>
-            </Container>
-            <Container style={styles.cardBodyContainer}>
-              <Container fluid onClick={this.onDropdownPress} style={cx(styles.coinDropdownContainer, {[styles.dropdownContainerActive]: this.state.dropdownToggle})} data-toggle='dropdown' role='button' aria-expanded={this.state.dropdownToggle}>
-                <Container style={styles.dropdownSelectedItem}><img src={require('../../assets/images/bitcoin-logo.png')} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>Bitcoin</Text></Container>
-                <ul className={cx(styles.coinDropdown, {[styles.dropdownActive]: this.state.dropdownToggle})}>
-                  <li className={cx(styles.dropdownItem)}><img src={require('../../assets/images/bitcoin-logo.png')} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>Bitcoin</Text></li>
-                  <li className={cx(styles.dropdownItem)}><img src={require('../../assets/images/eth-logo.png')} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>Ethereum</Text></li>
-                  <li className={cx(styles.dropdownItem)}><img src={require('../../assets/images/litecoin-logo.png')} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>Litecoin</Text></li>
-                </ul>
-              </Container>
-              <Container fluid style={styles.bodyDataContainer}>
-                <Container style={styles.addressContainer}>
-                  <Text tag='h5' style={styles.addressHeaderStyle}>Wallet Address</Text>
-                  <Text tag='h6'>0x26f28f5E9fCe0E2a04346e801BC0EF6Df8C13e6d</Text>
-                </Container>
-                <Container style={styles.qrcodeContainer}>
-                  <img src='https://raw.githubusercontent.com/zpao/qrcode.react/HEAD/qrcode.png' className={cx(styles.qrcodeImage)} />
-                </Container>
-              </Container>
-            </Container>
+            {this._renderCard()}
           </Container>
         </Container>
       </Container>
@@ -69,4 +147,8 @@ class Root extends Component {
   }
 }
 
-export default Root
+Profile.propTypes = {
+  match: PropTypes.any
+}
+
+export default Profile

@@ -9,21 +9,17 @@ class API {
     this.axios = axios.create({
       baseURL: `${PUBLIC_URI}/api`
     })
-
-    this.getAuthUser = this.getAuthUser.bind(this)
-    this.confirmEmail = this.confirmEmail.bind(this)
-    this.getCurrencies = this.getCurrencies.bind(this)
   }
 
-  setAuthHeader (token) {
+  setAuthHeader = (token) => {
     this.axios.defaults.headers.common['Authorization'] = `bearer ${token}`
   }
 
-  removeAuthHeader () {
+  removeAuthHeader = () => {
     delete this.axios.defaults.headers.common['Authorization']
   }
 
-  signup (userDetails) {
+  signup = (userDetails) => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.post('/signup', userDetails)
@@ -34,7 +30,7 @@ class API {
     })
   }
 
-  confirmEmail (code) {
+  confirmEmail = (code) => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.post(`/confirm`, { confirmationCode: code })
@@ -45,7 +41,7 @@ class API {
     })
   }
 
-  login (userDetails) {
+  login = (userDetails) => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.post('/login', userDetails)
@@ -56,7 +52,7 @@ class API {
     })
   }
 
-  addAddress (addressDetails) {
+  addAddress = (addressDetails) => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.post('/addresses', addressDetails)
@@ -67,7 +63,7 @@ class API {
     })
   }
 
-  getCurrencies () {
+  getCurrencies = () => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.get('/currencies')
@@ -78,7 +74,7 @@ class API {
     })
   }
 
-  getAuthUser () {
+  getAuthUser = () => {
     console.log('get axios user')
     return new Promise(async (resolve, reject) => {
       try {
@@ -86,6 +82,19 @@ class API {
         return resolve(response.data)
       } catch (error) {
         return reject(error)
+      }
+    })
+  }
+
+  getProfile = (username) => {
+    console.log(username)
+
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.get(`${username}`)
+        return resolve(response.data)
+      } catch (e) {
+        return reject(e)
       }
     })
   }

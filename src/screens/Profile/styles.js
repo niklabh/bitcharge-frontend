@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, typography } from '../../styles'
 
 const mainContainer = css`
   background-color: ${colors.background};
@@ -21,6 +21,12 @@ const cardContainer = css`
   margin-bottom: 3em;
   background-color: ${colors.white};
   border-radius: 4px;
+`
+
+const loadingContainer = css`
+  align-items: center;
+  justify-content: center;
+  padding: 5em;
 `
 
 const cardHeaderContainer = css`
@@ -50,83 +56,17 @@ const headerTextContainer = css`
   color: ${colors.white};
 `
 
+const headerTextStyle = css`
+  font-weight: 600;
+  margin-bottom: .2em;
+`
+
+const headerSubTextStyle = css`
+  font-weight: 400;
+`
+
 const cardBodyContainer = css`
   align-items: center;
-`
-
-const coinDropdownContainer = css`
-  position: relative;
-  padding: 1.2em;
-  cursor: pointer;
-  outline: none;
-  border-bottom: 1px solid ${colors.background};
-
-  &::after {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    right: 1em;
-    top: 50%;
-    margin-top: -3px;
-    border-width: 6px 6px 0 6px;
-    border-style: solid;
-    border-color: grey transparent;
-  }
-`
-
-const coinDropdown = css`
-  position: absolute;
-  top: 100%;
-  left: 0px;
-  right: 0px;
-  background-color: ${colors.white};
-  transition: all 0.3s ease-out;
-  list-style: none;
-  opacity: 0;
-  pointer-events: none;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-`
-
-const dropdownContainerActive = css`
-  &::after {
-     border-width: 0 6px 6px 6px;
-  }
-`
-
-const dropdownActive = css`
-  opacity: 1;
-  pointer-events: auto;
-`
-
-const dropdownItem = css`
-  display: flex;
-  align-items: center;
-  padding: 1em;
-  transition: background 0.3s ease-out;
-
-  &:hover {
-    background: ${colors.primary};
-    color: ${colors.white};
-  }
-
-  &:last-child {
-    border-bottom: 1px solid ${colors.background};
-  }
-`
-
-const dropdownSelectedItem = css`
-  flex-direction: row;
-  align-items: center;
-`
-
-const dropdownItemImage = css`
-  margin-right: 1em;
-  width: 2em;
-  height: 2em;
-  border-radius: 50%;
-  border: 1px solid ${colors.white};
 `
 
 const bodyDataContainer = css`
@@ -153,28 +93,64 @@ const qrcodeImage = css`
   height: 10em;
 `
 
+const selectStyle = {
+  boxSizing: 'border-box',
+  width: '100%',
+  borderRadius: 0,
+  border: 0,
+  borderBottom: `1px solid ${colors.background}`,
+  padding: '0.8em',
+  fontFamily: typography.primaryFont,
+  fontSize: '1.2rem',
+  backgroundColor: colors.white,
+  '&:hover': {
+    border: 0,
+    borderBottom: `1px solid ${colors.background}`
+  }
+}
+
+const dropdownItemStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  padding: '0.8em',
+  maxWidth: '100%',
+  transition: 'background 0.3s ease-out',
+  '&:hover': {
+    backgroundColor: colors.primary,
+    color: colors.white
+  },
+  '&:active': {
+    backgroundColor: colors.primary,
+    color: colors.white
+  }
+}
+
+const singleValueStyle = {
+  display: 'flex',
+  alignItems: 'center'
+}
+
 const styles = {
   mainContainer,
   logoTextStyle,
   bodyContainer,
   cardContainer,
+  loadingContainer,
   cardHeaderContainer,
   cardBodyContainer,
   avatarContainer,
   avatarIconStyle,
   headerTextContainer,
-  coinDropdownContainer,
-  coinDropdown,
-  dropdownContainerActive,
-  dropdownActive,
-  dropdownItem,
-  dropdownSelectedItem,
-  dropdownItemImage,
+  headerTextStyle,
+  headerSubTextStyle,
   bodyDataContainer,
   addressContainer,
   addressHeaderStyle,
   qrcodeContainer,
-  qrcodeImage
+  qrcodeImage,
+  selectStyle,
+  singleValueStyle,
+  dropdownItemStyle
 }
 
 export default styles
