@@ -86,6 +86,39 @@ class API {
     })
   }
 
+  getAddresses = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.get('/addresses')
+        return resolve(response.data)
+      } catch (error) {
+        return reject(error)
+      }
+    })
+  }
+
+  updateAddress = (addressDetails) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.put(`/addresses/${addressDetails.currency.symbol}`, addressDetails)
+        return resolve(response.data)
+      } catch (error) {
+        return reject(error)
+      }
+    })
+  }
+
+  deleteAddress = (address) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.delete(`/addresses/${address.currency.symbol}`)
+        return resolve(response.data)
+      } catch (error) {
+        return reject(error)
+      }
+    })
+  }
+
   getProfile = (username) => {
     console.log(username)
 

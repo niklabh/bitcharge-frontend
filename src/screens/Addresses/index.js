@@ -35,6 +35,7 @@ class Addresses extends Component {
     console.log('onClick')
   }
   _renderUserAddresses = (addresses) => {
+    const addressList = Object.keys(addresses).map(address => addresses[address])
     return (
       <Container style={styles.addressesContainer}>
         <Container style={styles.addressesHeaderContainer}>
@@ -42,7 +43,7 @@ class Addresses extends Component {
           <Button onClick={this.addNewAddress} style={styles.addNewAddressButton} link>Add new</Button>
         </Container>
         <Container style={styles.addressesListContainer}>
-          {addresses.length && addresses.map(address => (<AddressItem address={address} />))}
+          {addressList.length && addressList.map(address => (<AddressItem address={address} />))}
         </Container>
       </Container>
     )
@@ -56,11 +57,44 @@ class Addresses extends Component {
     )
   }
 
+  _renderError = () => {
+    return (
+      <Container style={styles.loadingContainer}>
+        <Text tag='h3'>Something went wrong. Try reloading the page</Text>
+      </Container>
+    )
+  }
+
+  _renderEmpty = () => {
+    return (
+      <Container style={styles.loadingContainer}>
+        <Text tag='h3'>You haven't added any addresses.</Text>
+      </Container>
+    )
+  }
+
+  _renderCurrentState = () => {
+    const { isLoading, error, addresses } = this.props
+    console.log(isLoading, error, addresses)
+    if (isLoading) {
+      return this._renderLoading()
+    }
+    if (error) {
+      return this._renderError()
+    }
+
+    if (!Object.keys(addresses)) {
+      return this._renderEmpty()
+    }
+
+    return this._renderUserAddresses(this.props.addresses)
+  }
+
   render () {
     return (
       <Container fluid style={styles.mainContainer}>
         <Container style={styles.cardContainer}>
-          {this.props.addresses ? this._renderUserAddresses(this.props.addresses) : this._renderLoading()}
+          {this._renderCurrentState()}
         </Container>
       </Container>
     )
@@ -68,11 +102,13 @@ class Addresses extends Component {
 }
 
 Addresses.propTypes = {
-  addresses: PropTypes.array
+  addresses: PropTypes.object
 }
 
 const mapStateToProps = (state) => ({
-  addresses: state.auth.user && state.auth.user.addresses ? state.auth.user.addresses : null
+  addresses: state.addresses.addressList,
+  isLoading: state.addresses.isLoading,
+  error: state.addresses.isError
 })
 
 export default connect(mapStateToProps)(Addresses)
