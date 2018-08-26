@@ -38,16 +38,18 @@ const addAddress = (address, addressState) => {
   let addedAddressState = {
     ...addressState
   }
-
   addedAddressState[address.address] = address
+
+  return addedAddressState
 }
 
 const deleteAddress = (address, addressState) => {
   let deletedAddressState = {
     ...addressState
   }
-
   delete deletedAddressState[address.address]
+
+  return deletedAddressState
 }
 
 const address = (state = initialState, action) => {

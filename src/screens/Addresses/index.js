@@ -8,6 +8,8 @@ import Text from '../../components/Text'
 import Spinner from '../../components/Spinner'
 import Button from '../../components/Button'
 
+import { deleteAddress } from '../../store/actions/address'
+
 import { colors } from '../../styles'
 import styles from './styles'
 
@@ -15,6 +17,7 @@ class Addresses extends Component {
   addNewAddress = () => {
     console.log('onClick')
   }
+
   _renderUserAddresses = (addresses) => {
     const addressList = Object.keys(addresses).map(address => addresses[address])
     return (
@@ -24,7 +27,7 @@ class Addresses extends Component {
           <Button onClick={this.addNewAddress} style={styles.addNewAddressButton} link>Add new</Button>
         </Container>
         <Container style={styles.addressesListContainer}>
-          {addressList.length && addressList.map(address => (<AddressItem address={address} />))}
+          {addressList.length && addressList.map(address => (<AddressItem address={address} deleteAddress={this.props.deleteAddress} />))}
         </Container>
       </Container>
     )
@@ -83,7 +86,10 @@ class Addresses extends Component {
 }
 
 Addresses.propTypes = {
-  addresses: PropTypes.object
+  addresses: PropTypes.object,
+  deleteAddress: PropTypes.func,
+  isLoading: PropTypes.bool,
+  error: PropTypes.bool
 }
 
 const mapStateToProps = (state) => ({
@@ -92,4 +98,4 @@ const mapStateToProps = (state) => ({
   error: state.addresses.isError
 })
 
-export default connect(mapStateToProps)(Addresses)
+export default connect(mapStateToProps, { deleteAddress })(Addresses)

@@ -21,6 +21,10 @@ class AddressItem extends Component {
     }, 3000)
   }
 
+  onDeleteAddress = () => {
+    this.props.deleteAddress(this.props.address)
+  }
+
   render () {
     const { address } = this.props
     return (
@@ -39,7 +43,7 @@ class AddressItem extends Component {
               }
             </CopyToClipboard>
             <Button onClick={this.addNewAddress} style={styles.addressActionButton} link>Edit</Button>
-            <Button onClick={this.addNewAddress} style={styles.addressActionButton} link>Delete</Button>
+            <Button onClick={this.onDeleteAddress} style={styles.addressActionButton} link>Delete</Button>
           </Container>
         </Container>
       </Container>
@@ -48,7 +52,8 @@ class AddressItem extends Component {
 }
 
 AddressItem.propTypes = {
-  address: PropTypes.object
+  address: PropTypes.object,
+  deleteAddress: PropTypes.func
 }
 
 export default AddressItem

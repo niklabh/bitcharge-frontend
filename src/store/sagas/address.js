@@ -57,7 +57,8 @@ function * deleteAddressFlow (action) {
     console.log(response)
 
     yield put({
-      type: DELETE_ADDRESS_SUCCESS
+      type: DELETE_ADDRESS_SUCCESS,
+      payload
     })
   } catch (e) {
     yield put({
