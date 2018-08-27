@@ -53,7 +53,7 @@ const getCurrenciesOption = (inputVaue) => {
   })
 }
 
-const AddressForm = ({ onSubmit, hostRef }) => {
+const AddressForm = ({ onSubmit, onCancel, hostRef }) => {
   return (
     <Container hostRef={hostRef} style={styles.formContainer}>
       <Formik
@@ -108,7 +108,10 @@ const AddressForm = ({ onSubmit, hostRef }) => {
                 >
                   Submit {isSubmitting && <span className={cx(styles.spinnerIcon)}><Spinner size={20} width={4} /></span>}
                 </Button>
-                <Button tag={Link} to='/profile' link style={styles.cancelButton}>Skip</Button>
+                { onCancel
+                  ? <Button onClick={onCancel} link style={styles.cancelButton}>Cancel</Button>
+                  : <Button tag={Link} to='/profile' link style={styles.cancelButton}>Skip</Button>
+                }
               </Container>
             </React.Fragment>
           )
@@ -124,6 +127,7 @@ DropdownItem.propTypes = {
 
 AddressForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
   hostRef: PropTypes.any
 }
 

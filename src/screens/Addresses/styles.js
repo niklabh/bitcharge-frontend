@@ -51,6 +51,21 @@ const addressesListContainer = css`
   margin-top: 1em;
 `
 
+const addAddressModalStyle = css`
+  width: 50%;
+`
+
+const addAddressModalHeaderStyle = css`
+  text-align: left;
+  font-weight: 600;
+  margin-top: 1em;
+  margin-bottom: 2em;
+`
+
+const addNewEmptyButton = css`
+  margin-top: 2em;
+`
+
 const styles = {
   mainContainer,
   cardContainer,
@@ -59,7 +74,10 @@ const styles = {
   addressesHeaderContainer,
   addNewAddressButton,
   addNewAddressButtonIcon,
-  addressesListContainer
+  addressesListContainer,
+  addNewEmptyButton,
+  addAddressModalStyle,
+  addAddressModalHeaderStyle
 }
 
 export default styles

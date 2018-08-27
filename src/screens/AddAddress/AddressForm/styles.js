@@ -3,7 +3,6 @@ import { colors, typography } from '../../../styles'
 import { lighten } from 'polished'
 
 const formContainer = css`
-  padding: 0 4em;
   width: 100%;
   label: login-body-form-cntr;
 `

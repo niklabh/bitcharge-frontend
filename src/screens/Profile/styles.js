@@ -79,6 +79,10 @@ const addressContainer = css`
   align-items: center;
 `
 
+const addNewEmptyButton = css`
+  margin-top: 2em;
+`
+
 const addressHeaderStyle = css`
 `
 
@@ -148,6 +152,7 @@ const styles = {
   addressHeaderStyle,
   qrcodeContainer,
   qrcodeImage,
+  addNewEmptyButton,
   selectStyle,
   singleValueStyle,
   dropdownItemStyle

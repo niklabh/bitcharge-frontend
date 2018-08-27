@@ -7,15 +7,49 @@ import Container from '../../components/Container'
 import Text from '../../components/Text'
 import Spinner from '../../components/Spinner'
 import Button from '../../components/Button'
+import Modal from '../../components/Modal'
+import AddAddressForm from '../AddAddress/AddressForm'
 
-import { deleteAddress } from '../../store/actions/address'
+import API from '../../api'
+import { addAddress, updateAddress, deleteAddress } from '../../store/actions/address'
 
 import { colors } from '../../styles'
 import styles from './styles'
 
 class Addresses extends Component {
-  addNewAddress = () => {
-    console.log('onClick')
+  constructor (props) {
+    super(props)
+
+    this.handleAddressSubmit = this.handleAddressSubmit.bind(this)
+  }
+  state = {
+    addNewAddressModal: false,
+    isAddAddressSuccess: false
+  }
+
+  openAddNewAddressModal = () => {
+    this.setState({ addNewAddressModal: true })
+  }
+
+  closeAddNewAddressModal = () => {
+    this.setState({ addNewAddressModal: false })
+  }
+
+  async handleAddressSubmit (values, bag) {
+    const addressDetails = {
+      currency: values.currency.symbol,
+      address: values.address
+    }
+    try {
+      const data = await API.addAddress(addressDetails)
+      bag.setSubmitting(false)
+      this.setState({ isAddAddressSuccess: true })
+      this.props.addAddress(data.address)
+      this.closeAddNewAddressModal()
+    } catch (e) {
+      console.log(e)
+      bag.setSubmitting(false)
+    }
   }
 
   _renderUserAddresses = (addresses) => {
@@ -24,10 +58,11 @@ class Addresses extends Component {
       <Container style={styles.addressesContainer}>
         <Container style={styles.addressesHeaderContainer}>
           <Text tag='h4' style={styles.addressesHeaderTextStyle}>My Addresses</Text>
-          <Button onClick={this.addNewAddress} style={styles.addNewAddressButton} link>Add new</Button>
+          <Button onClick={this.openAddNewAddressModal} style={styles.addNewAddressButton} link>Add new</Button>
+          {this._renderAddAddressModal()}
         </Container>
         <Container style={styles.addressesListContainer}>
-          {addressList.length && addressList.map(address => (<AddressItem address={address} deleteAddress={this.props.deleteAddress} />))}
+          {addressList.length && addressList.map(address => (<AddressItem key={address.address} address={address} deleteAddress={this.props.deleteAddress} />))}
         </Container>
       </Container>
     )
@@ -49,10 +84,21 @@ class Addresses extends Component {
     )
   }
 
+  _renderAddAddressModal = () => {
+    return (
+      <Modal label='Add New Address' style={styles.addAddressModalStyle} isOpen={this.state.addNewAddressModal} handleClose={this.closeAddNewAddressModal}>
+        <Text tag='h4' style={styles.addAddressModalHeaderStyle}>Add a new address</Text>
+        <AddAddressForm onSubmit={this.handleAddressSubmit} onCancel={this.closeAddNewAddressModal} />
+      </Modal>
+    )
+  }
+
   _renderEmpty = () => {
     return (
       <Container style={styles.loadingContainer}>
         <Text tag='h3'>You haven't added any addresses.</Text>
+        <Button primary style={styles.addNewEmptyButton} onClick={this.openAddNewAddressModal}>Add New Address</Button>
+        {this._renderAddAddressModal()}
       </Container>
     )
   }
@@ -67,7 +113,7 @@ class Addresses extends Component {
       return this._renderError()
     }
 
-    if (!Object.keys(addresses)) {
+    if (!Object.keys(addresses) || Object.keys(addresses).length === 0) {
       return this._renderEmpty()
     }
 
@@ -88,6 +134,8 @@ class Addresses extends Component {
 Addresses.propTypes = {
   addresses: PropTypes.object,
   deleteAddress: PropTypes.func,
+  addAddress: PropTypes.func,
+  updateAddress: PropTypes.func,
   isLoading: PropTypes.bool,
   error: PropTypes.bool
 }
@@ -98,4 +146,4 @@ const mapStateToProps = (state) => ({
   error: state.addresses.isError
 })
 
-export default connect(mapStateToProps, { deleteAddress })(Addresses)
+export default connect(mapStateToProps, { addAddress, updateAddress, deleteAddress })(Addresses)
