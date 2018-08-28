@@ -5,6 +5,7 @@ const modalContainer = css`
   display: flex;
   flex-direction: column;
   padding: 2em;
+  margin-top: 10%;
   background-color: ${colors.white};
   border-radius: 4px;
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.25);
@@ -14,7 +15,7 @@ const modalContainer = css`
 const overlayContainer = css`
   position: fixed;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   top: 0;
   left: 0;

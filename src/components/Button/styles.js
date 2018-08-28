@@ -18,6 +18,30 @@ color: ${colors.blackText};
 }
 `
 
+const primaryLink = css`
+  color: ${colors.primary};
+
+  &:hover: {
+    color: ${darken(0.2, colors.primary)};
+  }
+`
+
+const secondaryLink = css`
+  color: ${colors.secondary};
+
+  &:hover: {
+    color: ${darken(0.2, colors.secondary)};
+  }
+`
+
+const errorLink = css`
+  color: ${colors.errorText};
+
+  &:hover: {
+    color: ${darken(0.2, colors.errorText)};
+  }
+`
+
 const button = css`
   display: inline-block;
   font-weight: 600;
@@ -70,6 +94,17 @@ const secondary = css`
   }
 `
 
+const error = css`
+  background-color: ${colors.errorText};
+  color: ${colors.white};
+  border-color: ${darken(0.2, colors.errorText)};
+
+  &:hover {
+    background-color: ${darken(0.2, colors.errorText)};
+    border-color: ${darken(0.3, colors.errorText)}
+  }
+`
+
 const primaryOutline = css`
     border-color: ${colors.primary};
     color: ${colors.primary}
@@ -78,6 +113,12 @@ const primaryOutline = css`
 
 const secondaryOutline = css`
   border-color: ${colors.secondary};
+  color: ${colors.secondary};
+  background-color: transparent;
+`
+
+const errorOutline = css`
+  border-color: ${colors.errorText};
   color: ${colors.secondary};
   background-color: transparent;
 `
@@ -92,17 +133,28 @@ const secondaryActive = css`
   border-color: ${darken(0.3, colors.secondary)};
 `
 
+const errorActive = css`
+  background-color: ${darken(0.2, colors.errorText)};
+  border-color: ${darken(0.3, colors.errorText)};
+`
+
 const styles = {
   button,
   primary,
   secondary,
   block,
+  error,
   disabled,
   link,
+  primaryLink,
+  secondaryLink,
+  errorLink,
   primaryOutline,
   secondaryOutline,
+  errorOutline,
   primaryActive,
-  secondaryActive
+  secondaryActive,
+  errorActive
 }
 
 export default styles

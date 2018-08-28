@@ -87,7 +87,7 @@ class Addresses extends Component {
   _renderAddAddressModal = () => {
     return (
       <Modal label='Add New Address' style={styles.addAddressModalStyle} isOpen={this.state.addNewAddressModal} handleClose={this.closeAddNewAddressModal}>
-        <Text tag='h4' style={styles.addAddressModalHeaderStyle}>Add a new address</Text>
+        <Text tag='h3' style={styles.addAddressModalHeaderStyle}>Add a new address</Text>
         <AddAddressForm onSubmit={this.handleAddressSubmit} onCancel={this.closeAddNewAddressModal} />
       </Modal>
     )

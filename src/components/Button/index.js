@@ -26,6 +26,7 @@ class Button extends Component {
       primary,
       secondary,
       active,
+      error,
       link,
       block,
       style,
@@ -61,12 +62,28 @@ class Button extends Component {
       }
     }
 
+    if (error) {
+      buttonStyle = `${buttonStyle} ${styles.error}`
+
+      if (outline) {
+        buttonStyle = `${buttonStyle} ${style.errorOutline}`
+      }
+
+      if (active) {
+        buttonStyle = `${buttonStyle} ${styles.errorActive}`
+      }
+    }
+
     if (disabled) {
       buttonStyle = `${styles.button} ${styles.disabled}`
     }
 
     if (link) {
       buttonStyle = `${styles.button} ${styles.link}`
+
+      if (error) {
+        buttonStyle = `${buttonStyle} ${styles.errorLink}`
+      }
     }
 
     if (attributes.href && Tag === 'button') {
@@ -97,6 +114,7 @@ Button.propTypes = {
   block: PropTypes.bool,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
+  error: PropTypes.bool,
   link: PropTypes.bool,
   disabled: PropTypes.bool,
   outline: PropTypes.bool,

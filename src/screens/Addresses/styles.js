@@ -52,11 +52,11 @@ const addressesListContainer = css`
 `
 
 const addAddressModalStyle = css`
-  width: 50%;
+  width: 45%;
 `
 
 const addAddressModalHeaderStyle = css`
-  text-align: left;
+  text-align: center;
   font-weight: 600;
   margin-top: 1em;
   margin-bottom: 2em;

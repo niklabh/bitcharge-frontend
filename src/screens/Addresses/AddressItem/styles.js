@@ -61,6 +61,17 @@ const copiedTextStyle = css`
   transition: all 0.15s ease-out;
 `
 
+const deleteAddressModalStyle = css`
+  padding: 3em 3em 2em 3em;
+`
+
+const deleteAddressModalbuttonContainer = css`
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 1.8em;
+  margin-right: -1.2em;
+`
+
 const styles = {
   addressItemContainer,
   addressIconContainer,
@@ -69,7 +80,9 @@ const styles = {
   addressTextContainer,
   optionsContainer,
   addressActionButton,
-  copiedTextStyle
+  copiedTextStyle,
+  deleteAddressModalStyle,
+  deleteAddressModalbuttonContainer
 }
 
 export default styles

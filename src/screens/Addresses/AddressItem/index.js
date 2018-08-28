@@ -6,12 +6,14 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import Container from '../../../components/Container'
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
+import Modal from '../../../components/Modal'
 
 import styles from './styles'
 
 class AddressItem extends Component {
   state = {
-    copiedAddress: false
+    copiedAddress: false,
+    deleteAddressModal: false
   }
 
   onCopyAddress = () => {
@@ -22,13 +24,35 @@ class AddressItem extends Component {
   }
 
   onDeleteAddress = () => {
+    this.setState({ deleteAddressModal: true })
+  }
+
+  handleDeleteAddress = () => {
     this.props.deleteAddress(this.props.address)
+    this.closeDeleteAddressModal()
+  }
+
+  closeDeleteAddressModal = () => {
+    this.setState({ deleteAddressModal: false })
+  }
+
+  renderDeleteModal = () => {
+    return (
+      <Modal label='Delete Address' style={styles.deleteAddressModalStyle} isOpen={this.state.deleteAddressModal} handleClose={this.closeDeleteAddressModal}>
+        <Text tag='h5' style={styles.deleteAddressHeaderStyle}>Are you sure you want to delete this address?</Text>
+        <Container style={styles.deleteAddressModalbuttonContainer}>
+          <Button error link onClick={this.handleDeleteAddress}>Delete</Button>
+          <Button link onClick={this.closeDeleteAddressModal}>Cancel</Button>
+        </Container>
+      </Modal>
+    )
   }
 
   render () {
     const { address } = this.props
     return (
       <Container style={styles.addressItemContainer}>
+        {this.renderDeleteModal()}
         <Container style={styles.addressIconContainer}>
           <img src={address.currency.icon} className={cx(styles.addressIconImage)} />
           <Text tag='h5' style={styles.addressIconText}>{address.currency.name}</Text>
