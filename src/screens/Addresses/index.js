@@ -20,7 +20,8 @@ class Addresses extends Component {
   constructor (props) {
     super(props)
 
-    this.handleAddressSubmit = this.handleAddressSubmit.bind(this)
+    this.handleAddAddressSubmit = this.handleAddAddressSubmit.bind(this)
+    this.handle
   }
   state = {
     addNewAddressModal: false,
@@ -35,7 +36,7 @@ class Addresses extends Component {
     this.setState({ addNewAddressModal: false })
   }
 
-  async handleAddressSubmit (values, bag) {
+  async handleAddAddressSubmit (values, bag) {
     const addressDetails = {
       currency: values.currency.symbol,
       address: values.address
@@ -53,7 +54,12 @@ class Addresses extends Component {
   }
 
   _renderUserAddresses = (addresses) => {
-    const addressList = Object.keys(addresses).map(address => addresses[address])
+    const addressList = Object.keys(addresses).map(address => addresses[address]).sort((a, b) => {
+      const textA = a.currency.name.toUpperCase()
+      const textB = b.currency.name.toUpperCase()
+
+      return textA.localeCompare(textB)
+    })
     return (
       <Container style={styles.addressesContainer}>
         <Container style={styles.addressesHeaderContainer}>
@@ -62,7 +68,14 @@ class Addresses extends Component {
           {this._renderAddAddressModal()}
         </Container>
         <Container style={styles.addressesListContainer}>
-          {addressList.length && addressList.map(address => (<AddressItem key={address.address} address={address} deleteAddress={this.props.deleteAddress} />))}
+          {addressList.length && addressList.map(address => (
+            <AddressItem
+              key={address.address}
+              address={address}
+              deleteAddress={this.props.deleteAddress}
+              editAddress={this.props.updateAddress}
+            />
+          ))}
         </Container>
       </Container>
     )
@@ -88,7 +101,7 @@ class Addresses extends Component {
     return (
       <Modal label='Add New Address' style={styles.addAddressModalStyle} isOpen={this.state.addNewAddressModal} handleClose={this.closeAddNewAddressModal}>
         <Text tag='h3' style={styles.addAddressModalHeaderStyle}>Add a new address</Text>
-        <AddAddressForm onSubmit={this.handleAddressSubmit} onCancel={this.closeAddNewAddressModal} />
+        <AddAddressForm onSubmit={this.handleAddAddressSubmit} onCancel={this.closeAddNewAddressModal} />
       </Modal>
     )
   }

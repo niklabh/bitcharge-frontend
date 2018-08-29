@@ -25,8 +25,14 @@ class Input extends PureComponent {
   }
 
   render () {
-    const { label, name, type, error, placeholder, ...props } = this.props
-    let inputStyle = cx(styles.inputBaseStyle)
+    const { label, name, noErrorText, type, error, placeholder, inputStyle, ...props } = this.props
+    let innerInputStyle = cx(styles.inputBaseStyle)
+
+    let innerInputContainerStyle = cx(styles.inputContainer)
+
+    if (inputStyle) {
+      innerInputContainerStyle = `${innerInputContainerStyle} ${inputStyle}`
+    }
     let Tag = 'input'
 
     if (type === 'select') {
@@ -36,11 +42,11 @@ class Input extends PureComponent {
       Tag = AsyncSelect
     }
     if (error) {
-      inputStyle = cx(inputStyle, styles.inputErrorStyle)
+      innerInputStyle = cx(innerInputStyle, styles.inputErrorStyle)
     }
     return (
       <Container style={styles.mainContainer}>
-        <Container style={styles.inputContainer}>
+        <Container style={innerInputContainerStyle}>
           {
             label && <Container style={styles.inputLabelContainer}>
               <Text style={styles.labelText}>{label}</Text>
@@ -50,9 +56,9 @@ class Input extends PureComponent {
             {
               (type === 'select' || type === 'async-select')
                 ? <Tag name={name} placeholder={placeholder || label || null} {...props} onChange={this.handleSelectChange} onBlur={this.handleSelectBlur} />
-                : <Tag className={inputStyle} name={name} placeholder={placeholder || label || null} type={type} {...props} />
+                : <Tag className={innerInputStyle} name={name} placeholder={placeholder || label || null} type={type} {...props} />
             }
-            <Text style={styles.errorText}>{error || <span>&nbsp;</span>}</Text>
+            {!noErrorText && <Text style={styles.errorText}>{error || <span>&nbsp;</span>}</Text>}
           </Container>
         </Container>
       </Container>
@@ -67,7 +73,10 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   type: PropTypes.string,
   onChange: PropTypes.func,
-  onBlur: PropTypes.func
+  onBlur: PropTypes.func,
+  inputStyle: PropTypes.any,
+  noErrorText: PropTypes.bool,
+  inputContainerStyle: PropTypes.any
 }
 
 export default Input

@@ -95,8 +95,8 @@ const AddressForm = ({ onSubmit, onCancel, hostRef }) => {
                 name='address'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.password}
-                error={touched.password && errors.password}
+                value={values.address}
+                error={touched.address && errors.address}
               />
               <Container style={styles.buttonContainer}>
                 <Button

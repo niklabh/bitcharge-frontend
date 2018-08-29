@@ -37,8 +37,21 @@ const addressTextContainer = css`
   justify-content: space-between;
 `
 
+const addressInputContainer = css`
+  align-items: flex-end;
+  width: 70%;
+  justify-content: space-between;
+`
+
+const addressInputStyle = css`
+  align-self: flex-end;
+  margin: 0;
+  margin-right: -0.6em;
+  font-size: 1em;
+`
 const optionsContainer = css`
   flex-direction: row;
+  margin-top: 1em;
 `
 
 const addressActionButton = css`
@@ -50,6 +63,15 @@ const addressActionButton = css`
   &:last-child {
     padding-right: 0em;
   }
+`
+
+const editAddressCancelButton = css`
+  color: ${colors.blackText};
+`
+
+const editAddressSaveButton = css`
+  font-size: 1rem;
+  margin-right: 1em;
 `
 
 const copiedTextStyle = css`
@@ -78,8 +100,12 @@ const styles = {
   addressIconImage,
   addressIconText,
   addressTextContainer,
+  addressInputContainer,
+  addressInputStyle,
   optionsContainer,
   addressActionButton,
+  editAddressSaveButton,
+  editAddressCancelButton,
   copiedTextStyle,
   deleteAddressModalStyle,
   deleteAddressModalbuttonContainer

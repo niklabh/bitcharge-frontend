@@ -100,7 +100,7 @@ class API {
   updateAddress = (addressDetails) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await this.axios.put(`/addresses/${addressDetails.currency.symbol}`, addressDetails)
+        const response = await this.axios.put(`/addresses/${addressDetails.currency.symbol}`, {address: addressDetails.address})
         return resolve(response.data)
       } catch (error) {
         return reject(error)

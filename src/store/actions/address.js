@@ -29,11 +29,12 @@ const updateAddress = (address) => {
   }
 }
 
-const deleteAddress = (address) => {
+const deleteAddress = (address, params) => {
   return {
     type: DELETE_ADDRESS,
     payload: {
-      address
+      address,
+      params
     }
   }
 }

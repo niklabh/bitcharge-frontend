@@ -42,6 +42,11 @@ const errorLink = css`
   }
 `
 
+const disabledLink = css`
+  color: ${colors.disabled};
+  cursor: not-allowed;
+`
+
 const button = css`
   display: inline-block;
   font-weight: 600;
@@ -149,6 +154,7 @@ const styles = {
   primaryLink,
   secondaryLink,
   errorLink,
+  disabledLink,
   primaryOutline,
   secondaryOutline,
   errorOutline,

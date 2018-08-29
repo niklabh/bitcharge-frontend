@@ -81,6 +81,10 @@ class Button extends Component {
     if (link) {
       buttonStyle = `${styles.button} ${styles.link}`
 
+      if (disabled) {
+        buttonStyle = `${styles.button} ${styles.disabledLink}`
+      }
+
       if (error) {
         buttonStyle = `${buttonStyle} ${styles.errorLink}`
       }

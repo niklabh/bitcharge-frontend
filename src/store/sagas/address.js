@@ -52,18 +52,25 @@ function * updateAddressFlow (action) {
 function * deleteAddressFlow (action) {
   const { payload } = action
 
-  try {
-    const response = yield call(API.deleteAddress, payload.address)
-    console.log(response)
-
+  if (payload.params && payload.params.local) {
     yield put({
       type: DELETE_ADDRESS_SUCCESS,
       payload
     })
-  } catch (e) {
-    yield put({
-      type: DELETE_ADDRESS_ERROR
-    })
+  } else {
+    try {
+      const response = yield call(API.deleteAddress, payload.address)
+      console.log(response)
+
+      yield put({
+        type: DELETE_ADDRESS_SUCCESS,
+        payload
+      })
+    } catch (e) {
+      yield put({
+        type: DELETE_ADDRESS_ERROR
+      })
+    }
   }
 }
 
