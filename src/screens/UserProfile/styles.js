@@ -37,12 +37,22 @@ const editImageContainer = css`
 const avatarIconStyle = css`
   width: 125px;
   height: 125px;
-  border-radius: 50px;
+  border-radius: 50%;
   display: inline-block;
   border: 2px solid ${colors.white};
 `
 
+const inputStyle = css`
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+`
+
 const editImageIconContainer = css`
+  display: flex;
   width: 32px;
   height: 32px;
   border-radius: 100%;
@@ -81,6 +91,7 @@ const styles = {
   avatarContainer,
   editImageContainer,
   avatarIconStyle,
+  inputStyle,
   headerTextContainer,
   headerNameTextStyle,
   headerUsernameTextStyle,

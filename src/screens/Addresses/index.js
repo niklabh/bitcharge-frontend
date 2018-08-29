@@ -63,8 +63,8 @@ class Addresses extends Component {
     return (
       <Container style={styles.addressesContainer}>
         <Container style={styles.addressesHeaderContainer}>
-          <Text tag='h4' style={styles.addressesHeaderTextStyle}>My Addresses</Text>
-          <Button onClick={this.openAddNewAddressModal} style={styles.addNewAddressButton} link>Add new</Button>
+          <Text tag='h5' style={styles.addressesHeaderTextStyle}>My Addresses</Text>
+          <Button onClick={this.openAddNewAddressModal} style={styles.addNewAddressButton} primary>Add new</Button>
           {this._renderAddAddressModal()}
         </Container>
         <Container style={styles.addressesListContainer}>

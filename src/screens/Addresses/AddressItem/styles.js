@@ -2,7 +2,7 @@ import { css } from 'react-emotion'
 import { colors } from '../../../styles'
 
 const addressItemContainer = css`
-  padding: 2em 0 1em 0;
+  padding: 1.6em 0 1em 0;
   border-bottom: .5px dotted ${colors.defaultBorder};
   flex-direction: row;
   align-items: flex-start;
@@ -28,7 +28,7 @@ const addressIconImage = css`
 `
 
 const addressIconText = css`
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0px;
 `
 
@@ -51,7 +51,7 @@ const addressInputStyle = css`
 `
 const optionsContainer = css`
   flex-direction: row;
-  margin-top: 1em;
+  margin-top: 0.6em;
 `
 
 const addressActionButton = css`

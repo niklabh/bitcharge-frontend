@@ -32,13 +32,12 @@ const addressesHeaderContainer = css`
 
 const addressesHeaderTextStyle = css`
   font-weight: 600;
+  margin-bottom: -0.4em;
 `
 
 const addNewAddressButton = css`
   font-weight: 600;
-  font-size: 1.3em;
-  margin-right: -1.2em;
-  color: ${colors.primaryDark};
+  font-size: 1em;
 `
 
 const addNewAddressButtonIcon = css`
