@@ -65,6 +65,10 @@ const addNewEmptyButton = css`
   margin-top: 2em;
 `
 
+const addIcon = css`
+  margin-left: 0.3em;
+`
+
 const styles = {
   mainContainer,
   cardContainer,
@@ -76,7 +80,8 @@ const styles = {
   addressesListContainer,
   addNewEmptyButton,
   addAddressModalStyle,
-  addAddressModalHeaderStyle
+  addAddressModalHeaderStyle,
+  addIcon
 }
 
 export default styles

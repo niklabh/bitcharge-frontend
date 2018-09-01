@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { cx } from 'emotion'
 
 import AddressItem from './AddressItem'
 import Container from '../../components/Container'
@@ -21,7 +22,6 @@ class Addresses extends Component {
     super(props)
 
     this.handleAddAddressSubmit = this.handleAddAddressSubmit.bind(this)
-    this.handle
   }
   state = {
     addNewAddressModal: false,
@@ -64,7 +64,7 @@ class Addresses extends Component {
       <Container style={styles.addressesContainer}>
         <Container style={styles.addressesHeaderContainer}>
           <Text tag='h5' style={styles.addressesHeaderTextStyle}>My Addresses</Text>
-          <Button onClick={this.openAddNewAddressModal} style={styles.addNewAddressButton} primary>Add new</Button>
+          <Button onClick={this.openAddNewAddressModal} style={styles.addNewAddressButton} primary>Add new <i className={`icon ion-md-add ${cx(styles.addIcon)}`} /></Button>
           {this._renderAddAddressModal()}
         </Container>
         <Container style={styles.addressesListContainer}>
