@@ -111,19 +111,25 @@ const error = css`
 `
 
 const primaryOutline = css`
-    border-color: ${colors.primary};
-    color: ${colors.primary}
+    border: 2px solid ${colors.primary};
+    color: ${colors.primary};
     background-color: transparent;
+
+    &:hover {
+      color: ${colors.white};
+      background-color: ${colors.primary};
+      border-color: ${colors.primary};
+    }
 `
 
 const secondaryOutline = css`
-  border-color: ${colors.secondary};
+  border: 2px solid ${colors.secondary};
   color: ${colors.secondary};
   background-color: transparent;
 `
 
 const errorOutline = css`
-  border-color: ${colors.errorText};
+  border-color: 2px solid ${colors.errorText};
   color: ${colors.secondary};
   background-color: transparent;
 `

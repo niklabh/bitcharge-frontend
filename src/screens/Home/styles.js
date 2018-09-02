@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   background-color: ${colors.white};
@@ -20,6 +20,10 @@ const heroContainer = css`
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid ${colors.lightGray};
+
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+  }
 `
 
 const heroTextContainer = css`
@@ -28,6 +32,11 @@ const heroTextContainer = css`
   label: home-hero-text-cntr;
   align-items: flex-start;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    align-items: center;
+    padding: 1.5em;
+  }
 `
 
 const heroImageContainer = css`
@@ -39,9 +48,14 @@ const heroImageContainer = css`
 `
 
 const heroHeaderText = css`
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1em;
   label: home-hero-header-text;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    text-align: center;
+    font-size: 2em;
+  }
 `
 
 const heroSubHeaderText = css`
@@ -49,6 +63,11 @@ const heroSubHeaderText = css`
   font-weight: 400;
   margin-bottom: 1.5em;
   label: home-hero-header-subtext;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    text-align: center;
+    font-size: 1.2em;
+  }
 `
 
 const heroImage = css`

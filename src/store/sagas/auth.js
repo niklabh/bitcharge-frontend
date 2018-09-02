@@ -41,22 +41,27 @@ function * loginFlow (action) {
   yield put({ type: LOGIN_SUCCESS, payload })
 }
 
-function * authProfileFlow () {
-  const isAuthenticated = select(getAuthenticatedState)
+function * authProfileFlow (action) {
+  const { payload } = action
+  if (payload && payload.user) {
+    yield put({ type: FETCH_AUTH_USER_SUCCESS, payload })
+  } else {
+    const isAuthenticated = select(getAuthenticatedState)
 
-  if (isAuthenticated) {
-    try {
-      const data = yield call(API.getAuthUser)
-      console.log(data)
-      yield put({ type: FETCH_AUTH_USER_SUCCESS, payload: { user: data } })
-    } catch (e) {
-      console.log('data in saga', e)
-      yield put({
-        type: FETCH_AUTH_USER_ERROR,
-        payload: {
-          isAuthenticated: false
-        }
-      })
+    if (isAuthenticated) {
+      try {
+        const data = yield call(API.getAuthUser)
+        console.log(data)
+        yield put({ type: FETCH_AUTH_USER_SUCCESS, payload: { user: data } })
+      } catch (e) {
+        console.log('data in saga', e)
+        yield put({
+          type: FETCH_AUTH_USER_ERROR,
+          payload: {
+            isAuthenticated: false
+          }
+        })
+      }
     }
   }
 }

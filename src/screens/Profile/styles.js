@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors, typography } from '../../styles'
+import { colors, typography, breakpoints } from '../../styles'
 
 const mainContainer = css`
   background-color: ${colors.background};
@@ -21,6 +21,12 @@ const cardContainer = css`
   margin-bottom: 3em;
   background-color: ${colors.white};
   border-radius: 4px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 `
 
 const loadingContainer = css`
@@ -30,12 +36,17 @@ const loadingContainer = css`
 `
 
 const cardHeaderContainer = css`
-  height: 13em;
+  padding: 2.5em 2em;
   background-color: ${colors.primary};
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 `
 
 const avatarContainer = css`

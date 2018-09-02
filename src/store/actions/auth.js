@@ -32,10 +32,12 @@ const logout = () => {
   }
 }
 
-const getAuthUser = () => {
-  console.log('called get auth user action')
+const getAuthUser = (user = null) => {
   return {
-    type: FETCH_AUTH_USER
+    type: FETCH_AUTH_USER,
+    payload: {
+      user
+    }
   }
 }
 

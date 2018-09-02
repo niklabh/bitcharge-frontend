@@ -64,7 +64,7 @@ class Addresses extends Component {
       <Container style={styles.addressesContainer}>
         <Container style={styles.addressesHeaderContainer}>
           <Text tag='h5' style={styles.addressesHeaderTextStyle}>My Addresses</Text>
-          <Button onClick={this.openAddNewAddressModal} style={styles.addNewAddressButton} primary>Add new <i className={`icon ion-md-add ${cx(styles.addIcon)}`} /></Button>
+          <Button onClick={this.openAddNewAddressModal} style={styles.addNewAddressButton} primary>Add new</Button>
           {this._renderAddAddressModal()}
         </Container>
         <Container style={styles.addressesListContainer}>

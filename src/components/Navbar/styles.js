@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   background-color: ${colors.white};
@@ -10,6 +10,11 @@ const mainContainer = css`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 `
 
 const logoTextStyle = css`
@@ -19,6 +24,10 @@ const logoTextStyle = css`
 const profileTextStyle = css`
   font-weight: 400;
   font-size: 1em;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-right: -1em;
+  }
 `
 
 const logoImageStyle = css`

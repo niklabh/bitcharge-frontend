@@ -74,6 +74,17 @@ class API {
     })
   }
 
+  updateUser = (details) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.put('/profile', details)
+        return resolve(response.data)
+      } catch (error) {
+        return reject(error)
+      }
+    })
+  }
+
   getAuthUser = () => {
     console.log('get axios user')
     return new Promise(async (resolve, reject) => {

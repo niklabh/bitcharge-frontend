@@ -24,4 +24,10 @@ const typography = {
   primaryFont: `'CircularStd', sans-serif`
 }
 
-export { colors, typography }
+const breakpoints = {
+  mobile: '575px',
+  tablet: '768px',
+  desktop: '991px'
+}
+
+export { colors, typography, breakpoints }

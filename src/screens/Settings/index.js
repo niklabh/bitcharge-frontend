@@ -9,6 +9,9 @@ import Text from '../../components/Text'
 import Button from '../../components/Button'
 import EditSettingsForm from './EditSettingsForm'
 
+import API from '../../api'
+import { getAuthUser } from '../../store/actions/auth'
+
 import styles from './styles'
 import { colors } from '../../styles'
 
@@ -68,16 +71,15 @@ class Settings extends Component {
 
     console.log(userDetails)
 
-    // try {
-    //   const data = await API.updateUser(userDetails)
-    //   bag.setSubmitting(false)
-    //   this.setState({ isAddAddressSuccess: true })
-    //   this.props.addAddress(data.address)
-    //   this.closeAddNewAddressModal()
-    // } catch (e) {
-    //   console.log(e)
-    //   bag.setSubmitting(false)
-    // }
+    try {
+      const data = await API.updateUser(userDetails)
+      bag.setSubmitting(false)
+      this.props.getAuthUser(data)
+      this.setState({ isEditing: false })
+    } catch (e) {
+      console.log(e)
+      bag.setSubmitting(false)
+    }
   }
 
   _renderUserDetails = (user) => {
@@ -111,6 +113,7 @@ class Settings extends Component {
 }
 
 Settings.propTypes = {
+  getAuthUser: PropTypes.func,
   user: PropTypes.object
 }
 
@@ -118,4 +121,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user
 })
 
-export default connect(mapStateToProps, null)(Settings)
+export default connect(mapStateToProps, { getAuthUser })(Settings)

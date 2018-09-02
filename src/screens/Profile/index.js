@@ -68,12 +68,19 @@ class Profile extends Component {
       )
     }
 
+    const addressList = Object.keys(addresses).map(address => addresses[address]).sort((a, b) => {
+      const textA = a.currency.name.toUpperCase()
+      const textB = b.currency.name.toUpperCase()
+
+      return textA.localeCompare(textB)
+    })
+
     const addressText = selectedAddress ? selectedAddress.address : addresses[0].address
     return (
       <Container style={styles.cardBodyContainer}>
         <Select
-          options={addresses}
-          defaultValue={addresses[0]}
+          options={addressList}
+          defaultValue={addressList[0]}
           isSearchable={false}
           components={{ Option: DropdownItem, SingleValue }}
           getOptionLabel={({ currency }) => currency.name}
@@ -99,7 +106,7 @@ class Profile extends Component {
       <React.Fragment>
         <Container style={styles.cardHeaderContainer}>
           <Container style={styles.avatarContainer}>
-            <img className={cx(styles.avatarIconStyle)} src={require('../../assets/images/Panda-icon.png')} />
+            <img className={cx(styles.avatarIconStyle)} src={user.avatar || require('../../assets/images/Panda-icon.png')} />
           </Container>
           <Container style={styles.headerTextContainer}>
             <Text tag='h5' unstyled style={styles.headerTextStyle}>{user.name}</Text>

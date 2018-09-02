@@ -84,6 +84,43 @@ const headerUsernameTextStyle = css`
   color: ${colors.lightText};
 `
 
+const editAvatarOptionsContainer = css`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.6em;
+`
+
+const detailsContainer = css`
+  margin-top: 2em;
+`
+
+const profileHeaderContainer = css`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2em;
+  border-bottom: .5px dashed ${colors.defaultBorder};
+`
+
+const profileHeaderTextStyle = css`
+  font-weight: 600;
+  margin-bottom: -0.4em;
+`
+
+const editProfileButton = css`
+  font-weight: 600;
+  font-size: 1em;
+`
+
+const editIcon = css`
+  margin-left: 0.75em;
+`
+
+const verifiedIcon = css`
+  margin-left: 0.3em;
+`
+
 const styles = {
   mainContainer,
   cardContainer,
@@ -94,8 +131,15 @@ const styles = {
   inputStyle,
   headerTextContainer,
   headerNameTextStyle,
+  editAvatarOptionsContainer,
   headerUsernameTextStyle,
-  editImageIconContainer
+  editImageIconContainer,
+  detailsContainer,
+  profileHeaderContainer,
+  profileHeaderTextStyle,
+  editProfileButton,
+  editIcon,
+  verifiedIcon
 }
 
 export default styles

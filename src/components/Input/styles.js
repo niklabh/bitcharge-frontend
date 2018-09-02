@@ -14,6 +14,10 @@ const inputContainer = css`
   justify-content: flex-start;
 `
 
+const inputTextAreaStyle = css`
+  min-height: 5em;
+`
+
 const inputLabelContainer = css`
   flex: 2;
   margin-right: 1em;
@@ -67,6 +71,7 @@ const styles = {
   inputLabelContainer,
   inputFieldContainer,
   inputBaseStyle,
+  inputTextAreaStyle,
   inputErrorStyle,
   labelText,
   errorText

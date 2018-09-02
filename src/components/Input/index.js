@@ -25,14 +25,20 @@ class Input extends PureComponent {
   }
 
   render () {
-    const { label, name, noErrorText, type, error, placeholder, inputStyle, ...props } = this.props
+    const { label, name, noErrorText, type, error, placeholder, inputStyle, inputContainerStyle, ...props } = this.props
     let innerInputStyle = cx(styles.inputBaseStyle)
+    let mainContainerStyle = cx(styles.mainContainer)
 
     let innerInputContainerStyle = cx(styles.inputContainer)
 
     if (inputStyle) {
       innerInputContainerStyle = `${innerInputContainerStyle} ${inputStyle}`
     }
+
+    if (inputContainerStyle) {
+      mainContainerStyle = cx(mainContainerStyle, inputContainerStyle)
+    }
+
     let Tag = 'input'
 
     if (type === 'select') {
@@ -41,11 +47,17 @@ class Input extends PureComponent {
     if (type === 'async-select') {
       Tag = AsyncSelect
     }
+
+    if (type === 'textarea') {
+      Tag = 'textarea'
+      innerInputStyle = cx(innerInputStyle, styles.inputTextAreaStyle)
+    }
+
     if (error) {
       innerInputStyle = cx(innerInputStyle, styles.inputErrorStyle)
     }
     return (
-      <Container style={styles.mainContainer}>
+      <Container style={mainContainerStyle}>
         <Container style={innerInputContainerStyle}>
           {
             label && <Container style={styles.inputLabelContainer}>
