@@ -53,8 +53,8 @@ class Signup extends Component {
     })
 
     return (
-      <Container fluid fullHeight style={styles.mainContainer}>
-        <Container fullHeight style={styles.heroContainer}>
+      <Container fluid style={styles.mainContainer}>
+        <Container style={styles.heroContainer}>
           <Container style={styles.heroLogoContainer}>
             <a href='/'><img src={require('../../assets/images/logo-inverse.png')} /></a>
           </Container>

@@ -8,6 +8,7 @@ import Container from '../../../components/Container'
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
 import Input from '../../../components/Input'
+import Spinner from '../../../components/Spinner'
 
 import styles from './styles'
 
@@ -72,7 +73,7 @@ const EditProfileForm = ({ onSubmit, user }) => {
                 style={styles.formButtonStyle}
                 type='submit'
               >
-                Save
+                Save {isSubmitting && <span className={cx(styles.spinnerIcon)}><Spinner size={20} width={4} /></span>}
               </Button>
               <Button
                 onClick={handleReset}

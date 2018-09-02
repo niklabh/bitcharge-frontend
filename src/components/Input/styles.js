@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors, typography } from '../../styles'
+import { colors, typography, breakpoints } from '../../styles'
 
 const mainContainer = css`
   align-items: flex-start;
@@ -12,6 +12,10 @@ const inputContainer = css`
   margin: .5em;
   width: 100%;
   justify-content: flex-start;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `
 
 const inputTextAreaStyle = css`
@@ -23,12 +27,20 @@ const inputLabelContainer = css`
   margin-right: 1em;
   align-items: flex-start;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+  }
 `
 
 const inputFieldContainer = css`
   flex: 5;
   align-items: flex-start;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+  }
 `
 
 const inputBaseStyle = css`

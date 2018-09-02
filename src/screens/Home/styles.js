@@ -54,7 +54,7 @@ const heroHeaderText = css`
 
   @media (max-width: ${breakpoints.mobile}) {
     text-align: center;
-    font-size: 2em;
+    font-size: 1.8em;
   }
 `
 
@@ -66,7 +66,8 @@ const heroSubHeaderText = css`
 
   @media (max-width: ${breakpoints.mobile}) {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
+    margin-bottom: 2.5em;
   }
 `
 

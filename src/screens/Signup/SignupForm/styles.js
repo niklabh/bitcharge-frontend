@@ -1,11 +1,15 @@
 import { css } from 'react-emotion'
-import { colors } from '../../../styles'
+import { colors, breakpoints } from '../../../styles'
 import { lighten } from 'polished'
 
 const formContainer = css`
   padding: 0 2em;
   width: 100%;
   label: signup-body-form-cntr;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 0;
+  }
 `
 
 const buttonContainer = css`

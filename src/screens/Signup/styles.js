@@ -1,10 +1,14 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   background-color: ${colors.white};
   label: signup-main-cntr;
   flex-direction: row;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `
 
 const heroContainer = css`
@@ -16,6 +20,10 @@ const heroContainer = css`
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid ${colors.lightGray};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+  }
 `
 
 const bodyContainer = css`
@@ -24,6 +32,10 @@ const bodyContainer = css`
   justify-content: center;
   padding: 0 2em;
   label: signup-body-cntr;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1em;
+  }
 `
 
 const heroLogoContainer = css`
@@ -33,14 +45,24 @@ const heroLogoContainer = css`
 const signupAvatarIconStyle = css`
   width: 150px;
   height: 150px;
-  border-radius: 75px;
+  border-radius: 50%;
   margin-bottom: .5em;
   border: 2px solid ${colors.white};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 125px;
+    height: 125px;
+  }
 `
 
 const heroText = css`
   margin-top: 1em;
   font-weight: 600;
+  text-align: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: .5em;
+  }
 `
 
 const heroTextContainer = css`
@@ -49,6 +71,11 @@ const heroTextContainer = css`
   label: signup-hero-text-cntr;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+    margin-top: 1em;
+  }
 `
 
 const heroFooterContainer = css`

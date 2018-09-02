@@ -43,6 +43,10 @@ const inputContainerStyle = css`
   width: 70%;
 `
 
+const spinnerIcon = css`
+  margin-left: 0.2em;
+`
+
 const styles = {
   formBodyContainer,
   formItemContainer,
@@ -50,7 +54,8 @@ const styles = {
   formItemLabel,
   textInputStyle,
   formButtonStyle,
-  inputContainerStyle
+  inputContainerStyle,
+  spinnerIcon
 }
 
 export default styles

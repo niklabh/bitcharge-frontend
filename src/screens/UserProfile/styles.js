@@ -121,6 +121,10 @@ const verifiedIcon = css`
   margin-left: 0.3em;
 `
 
+const spinnerIcon = css`
+  margin-left: 0.2em;
+`
+
 const styles = {
   mainContainer,
   cardContainer,
@@ -139,7 +143,8 @@ const styles = {
   profileHeaderTextStyle,
   editProfileButton,
   editIcon,
-  verifiedIcon
+  verifiedIcon,
+  spinnerIcon
 }
 
 export default styles

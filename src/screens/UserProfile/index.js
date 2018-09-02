@@ -24,7 +24,8 @@ class UserProfile extends Component {
 
     this.state = {
       selectedProfileImage: null,
-      selectedProfileImageBinary: null
+      selectedProfileImageBinary: null,
+      isSubmittingAvatar: false
     }
 
     this.handleAvatarSubmit = this.handleAvatarSubmit.bind(this)
@@ -51,13 +52,19 @@ class UserProfile extends Component {
   }
 
   async handleAvatarSubmit () {
+    this.setState({ isSubmittingAvatar: true })
     try {
       const formData = new FormData()
       formData.append('avatar', this.state.selectedProfileImageBinary, this.state.selectedProfileImageBinary.name)
       const user = await API.updateUser(formData)
-      this.setState({ selectedProfileImage: null, selectedProfileImageBinary: null })
+      this.setState({
+        selectedProfileImage: null,
+        selectedProfileImageBinary: null,
+        isSubmittingAvatar: false
+      })
       this.props.getAuthUser(user)
     } catch (e) {
+      this.setState({ isSubmittingAvatar: false })
       console.log(e)
     }
   }
@@ -67,7 +74,6 @@ class UserProfile extends Component {
       const data = await API.updateUser(values)
       bag.setSubmitting(false)
       this.props.getAuthUser(data)
-      this.setState({ isEditing: false })
     } catch (e) {
       console.log(e)
       bag.setSubmitting(false)
@@ -109,13 +115,15 @@ class UserProfile extends Component {
               primary
               onClick={this.handleAvatarSubmit}
               style={styles.editProfileButton}
+              disabled={this.state.isSubmittingAvatar}
               type='submit'
             >
-              Save
+              Save {this.state.isSubmittingAvatar && <span className={cx(styles.spinnerIcon)}><Spinner size={18} width={4} /></span>}
             </Button>
             <Button
               onClick={this.onAvatarCancel}
               style={styles.editProfileButton}
+              disabled={this.state.isSubmittingAvatar}
               link
             >
               Cancel
