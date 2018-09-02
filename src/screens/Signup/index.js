@@ -66,7 +66,7 @@ class Signup extends Component {
             <Text tag='h6'>Already have an account. <Link to='/login' className={cx(styles.LoginLink)}>Login</Link></Text>
           </Container>
         </Container>
-        <Container fullHeight style={styles.bodyContainer}>
+        <Container style={styles.bodyContainer}>
           <PoseSignupForm pose={this.state.isSignupSuccess ? 'invisible' : 'visible'} onSubmit={this.handleSubmit} />
           <PoseSignupSuccess pose={this.state.isSignupSuccess ? 'visible' : 'invisible'} />
         </Container>

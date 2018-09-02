@@ -31,10 +31,12 @@ const bodyContainer = css`
   align-items: center;
   justify-content: center;
   padding: 0 2em;
+  height: 100vh;
   label: signup-body-cntr;
 
   @media (max-width: ${breakpoints.tablet}) {
     padding: 1em;
+    height: auto;
   }
 `
 

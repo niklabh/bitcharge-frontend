@@ -1,10 +1,14 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   background-color: ${colors.white};
   label: signup-main-cntr;
   flex-direction: row;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `
 
 const heroContainer = css`
@@ -16,6 +20,10 @@ const heroContainer = css`
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid ${colors.lightGray};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+  }
 `
 
 const bodyContainer = css`
@@ -23,7 +31,13 @@ const bodyContainer = css`
   align-items: center;
   justify-content: center;
   padding: 3em 2em;
+  height: 100vh;
   label: signup-body-cntr;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 2em 1em;
+    height: auto;
+  }
 `
 
 const formContainer = css`
@@ -37,10 +51,20 @@ const formHeaderText = css`
   font-weight: 600;
   margin-bottom: 2em;
 
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-bottom: 1em;
+    font-size: 1.8em;
+  }
+
 `
 
 const heroLogoContainer = css`
   padding-top: 1em;
+`
+
+const logoImageStyle = css`
+  width: 150px;
+  height: auto;
 `
 
 const signupAvatarIconStyle = css`
@@ -49,6 +73,11 @@ const signupAvatarIconStyle = css`
   border-radius: 75px;
   margin-bottom: .5em;
   border: 2px solid ${colors.white};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 125px;
+    height: 125px;
+  }
 `
 
 const heroText = css`
@@ -62,6 +91,11 @@ const heroTextContainer = css`
   label: signup-hero-text-cntr;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1em;
+    height: auto;
+  }
 `
 
 const heroFooterContainer = css`
@@ -117,6 +151,7 @@ const styles = {
   formContainer,
   heroContainer,
   heroLogoContainer,
+  logoImageStyle,
   heroTextContainer,
   heroText,
   heroFooterContainer,

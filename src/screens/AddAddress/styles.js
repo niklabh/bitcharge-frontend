@@ -1,10 +1,14 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   background-color: ${colors.white};
   label: signup-main-cntr;
   flex-direction: row;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `
 
 const heroContainer = css`
@@ -16,6 +20,10 @@ const heroContainer = css`
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid ${colors.lightGray};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+  }
 `
 
 const heroTextContainer = css`
@@ -24,10 +32,20 @@ const heroTextContainer = css`
   label: signup-hero-text-cntr;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1em;
+    height: auto;
+  }
 `
 
 const heroLogoContainer = css`
   padding-top: 1em;
+`
+
+const logoImageStyle = css`
+  width: 150px;
+  height: auto;
 `
 
 const addressAvatarIconStyle = css`
@@ -36,6 +54,11 @@ const addressAvatarIconStyle = css`
   border-radius: 75px;
   margin-bottom: .5em;
   border: 2px solid ${colors.white};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 125px;
+    height: 125px;
+  }
 `
 
 const heroText = css`
@@ -48,7 +71,13 @@ const bodyContainer = css`
   align-items: center;
   justify-content: center;
   padding: 6em;
+  height: 100vh;
   label: signup-body-cntr;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1em;
+    height: auto;
+  }
 `
 
 const styles = {
@@ -58,6 +87,7 @@ const styles = {
   addressAvatarIconStyle,
   heroTextContainer,
   heroText,
+  logoImageStyle,
   bodyContainer
 }
 

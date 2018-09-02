@@ -106,20 +106,17 @@ class SignupConfirmation extends Component {
       invisible: { opacity: 0, display: 'none' }
     })
     return (
-      <Container fluid fullHeight style={styles.mainContainer}>
-        <Container fullHeight style={styles.heroContainer}>
+      <Container fluid style={styles.mainContainer}>
+        <Container style={styles.heroContainer}>
           <Container style={styles.heroLogoContainer}>
             <a href='/'><img src={require('../../assets/images/logo-inverse.png')} /></a>
           </Container>
           <Container style={styles.heroTextContainer}>
-            <img className={cx(styles.signupAvatarIconStyle)} src={require('../../assets/images/dog-icon.png')} />
-            <Text tag='h3' style={styles.heroText}>Let's get you set up.</Text>
-          </Container>
-          <Container style={styles.heroFooterContainer}>
-            <Text tag='h6'>Already have an account. <Link to='/login' className={cx(styles.LoginLink)}>Login</Link></Text>
+            <img className={cx(styles.heroAvatarIconStyle)} src={require('../../assets/images/dog-icon.png')} />
+            <Text tag='h3' style={styles.heroText}>You're in, lets set you up.</Text>
           </Container>
         </Container>
-        <Container fullHeight style={styles.bodyContainer}>
+        <Container style={styles.bodyContainer}>
           <PoseSignupConfirming pose={this.state.isConfirming ? 'visible' : 'invisible'} />
           <PoseSignupConfirmed pose={this.state.isConfirmed ? 'visible' : 'invisible'} />
           <PoseSignupConfirmError pose={this.state.isError ? 'visible' : 'invisible'} />

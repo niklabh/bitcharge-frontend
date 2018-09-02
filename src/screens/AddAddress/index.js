@@ -15,7 +15,7 @@ class AddAddress extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      isAddAddressSuccess: true
+      isAddAddressSuccess: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.onAddNewAddress = this.onAddNewAddress.bind(this)
@@ -52,17 +52,17 @@ class AddAddress extends Component {
     })
 
     return (
-      <Container fluid fullHeight style={styles.mainContainer}>
-        <Container fullHeight style={styles.heroContainer}>
+      <Container fluid style={styles.mainContainer}>
+        <Container style={styles.heroContainer}>
           <Container style={styles.heroLogoContainer}>
-            <a href='/'><img src={require('../../assets/images/logo-inverse.png')} /></a>
+            <a href='/'><img className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-white.png' /></a>
           </Container>
           <Container style={styles.heroTextContainer}>
             <img className={cx(styles.addressAvatarIconStyle)} src={require('../../assets/images/dog-icon.png')} />
             <Text tag='h3' style={styles.heroText}>Add your addresses</Text>
           </Container>
         </Container>
-        <Container fullHeight style={styles.bodyContainer}>
+        <Container style={styles.bodyContainer}>
           <PoseAddressForm pose={this.state.isAddAddressSuccess ? 'invisible' : 'visible'} onSubmit={this.handleSubmit} />
           <PoseAddAddressSuccess pose={this.state.isAddAddressSuccess ? 'visible' : 'invisible'} onAddNewAddress={this.onAddNewAddress} />
         </Container>

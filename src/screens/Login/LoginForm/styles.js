@@ -1,18 +1,33 @@
 import { css } from 'react-emotion'
-import { colors } from '../../../styles'
+import { colors, breakpoints } from '../../../styles'
 import { lighten } from 'polished'
 
 const formContainer = css`
   padding: 0 4em;
   width: 100%;
   label: login-body-form-cntr;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 0;
+  }
 `
 
 const buttonContainer = css`
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   padding-top: 1em;
   margin-left: 1.6em;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-left: 0;
+  }
+`
+
+const submitButton = css`
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+  }
 `
 
 const submitButtonIcon = css`
@@ -32,6 +47,10 @@ const cancelButton = css`
   &:hover {
     color: ${lighten(0.4, colors.blackText)};
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+  }
 `
 
 const styles = {
@@ -39,6 +58,7 @@ const styles = {
   buttonContainer,
   submitButtonIcon,
   spinnerIcon,
+  submitButton,
   cancelButton
 }
 

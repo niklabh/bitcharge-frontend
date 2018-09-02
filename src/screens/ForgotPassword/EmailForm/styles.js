@@ -1,11 +1,16 @@
 import { css } from 'react-emotion'
-import { colors } from '../../../styles'
+import { colors, breakpoints } from '../../../styles'
 import { lighten } from 'polished'
 
 const formContainer = css`
   padding: 0 4em;
   width: 80%;
   label: forgot-password-body-form-cntr;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 0;
+    width: 100%;
+  }
 `
 
 const buttonContainer = css`

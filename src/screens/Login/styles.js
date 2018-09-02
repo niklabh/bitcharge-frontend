@@ -1,10 +1,14 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   background-color: ${colors.white};
   label: signup-main-cntr;
   flex-direction: row;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `
 
 const heroContainer = css`
@@ -16,6 +20,10 @@ const heroContainer = css`
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid ${colors.lightGray};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+  }
 `
 
 const bodyContainer = css`
@@ -23,11 +31,22 @@ const bodyContainer = css`
   align-items: center;
   justify-content: center;
   padding: 2em;
+  height: 100vh;
   label: signup-body-cntr;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1em;
+    height: auto;
+  }
 `
 
 const heroLogoContainer = css`
   padding-top: 1em;
+`
+
+const logoImageStyle = css`
+  width: 150px;
+  height: auto;
 `
 
 const signupAvatarIconStyle = css`
@@ -36,11 +55,21 @@ const signupAvatarIconStyle = css`
   border-radius: 75px;
   margin-bottom: .5em;
   border: 2px solid ${colors.white};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 125px;
+    height: 125px;
+  }
 `
 
 const heroText = css`
   margin-top: 1em;
   font-weight: 600;
+  text-align: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: .5em;
+  }
 `
 
 const heroTextContainer = css`
@@ -49,6 +78,11 @@ const heroTextContainer = css`
   label: signup-hero-text-cntr;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+    margin-top: 1em;
+  }
 `
 
 const heroFooterContainer = css`
@@ -67,6 +101,10 @@ const heroHeaderText = css`
   font-weight: 500;
   margin-bottom: 1em;
   label: home-hero-header-text;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-bottom: 0;
+  }
 `
 
 const heroSubHeaderText = css`
@@ -117,6 +155,7 @@ const styles = {
   heroHeaderText,
   heroSubHeaderText,
   heroImage,
+  logoImageStyle,
   submitButton,
   SignupLink
 }

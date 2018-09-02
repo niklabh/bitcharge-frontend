@@ -1,10 +1,14 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
-background-color: ${colors.white};
-label: signup-cnf-main-cntr;
-flex-direction: row;
+  background-color: ${colors.white};
+  label: signup-cnf-main-cntr;
+  flex-direction: row;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `
 
 const heroContainer = css`
@@ -16,6 +20,10 @@ const heroContainer = css`
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid ${colors.lightGray};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex: none;
+  }
 `
 
 const bodyContainer = css`
@@ -23,16 +31,39 @@ const bodyContainer = css`
   align-items: center;
   justify-content: center;
   padding: 2em;
+  height: 100vh;
   label: signup-cnf-body-cntr;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1em;
+    height: auto;
+  }
 `
 
 const heroLogoContainer = css`
   padding-top: 1em;
 `
 
+const heroAvatarIconStyle = css`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: .5em;
+  border: 2px solid ${colors.white};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 125px;
+    height: 125px;
+  }
+`
+
 const heroText = css`
   margin-top: 1em;
   font-weight: 600;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1.5em;
+  }
 `
 
 const heroTextContainer = css`
@@ -66,12 +97,21 @@ const LoginLink = css`
 const confirmationContainer = css`
   padding: 0 4em;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1em;
+  }
 `
 
 const confirmationHeaderText = css`
   text-align: left;
   font-weight: 600;
   margin-bottom: 2em;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1.8em;
+    margin-bottom: 1em;
+  }
 `
 
 const buttonContainer = css`
@@ -91,6 +131,7 @@ const styles = {
   heroContainer,
   bodyContainer,
   heroText,
+  heroAvatarIconStyle,
   heroTextContainer,
   heroFooterContainer,
   heroLogoContainer,

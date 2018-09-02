@@ -38,10 +38,10 @@ class Login extends Component {
     }
 
     return (
-      <Container fluid fullHeight style={styles.mainContainer}>
-        <Container fullHeight style={styles.heroContainer}>
+      <Container fluid style={styles.mainContainer}>
+        <Container style={styles.heroContainer}>
           <Container style={styles.heroLogoContainer}>
-            <a href='/'><img src={require('../../assets/images/logo-inverse.png')} /></a>
+            <a href='/'><img className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-white.png' /></a>
           </Container>
           <Container style={styles.heroTextContainer}>
             <img className={cx(styles.signupAvatarIconStyle)} src={require('../../assets/images/dog-icon.png')} />
@@ -51,7 +51,7 @@ class Login extends Component {
             <Text tag='h6'>Don't have an account. <Link to='/signup' className={cx(styles.SignupLink)}>Signup</Link></Text>
           </Container>
         </Container>
-        <Container fullHeight style={styles.bodyContainer}>
+        <Container style={styles.bodyContainer}>
           <LoginForm onSubmit={this.handleSubmit} />
         </Container>
       </Container>

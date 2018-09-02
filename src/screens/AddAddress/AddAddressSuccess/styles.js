@@ -1,10 +1,14 @@
 import { css } from 'react-emotion'
-import { colors } from '../../../styles'
+import { colors, breakpoints } from '../../../styles'
 import { lighten } from 'polished'
 
 const successContainer = css`
   padding: 0 4em;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1em;
+  }
 `
 
 const successHeaderText = css`
