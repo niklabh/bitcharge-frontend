@@ -144,7 +144,7 @@ class AddressItem extends Component {
     const { address } = this.props
     return (
       <Container style={styles.addressTextContainer}>
-        <Text tag='h6' unstyled>{address.address}</Text>
+        <Text tag='h6' style={styles.addressTextStyle} unstyled>{address.address}</Text>
         <Container style={styles.optionsContainer}>
           <CopyToClipboard text={address.address} onCopy={this.onCopyAddress}>
             {this.state.copied

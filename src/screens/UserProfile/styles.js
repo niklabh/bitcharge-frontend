@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 import { lighten } from 'polished'
 
 const mainContainer = css`
@@ -15,6 +15,14 @@ const cardContainer = css`
   background-color: ${colors.white};
   border-radius: 4px;
   padding: 2em 3em;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 1.5em;
+  }
+
 `
 
 const loadingContainer = css`

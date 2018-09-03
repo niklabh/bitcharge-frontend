@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors } from '../../../styles'
+import { colors, breakpoints } from '../../../styles'
 
 const addressItemContainer = css`
   padding: 1.6em 0 1em 0;
@@ -11,30 +11,55 @@ const addressItemContainer = css`
   &:last-child {
     border-bottom: 0;
   }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0;
+  }
 `
 
 const addressIconContainer = css`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-bottom: 1.5em;
+  }
 `
 
 const addressIconImage = css`
   width: 40px;
   height: 40px;
   margin-right: 1em;
-  border-radius: 20px;
+  border-radius: 50%;
   border: 2px solid ${colors.white};
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 35px;
+    height: 35px;
+  }
 `
 
 const addressIconText = css`
   font-weight: 500;
   margin-bottom: 0px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1.1em;
+  }
+
 `
 
 const addressTextContainer = css`
   align-items: flex-end;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    align-items: center;
+  }
 `
 
 const addressInputContainer = css`
@@ -87,6 +112,12 @@ const deleteAddressModalStyle = css`
   padding: 3em 3em 2em 3em;
 `
 
+const addressTextStyle = css`
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 0.8em;
+  }
+`
+
 const deleteAddressModalbuttonContainer = css`
   flex-direction: row;
   justify-content: flex-end;
@@ -99,6 +130,7 @@ const styles = {
   addressIconContainer,
   addressIconImage,
   addressIconText,
+  addressTextStyle,
   addressTextContainer,
   addressInputContainer,
   addressInputStyle,

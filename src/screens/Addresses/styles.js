@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   width: 100%;
@@ -14,6 +14,13 @@ const cardContainer = css`
   background-color: ${colors.white};
   border-radius: 4px;
   padding: 2em 3em;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 1.5em;
+  }
 `
 
 const loadingContainer = css`
@@ -38,6 +45,11 @@ const addressesHeaderTextStyle = css`
 const addNewAddressButton = css`
   font-weight: 600;
   font-size: 1em;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding-left: .8em;
+    padding-right: .8em;
+  }
 `
 
 const addNewAddressButtonIcon = css`
@@ -52,6 +64,10 @@ const addressesListContainer = css`
 
 const addAddressModalStyle = css`
   width: 45%;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+  }
 `
 
 const addAddressModalHeaderStyle = css`

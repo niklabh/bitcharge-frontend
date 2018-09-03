@@ -1,5 +1,5 @@
 import { css } from 'react-emotion'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   width: 100%;
@@ -14,6 +14,13 @@ const cardContainer = css`
   background-color: ${colors.white};
   border-radius: 4px;
   padding: 2em 3em;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 1.5em;
+  }
 `
 
 const loadingContainer = css`
@@ -62,20 +69,45 @@ const settingsItemContainer = css`
   &:last-child {
     border-bottom: 0;
   }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em 0;
+  }
 `
 
 const editButtonContainer = css`
   justify-content: flex-end;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: row;
+  }
 `
 
 const settingsItemValue = css`
   font-weight: 500;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+  }
+`
+
+const settingsItemLabel = css`
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+}
 `
 
 const textInputStyle = css`
   width: 70%;
   margin-left: auto;
   margin-right: -1em;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    margin-right: 0;
+  }
 `
 
 const styles = {
@@ -90,6 +122,7 @@ const styles = {
   editIcon,
   verifiedIcon,
   settingsItemContainer,
+  settingsItemLabel,
   settingsItemValue,
   textInputStyle
 }
