@@ -51,7 +51,6 @@ function * authProfileFlow (action) {
     if (isAuthenticated) {
       try {
         const data = yield call(API.getAuthUser)
-        console.log(data)
         yield put({ type: FETCH_AUTH_USER_SUCCESS, payload: { user: data } })
       } catch (e) {
         console.log('data in saga', e)

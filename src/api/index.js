@@ -11,6 +11,17 @@ class API {
     })
   }
 
+  setErrors = (errors) => {
+    let errorObj = {}
+    if (errors && Object.keys(errors).length) {
+      Object.keys(errors).forEach((error) => {
+        errorObj[error] = errors[error].msg
+      })
+    }
+
+    return errorObj
+  }
+
   setAuthHeader = (token) => {
     this.axios.defaults.headers.common['Authorization'] = `bearer ${token}`
   }
@@ -86,7 +97,6 @@ class API {
   }
 
   getAuthUser = () => {
-    console.log('get axios user')
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.get('/profile')

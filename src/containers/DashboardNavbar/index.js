@@ -13,7 +13,6 @@ import styles from './styles'
 import { breakpoints } from '../../styles'
 
 const Navbar = ({ match, logoutAction }) => {
-  console.log(match)
   return (
     <Container fluid style={styles.mainContainer}>
       <Container style={styles.logoContainer}>

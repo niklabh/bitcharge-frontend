@@ -32,8 +32,9 @@ class Signup extends Component {
       this.setState({ isSignupSuccess: true })
       this.props.signupAction(data.user)
     } catch (e) {
-      console.log(e)
+      console.log(e.response)
       bag.setSubmitting(false)
+      bag.setErrors(API.setErrors(e.response.data.errors.details.errors))
     }
   }
 

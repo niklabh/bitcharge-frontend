@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { cx } from 'emotion'
 import posed from 'react-pose'
 
@@ -8,6 +10,7 @@ import AddressForm from './AddressForm'
 import AddAddressSuccess from './AddAddressSuccess'
 
 import API from '../../api'
+import { addAddress } from '../../store/actions/address'
 
 import styles from './styles'
 
@@ -30,9 +33,11 @@ class AddAddress extends Component {
       const data = await API.addAddress(addressDetails)
       bag.setSubmitting(false)
       this.setState({ isAddAddressSuccess: true })
+      this.props.addAddress(data.address)
     } catch (e) {
       console.log(e)
       bag.setSubmitting(false)
+      bag.setErrors(API.setErrors(e.response.data.errors.details.errors))
     }
   }
 
@@ -71,4 +76,8 @@ class AddAddress extends Component {
   }
 }
 
-export default AddAddress
+AddAddress.propTypes = {
+  addAddress: PropTypes.func
+}
+
+export default connect(null, { addAddress })(AddAddress)

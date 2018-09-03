@@ -38,8 +38,13 @@ const centerNavContainer = css`
   justify-content: space-between;
   height: 4.5em;
 
-  @media (max-width: ${breakpoints.tablet}) {
-    width: auto;
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+    height: 4.5em;
+  }
+
+  @media (min-width: ${breakpoints.mobile} and max-width: ${breakpoints.tablet}) {
+    width: 60%;
     height: 4.5em;
   }
 `

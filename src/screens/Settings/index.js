@@ -79,6 +79,7 @@ class Settings extends Component {
     } catch (e) {
       console.log(e)
       bag.setSubmitting(false)
+      bag.setErrors(API.setErrors(e.response.data.errors.details.errors))
     }
   }
 

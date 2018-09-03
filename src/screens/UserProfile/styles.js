@@ -16,7 +16,7 @@ const cardContainer = css`
   border-radius: 4px;
   padding: 2em 3em;
 
-  @media (max-width: ${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.tablet}) {
     width: 100%;
     margin: 0;
     border-radius: 0;

@@ -54,7 +54,6 @@ const deleteAddress = (address, addressState) => {
 
 const address = (state = initialState, action) => {
   const { type, payload } = action
-  console.log('payload', type, payload)
 
   switch (type) {
     case FETCH_ADDRESSES_LOADING:
