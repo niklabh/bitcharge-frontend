@@ -57,7 +57,7 @@ const addressTextContainer = css`
   align-items: flex-end;
   justify-content: space-between;
 
-  @media (max-width: ${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.tablet}) {
     align-items: center;
   }
 `
@@ -66,6 +66,10 @@ const addressInputContainer = css`
   align-items: flex-end;
   width: 70%;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 `
 
 const addressInputStyle = css`
@@ -77,6 +81,11 @@ const addressInputStyle = css`
 const optionsContainer = css`
   flex-direction: row;
   margin-top: 0.6em;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    justify-content: center;
+  }
 `
 
 const addressActionButton = css`

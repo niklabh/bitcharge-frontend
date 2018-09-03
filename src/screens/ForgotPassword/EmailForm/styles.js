@@ -29,6 +29,10 @@ const submitButton = css`
   font-size: 1.3em;
   margin-right: 1em;
   label: signup-submit-button;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+  }
 `
 
 const spinnerIcon = css`
@@ -42,6 +46,10 @@ const cancelButton = css`
 
   &:hover {
     color: ${lighten(0.4, colors.blackText)};
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
   }
 `
 

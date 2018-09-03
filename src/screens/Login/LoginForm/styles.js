@@ -20,7 +20,6 @@ const buttonContainer = css`
   margin-left: 1.6em;
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin-left: 0;
   }
 `
 

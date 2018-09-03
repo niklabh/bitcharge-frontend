@@ -16,15 +16,23 @@ const successHeaderText = css`
   margin-bottom: 2em;
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 1em;
     margin-bottom: 1em;
   }
 `
 
+const successInfoText = css`
+@media (max-width: ${breakpoints.tablet}) {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+`
+
 const styles = {
   successContainer,
-  successHeaderText
+  successHeaderText,
+  successInfoText
 }
 
 export default styles

@@ -83,6 +83,11 @@ const signupAvatarIconStyle = css`
 const heroText = css`
   margin-top: 1em;
   font-weight: 600;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: .5em;
+    font-size: 1.5em;
+  }
 `
 
 const heroTextContainer = css`

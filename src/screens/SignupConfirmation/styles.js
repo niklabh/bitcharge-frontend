@@ -1,5 +1,6 @@
 import { css } from 'react-emotion'
 import { colors, breakpoints } from '../../styles'
+import { lighten } from 'polished'
 
 const mainContainer = css`
   background-color: ${colors.white};
@@ -68,6 +69,7 @@ const heroText = css`
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 1.5em;
+    text-align: center;
   }
 `
 
@@ -114,9 +116,15 @@ const confirmationHeaderText = css`
   margin-bottom: 2em;
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 1.8em;
+    font-size: 1.5em;
     margin-bottom: 1em;
   }
+`
+
+const confirmationInfoText = css`
+@media (max-width: ${breakpoints.tablet}) {
+  font-size: 1em;
+}
 `
 
 const buttonContainer = css`
@@ -129,6 +137,26 @@ const buttonContainer = css`
 const submitButton = css`
   font-size: 1.3em;
   label: signup-confirm-submit-button;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+    padding-left: .75em;
+    padding-right: .75em;
+  }
+`
+
+const cancelButton = css`
+  background-color: transparent;
+  color: ${colors.blackText};
+  label: login-cancel-button;
+
+  &:hover {
+    color: ${lighten(0.4, colors.blackText)};
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+  }
 `
 
 const styles = {
@@ -144,8 +172,10 @@ const styles = {
   LoginLink,
   confirmationContainer,
   confirmationHeaderText,
+  confirmationInfoText,
   buttonContainer,
-  submitButton
+  submitButton,
+  cancelButton
 }
 
 export default styles

@@ -56,6 +56,10 @@ const inputBaseStyle = css`
   &:focus {
     border: 0.5px solid ${colors.defaultBorder};
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+  }
 `
 
 const inputErrorStyle = css`
@@ -75,6 +79,10 @@ const errorText = css`
   margin-top: 0.4em;
   font-family: inherit;
   transition: all 0.15s ease-out;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: .2em;
+  }
 `
 
 const styles = {

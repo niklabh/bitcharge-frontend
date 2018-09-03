@@ -45,7 +45,7 @@ class Login extends Component {
             <a href='/'><img alt='bitcharge-logo' className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-white.png' /></a>
           </Container>
           <Container style={styles.heroTextContainer}>
-            <img alt='login-avatar' className={cx(styles.signupAvatarIconStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1535940306/dog-avatar.png' />
+            <img alt='login-avatar' className={cx(styles.signupAvatarIconStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1535940305/panda-avatar.png' />
             <Text tag='h3' style={styles.heroText}>Welcome back.</Text>
           </Container>
           <Container style={styles.heroFooterContainer}>

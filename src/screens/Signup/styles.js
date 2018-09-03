@@ -69,6 +69,7 @@ const heroText = css`
 
   @media (max-width: ${breakpoints.tablet}) {
     margin-top: .5em;
+    font-size: 1.5em;
   }
 `
 
