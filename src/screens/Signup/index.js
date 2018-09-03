@@ -57,10 +57,10 @@ class Signup extends Component {
       <Container fluid style={styles.mainContainer}>
         <Container style={styles.heroContainer}>
           <Container style={styles.heroLogoContainer}>
-            <a href='/'><img src={require('../../assets/images/logo-inverse.png')} /></a>
+            <a href='/'><img alt='bitcharge-logo' className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-white.png' /> /></a>
           </Container>
           <Container style={styles.heroTextContainer}>
-            <img className={cx(styles.signupAvatarIconStyle)} src={require('../../assets/images/dog-icon.png')} />
+            <img alt='signup-avatar' className={cx(styles.signupAvatarIconStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1535940306/monkey-avatar.png' />
             <Text tag='h3' style={styles.heroText}>Let's get you set up.</Text>
           </Container>
           <Container style={styles.heroFooterContainer}>

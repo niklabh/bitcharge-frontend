@@ -11,7 +11,7 @@ const SingleValue = (props) => {
   const { data } = props
   return (
     <components.SingleValue {...props}>
-      <img src={data.currency.icon} className={cx(styles.selectedItemImage)} /><Text tag='h5' unstyled>{data.currency.name}</Text>
+      <img alt='selected-icon' src={data.currency.icon} className={cx(styles.selectedItemImage)} /><Text tag='h5' unstyled>{data.currency.name}</Text>
     </components.SingleValue>
   )
 }

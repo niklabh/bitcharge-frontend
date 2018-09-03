@@ -36,7 +36,7 @@ const DropdownItem = (props) => {
   return (
     !isDisabled ? (
       <components.Option {...props}>
-        <img src={data.icon} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>{data.name}</Text>
+        <img alt='dropdown-item' src={data.icon} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>{data.name}</Text>
       </components.Option>
     ) : null
   )

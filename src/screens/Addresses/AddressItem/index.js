@@ -166,7 +166,7 @@ class AddressItem extends Component {
       <Container style={styles.addressItemContainer}>
         {this.renderDeleteModal()}
         <Container style={styles.addressIconContainer}>
-          <img src={address.currency.icon} className={cx(styles.addressIconImage)} />
+          <img alt='adress-icon' src={address.currency.icon} className={cx(styles.addressIconImage)} />
           <Text tag='h5' style={styles.addressIconText}>{address.currency.name}</Text>
         </Container>
         {this.state.isEditing ? <EditAddressForm onSubmit={this.onEditSubmit} onCancel={this.onCancelEdit} address={this.props.address.address} /> : this.renderAddressText()}

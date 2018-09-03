@@ -106,7 +106,7 @@ class Profile extends Component {
       <React.Fragment>
         <Container style={styles.cardHeaderContainer}>
           <Container style={styles.avatarContainer}>
-            <img className={cx(styles.avatarIconStyle)} src={user.avatar || require('../../assets/images/Panda-icon.png')} />
+            <img alt='user-avatar' className={cx(styles.avatarIconStyle)} src={user.avatar || 'https://res.cloudinary.com/bitcharge/image/upload/v1535940305/panda-avatar.png'} />
           </Container>
           <Container style={styles.headerTextContainer}>
             <Text tag='h5' unstyled style={styles.headerTextStyle}>{user.name}</Text>

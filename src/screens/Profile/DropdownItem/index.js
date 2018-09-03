@@ -12,7 +12,7 @@ const DropdownItem = (props) => {
   return (
     !isDisabled ? (
       <components.Option {...props}>
-        <img src={data.currency.icon} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>{data.currency.name}</Text>
+        <img alt='dropdown-icon' src={data.currency.icon} className={cx(styles.dropdownItemImage)} /><Text tag='h5' unstyled>{data.currency.name}</Text>
       </components.Option>
     ) : null
   )
@@ -20,7 +20,7 @@ const DropdownItem = (props) => {
 
 DropdownItem.propTypes = {
   isDisabled: PropTypes.boolean,
-  data: PropTypes.obj
+  data: PropTypes.object
 }
 
 export default DropdownItem

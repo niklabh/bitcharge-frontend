@@ -60,10 +60,10 @@ class AddAddress extends Component {
       <Container fluid style={styles.mainContainer}>
         <Container style={styles.heroContainer}>
           <Container style={styles.heroLogoContainer}>
-            <a href='/'><img className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-white.png' /></a>
+            <a href='/'><img alt='bitcharge-logo' className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-white.png' /></a>
           </Container>
           <Container style={styles.heroTextContainer}>
-            <img className={cx(styles.addressAvatarIconStyle)} src={require('../../assets/images/dog-icon.png')} />
+            <img alt='add-address-avatar' className={cx(styles.addressAvatarIconStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1535940306/hen-avatar.png' />
             <Text tag='h3' style={styles.heroText}>Add your addresses</Text>
           </Container>
         </Container>

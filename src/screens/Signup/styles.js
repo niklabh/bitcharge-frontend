@@ -44,6 +44,11 @@ const heroLogoContainer = css`
   padding-top: 1em;
 `
 
+const logoImageStyle = css`
+  width: 150px;
+  height: auto;
+`
+
 const signupAvatarIconStyle = css`
   width: 150px;
   height: 150px;
@@ -132,6 +137,7 @@ const styles = {
   bodyContainer,
   heroContainer,
   heroLogoContainer,
+  logoImageStyle,
   heroTextContainer,
   heroText,
   heroFooterContainer,

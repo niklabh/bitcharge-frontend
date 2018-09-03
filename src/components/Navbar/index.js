@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <Container fluid style={styles.mainContainer}>
       <Container>
-        <a href='/'><img className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-secondary.png' /></a>
+        <a href='/'><img alt='bitcharge-logo' className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-secondary.png' /></a>
       </Container>
       <Container>
         <Button tag={Link} link to='/profile' style={styles.profileTextStyle}>My Bitcharge</Button>
