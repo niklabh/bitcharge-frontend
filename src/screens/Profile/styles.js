@@ -1,5 +1,6 @@
 import { css } from 'react-emotion'
 import { colors, typography, breakpoints } from '../../styles'
+import { lighten } from 'polished'
 
 const mainContainer = css`
   background-color: ${colors.background};
@@ -13,6 +14,12 @@ const bodyContainer = css`
   width: 100%;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px dashed ${colors.defaultBorder};
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding-bottom: 2em;
+    background-color: ${colors.white};
+  }
 `
 
 const cardContainer = css`
@@ -83,11 +90,60 @@ const cardBodyContainer = css`
 const bodyDataContainer = css`
   align-items: center;
   padding: 1em;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 0.5em;
+  }
+`
+
+const addressValueText = css`
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 13px;
+  }
 `
 
 const addressContainer = css`
   margin-top: .5em;
   align-items: center;
+`
+
+const optionsContainer = css`
+  flex-direction: row;
+  margin-bottom: 0.6em;
+  width: 90%;
+  align-items: center;
+  justify-content: flex-end;
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 90%;
+    justify-content: center;
+  }
+`
+
+const addressActionButton = css`
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  font-size: 1rem;
+  color: ${colors.secondary};
+
+  &:last-child {
+    padding-right: 0em;
+  }
+`
+
+const iconButton = css`
+  font-size: 1.6em;
+  color: ${lighten(0.2, colors.blackText)};
+`
+
+const copiedTextStyle = css`
+  color: ${colors.primary};
+  font-weight: 600;
+  padding-top: .3em;
+  padding-right: .2em;
+  font-size: 1rem;
+  transition: all 0.15s ease-out;
 `
 
 const addNewEmptyButton = css`
@@ -160,6 +216,11 @@ const styles = {
   headerSubTextStyle,
   bodyDataContainer,
   addressContainer,
+  addressValueText,
+  iconButton,
+  copiedTextStyle,
+  optionsContainer,
+  addressActionButton,
   addressHeaderStyle,
   qrcodeContainer,
   qrcodeImage,

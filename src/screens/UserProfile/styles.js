@@ -109,7 +109,7 @@ const profileHeaderContainer = css`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   border-bottom: .5px dashed ${colors.defaultBorder};
 `
 
@@ -121,6 +121,11 @@ const profileHeaderTextStyle = css`
 const editProfileButton = css`
   font-weight: 600;
   font-size: 1em;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding-left: .8em;
+    padding-right: .8em;
+  }
 `
 
 const editIcon = css`

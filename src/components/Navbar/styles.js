@@ -24,15 +24,22 @@ const logoTextStyle = css`
 const profileTextStyle = css`
   font-weight: 400;
   font-size: 1em;
+  padding-right: 1em;
 
   @media (max-width: ${breakpoints.mobile}) {
-    margin-right: -1em;
+    padding-right: .1em;
+    font-size: 0.9em;
   }
 `
 
 const logoImageStyle = css`
   width: 150px;
   height: auto;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 120px;
+    height: auto;
+  }
 `
 
 const styles = {

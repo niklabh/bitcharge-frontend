@@ -71,7 +71,7 @@ const logoutStyle = css`
   @media (max-width: ${breakpoints.tablet}) {
     font-weight: 600;
     font-size: 1em;
-    margin-right: -.7em;
+    padding-right: 0.5em;
   }
 `
 
@@ -86,6 +86,11 @@ const logoTextStyle = css`
 const logoImageStyle = css`
   width: 150px;
   height: auto;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 120px;
+    height: auto;
+  }
 `
 
 const styles = {

@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { cx } from 'emotion'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import Container from '../../components/Container'
 import Spinner from '../../components/Spinner'
@@ -133,7 +134,8 @@ class UserProfile extends Component {
         )}
         <Container style={styles.detailsContainer}>
           <Container style={styles.profileHeaderContainer}>
-            <Text tag='h5' style={styles.profileHeaderTextStyle}>Personal Details</Text>
+            <Text tag='h5' style={styles.profileHeaderTextStyle}>My Profile</Text>
+            <Button tag={Link} to={`/${user.username}`} target='_blank' style={styles.editProfileButton} secondary>View Profile<i className={`icon ion-md-person ${cx(styles.editIcon)}`} /></Button>
           </Container>
           <EditProfileForm user={user} onSubmit={this.handleProfileSubmit} />
         </Container>

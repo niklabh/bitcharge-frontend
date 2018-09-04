@@ -3,12 +3,15 @@ import PropTypes from 'prop-types'
 import { cx } from 'emotion'
 import Select from 'react-select'
 import QRCode from 'qrcode.react'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import API from '../../api'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 import Spinner from '../../components/Spinner'
+import Button from '../../components/Button'
 
 import SingleValue from './SingleValue'
 import DropdownItem from './DropdownItem'
@@ -36,8 +39,16 @@ class Profile extends Component {
       isLoading: true,
       isError: false,
       user: null,
-      selectedAddress: null
+      selectedAddress: null,
+      copiedAddress: false
     }
+  }
+
+  onCopyAddress = () => {
+    this.setState({ copied: true })
+    setInterval(() => {
+      this.setState({ copied: false })
+    }, 3000)
   }
 
   async componentDidMount () {
@@ -91,11 +102,21 @@ class Profile extends Component {
         <Container fluid style={styles.bodyDataContainer}>
           <Container style={styles.addressContainer}>
             <Text tag='h5' style={styles.addressHeaderStyle}>Wallet Address</Text>
-            <Text tag='h6'>{addressText}</Text>
+            <Text tag='h6' style={styles.addressValueText}>{addressText}</Text>
           </Container>
           <Container style={styles.qrcodeContainer}>
             <QRCode value={addressText} size={172} />
           </Container>
+        </Container>
+        <Container style={styles.optionsContainer}>
+          <CopyToClipboard text={addressText} onCopy={this.onCopyAddress}>
+            {this.state.copied
+              ? <Text tag='h6' style={styles.copiedTextStyle}>Copied!</Text>
+              : <Button onClick={this.addNewAddress} style={cx(styles.addressActionButton, styles.iconButton)} link><i className={`icon ion-md-copy`} /></Button>
+            }
+          </CopyToClipboard>
+          <Button onClick={this.onEdit} style={cx(styles.addressActionButton, styles.iconButton)} link><i className={`icon ion-logo-twitter`} /></Button>
+          <Button onClick={this.onDeleteAddress} style={cx(styles.addressActionButton, styles.iconButton)} link><i className={`icon ion-logo-facebook`} /></Button>
         </Container>
       </Container>
     )
@@ -149,6 +170,7 @@ class Profile extends Component {
             {this._renderCard()}
           </Container>
         </Container>
+        <Footer />
       </Container>
     )
   }
