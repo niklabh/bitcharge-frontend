@@ -9,6 +9,7 @@ import Settings from '../Settings'
 
 import DashboardNavbar from '../../containers/DashboardNavbar'
 import Container from '../../components/Container'
+import Footer from '../../components/Footer'
 
 import { fetchAddresses } from '../../store/actions/address'
 
@@ -26,6 +27,7 @@ class Dashboard extends Component {
         <Route path='/profile/addresses' component={Addresses} />
         <Route path='/profile/settings' component={Settings} />
         <Route exact path='/profile' component={UserProfile} />
+        <Footer />
       </Container>
     )
   }

@@ -5,7 +5,8 @@ import { lighten } from 'polished'
 const mainContainer = css`
   width: 100%;
   align-items: center;
-  justify-content: center;
+  min-height: calc(100vh - 4.5em);
+  border-bottom: 1px solid ${colors.lightGray};
 `
 
 const cardContainer = css`

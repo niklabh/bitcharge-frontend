@@ -3,8 +3,9 @@ import { colors, breakpoints } from '../../styles'
 
 const mainContainer = css`
   width: 100%;
+  min-height: calc(100vh - 4.5em);
   align-items: center;
-  justify-content: center;
+  border-bottom: 1px solid ${colors.lightGray};
 `
 
 const cardContainer = css`
@@ -110,6 +111,18 @@ const textInputStyle = css`
   }
 `
 
+const editAddressSaveButton = css`
+@media (max-width: ${breakpoints.tablet}) {
+  font-size: 1em;
+}
+`
+
+const editAddressCancelButton = css`
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1em;
+  }
+`
+
 const styles = {
   mainContainer,
   cardContainer,
@@ -117,6 +130,8 @@ const styles = {
   settingsHeaderContainer,
   settingsHeaderTextStyle,
   editSettingsButton,
+  editAddressSaveButton,
+  editAddressCancelButton,
   settingsBodyContainer,
   editButtonContainer,
   editIcon,

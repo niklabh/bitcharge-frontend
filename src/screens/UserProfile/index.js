@@ -93,7 +93,7 @@ class UserProfile extends Component {
       return user.avatar
     }
 
-    return require('../../assets/images/Panda-icon.png')
+    return 'https://res.cloudinary.com/bitcharge/image/upload/v1535940305/panda-avatar.png'
   }
 
   _renderUserDetails = (user) => {

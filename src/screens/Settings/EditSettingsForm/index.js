@@ -83,7 +83,7 @@ const EditSettingsForm = ({ onSubmit, onCancel, user }) => {
               </Button>
               <Button
                 onClick={onCancel}
-                style={cx(styles.addressActionButton, styles.editAddressCancelButton)}
+                style={styles.editAddressCancelButton}
                 link
               >
                 Cancel
