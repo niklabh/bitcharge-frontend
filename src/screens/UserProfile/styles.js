@@ -48,6 +48,7 @@ const avatarIconStyle = css`
   height: 125px;
   border-radius: 50%;
   display: inline-block;
+  object-fit: cover;
   border: 2px solid ${colors.white};
 `
 
