@@ -12,8 +12,8 @@ const logoTextStyle = css`
 
 const bodyContainer = css`
   width: 100%;
+  min-height: calc(100vh - 6em);
   align-items: center;
-  justify-content: center;
   border-bottom: 1px dashed ${colors.defaultBorder};
 
   @media (max-width: ${breakpoints.mobile}) {
