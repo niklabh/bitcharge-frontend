@@ -30,7 +30,7 @@ const Footer = () => {
       <Container style={styles.centerNavContainer}>
         <Button tag={Link} to='/about' link style={styles.linkStyle}>About</Button>
         <Button tag={Link} to='/terms' link style={styles.linkStyle}>Terms</Button>
-        <Button tag={Link} to='/brand' link style={styles.linkStyle}>Brand</Button>
+        <Button tag={Link} to='/privacy' link style={styles.linkStyle}>Privacy</Button>
       </Container>
       <Media query={`(max-width: ${breakpoints.tablet})`}>
         {matches =>

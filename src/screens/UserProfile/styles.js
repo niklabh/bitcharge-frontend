@@ -23,7 +23,6 @@ const cardContainer = css`
     border-radius: 0;
     padding: 1.5em;
   }
-
 `
 
 const loadingContainer = css`

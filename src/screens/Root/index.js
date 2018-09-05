@@ -5,6 +5,9 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
 import Home from '../Home'
+import Privacy from '../Privacy'
+import Terms from '../Terms'
+
 import Signup from '../Signup'
 import Login from '../Login'
 import ForgotPassword from '../ForgotPassword'
@@ -50,8 +53,10 @@ class Root extends Component {
           <Route path='/forgot' component={ForgotPassword} />
           <PrivateRoute path='/profile' component={Dashboard} />
           <PrivateRoute path='/address/new' component={AddAddress} />
-          <Route path='/:username' component={Profile} />
+          <Route path='/privacy' component={Privacy} />
+          <Route path='/terms' component={Terms} />
           <Route exact path='/' component={Home} />
+          <Route path='/:username' component={Profile} />
         </Switch>
       </Container>
     )
