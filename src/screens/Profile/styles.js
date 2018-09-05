@@ -166,6 +166,12 @@ const headerSubTextStyle = css`
 
 const cardBodyContainer = css`
   align-items: center;
+  width: 32em;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+  }
+
 `
 
 const bodyDataContainer = css`

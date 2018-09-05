@@ -96,6 +96,17 @@ class API {
     })
   }
 
+  verifyEmail = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.get('/verify/email')
+        return resolve(response.data)
+      } catch (error) {
+        return reject(error)
+      }
+    })
+  }
+
   getAuthUser = () => {
     return new Promise(async (resolve, reject) => {
       try {

@@ -159,6 +159,11 @@ const cancelButton = css`
   }
 `
 
+const resentVerificationText = css`
+  margin-top: 1.5em;
+  font-weight: 500;
+`
+
 const styles = {
   mainContainer,
   heroContainer,
@@ -175,7 +180,8 @@ const styles = {
   confirmationInfoText,
   buttonContainer,
   submitButton,
-  cancelButton
+  cancelButton,
+  resentVerificationText
 }
 
 export default styles
