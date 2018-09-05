@@ -19,11 +19,13 @@ const bodyContainer = css`
   @media (max-width: ${breakpoints.mobile}) {
     padding-bottom: 2em;
     background-color: ${colors.white};
+    border-top: 1px solid ${colors.defaultBorder};
   }
 `
 
 const cardContainer = css`
-  width: 32em;
+  min-width: 32em;
+  max-width: 42em;
   margin-top: 3em;
   margin-bottom: 3em;
   background-color: ${colors.white};
@@ -31,6 +33,8 @@ const cardContainer = css`
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -53,6 +57,18 @@ const cardHeaderContainer = css`
   @media (max-width: ${breakpoints.mobile}) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+`
+
+const cardErrorHeaderContainer = css`
+  padding: 2em;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 1.5em 2em;
   }
 `
 
@@ -81,13 +97,33 @@ const noAddressImage = css`
   }
 `
 
+const errorUserImage = css`
+  width: 65%;
+  height: auto;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 80%;
+  }
+`
+
 const noAddressText = css`
   font-weight: 500;
   margin: 1em 2em;
   text-align: center;
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 1em;
+    font-size: 1.2em;
+  }
+`
+
+const errorUserText = css`
+  font-weight: 400;
+  margin: 1em 2em;
+  line-height: 1.5em;
+  text-align: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: .9em;
   }
 `
 
@@ -104,9 +140,24 @@ const headerTextContainer = css`
   color: ${colors.white};
 `
 
+const errorHeaderTextContainer = css`
+  padding-top: .8em;
+  text-align: center;
+`
+
 const headerTextStyle = css`
   font-weight: 600;
   margin-bottom: .2em;
+`
+
+const errorHeaderTextStyle = css`
+  font-weight: 500;
+  margin-bottom: .2em;
+  color: ${colors.blackText};
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1.3em;
+  }
 `
 
 const headerSubTextStyle = css`
@@ -137,42 +188,53 @@ const addressContainer = css`
   align-items: center;
 `
 
+const noUserDetailsContainer = css`
+  margin-top: 2em;
+`
+
+const errorUserContainer = css`
+  padding-bottom: 2em;
+  align-items: center;
+`
+
 const optionsContainer = css`
   flex-direction: row;
-  margin-bottom: 0.6em;
   width: 90%;
   align-items: center;
   justify-content: flex-end;
   @media (max-width: ${breakpoints.tablet}) {
     width: 90%;
-    justify-content: center;
+    justify-content: flex-end;
   }
 `
 
 const addressActionButton = css`
-  padding-left: .5em;
-  padding-right: .5em;
+  padding-left: .8em;
+  padding-right: .2em;
   padding-top: .2em;
   padding-bottom: .2em;
-  font-size: 1rem;
-  color: ${colors.secondary};
+  font-size: 1.1em;
 
   &:last-child {
     padding-right: 0em;
   }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1em;
+  }
 `
 
 const iconButton = css`
-  font-size: 1.6em;
+  margin-right: 4px;
   color: ${lighten(0.2, colors.blackText)};
 `
 
 const copiedTextStyle = css`
   color: ${colors.primary};
-  font-weight: 600;
-  padding-top: .3em;
+  font-weight: 500;
+  padding-top: .4em;
   padding-right: .2em;
-  font-size: 1rem;
+  font-size: 1em;
   transition: all 0.15s ease-out;
 `
 
@@ -192,6 +254,22 @@ const qrcodeContainer = css`
 const qrcodeImage = css`
   width: 10em;
   height: 10em;
+`
+
+const getStartedButtonIcon = css`
+  padding-left: 0.5em;
+  label: home-get-started-button-icon;
+`
+
+const getStartedButton = css`
+  margin: 1em 0em 1.5em 0;
+  font-size: 1em;
+  font-weight: 600;
+  label: home-get-started-button;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: .9em;
+  }
 `
 
 const selectStyle = {
@@ -238,6 +316,7 @@ const styles = {
   cardContainer,
   loadingContainer,
   cardHeaderContainer,
+  cardErrorHeaderContainer,
   cardBodyContainer,
   avatarContainer,
   noAddressImageContainer,
@@ -246,6 +325,7 @@ const styles = {
   avatarIconStyle,
   headerTextContainer,
   headerTextStyle,
+  errorHeaderTextStyle,
   headerSubTextStyle,
   bodyDataContainer,
   addressContainer,
@@ -260,7 +340,15 @@ const styles = {
   addNewEmptyButton,
   selectStyle,
   singleValueStyle,
-  dropdownItemStyle
+  dropdownItemStyle,
+
+  errorUserImage,
+  errorUserText,
+  noUserDetailsContainer,
+  errorUserContainer,
+  errorHeaderTextContainer,
+  getStartedButton,
+  getStartedButtonIcon
 }
 
 export default styles

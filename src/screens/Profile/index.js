@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { cx } from 'emotion'
 import Select from 'react-select'
 import QRCode from 'qrcode.react'
+import { Link } from 'react-router-dom'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import API from '../../api'
@@ -111,16 +112,6 @@ class Profile extends Component {
             <QRCode value={addressText} size={172} />
           </Container>
         </Container>
-        <Container style={styles.optionsContainer}>
-          <CopyToClipboard text={addressText} onCopy={this.onCopyAddress}>
-            {this.state.copied
-              ? <Text tag='h6' style={styles.copiedTextStyle}>Copied!</Text>
-              : <Button onClick={this.addNewAddress} style={cx(styles.addressActionButton, styles.iconButton)} link><i className={`icon ion-md-copy`} /></Button>
-            }
-          </CopyToClipboard>
-          <Button onClick={this.onEdit} style={cx(styles.addressActionButton, styles.iconButton)} link><i className={`icon ion-logo-twitter`} /></Button>
-          <Button onClick={this.onDeleteAddress} style={cx(styles.addressActionButton, styles.iconButton)} link><i className={`icon ion-logo-facebook`} /></Button>
-        </Container>
       </Container>
     )
   }
@@ -150,6 +141,25 @@ class Profile extends Component {
     )
   }
 
+  _renderError = () => {
+    return (
+      <React.Fragment>
+        <Container style={styles.cardErrorHeaderContainer}>
+          <Container style={styles.errorHeaderTextContainer}>
+            <Text tag='h3' unstyled style={styles.errorHeaderTextStyle}>We couldn't find that Bitcharge profile</Text>
+          </Container>
+        </Container>
+        <Container style={styles.errorUserContainer}>
+          <Container style={styles.noAddressImageContainer}>
+            <img className={cx(styles.errorUserImage)} src='https://res.cloudinary.com/bitcharge/image/upload/v1536119853/assets/user-not-found.png' />
+          </Container>
+          <Text tag='h6' style={styles.errorUserText}>Seems like nobody has a Bitcharge profile with that username, try checking the link again. You can also create your own Bitcharge profile with this username. </Text>
+          <Button tag={Link} to='/signup' primary style={styles.getStartedButton}>Create My Profile <i className={`icon ion-md-arrow-round-forward ${styles.getStartedButtonIcon}`} /></Button>
+        </Container>
+      </React.Fragment>
+    )
+  }
+
   _renderCard = () => {
     if (this.state.isLoading) {
       return this._renderLoading()
@@ -160,7 +170,7 @@ class Profile extends Component {
     }
 
     if (this.state.isError) {
-
+      return this._renderError()
     }
   }
 

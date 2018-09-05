@@ -29,7 +29,7 @@ class Privacy extends Component {
           <Container style={styles.detailsContainer}>
             <Container style={styles.sectionContainer}>
               <Text style={styles.bodyText}>
-                Bitcharge is a platform for people and businesses to accept support from their audience and share exclusive content. At Bitcharge, your privacy is important to us, and we want you to feel confident that your personal information is secure when using our products and our platform.
+                Bitcharge is a platform for people and businesses to accept cryptopayments in their favourite crypto currency. At Bitcharge, your privacy is important to us, and we want you to feel confident that your personal information is secure when using our products and our platform.
                 <br /><br />The services are provided by Droidsize Inc. (parent company and hereinafter referred to as “Bitcharge”). It is Bitcharge’s policy to respect your privacy regarding any information we may collect while operating our website.
               </Text>
               <Text tag='h4' style={styles.sectionHeader}>

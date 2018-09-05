@@ -18,7 +18,7 @@ const Footer = () => {
           {matches =>
             matches ? (
               <Container style={styles.rightNavContainer}>
-                <Button href='/profile' link style={styles.logoutStyle}><i className={`icon ion-logo-twitter`} /></Button>
+                <Button href='https://twitter.com/bitcharge_co' target='_blank' link style={styles.logoutStyle}><i className={`icon ion-logo-twitter`} /></Button>
                 <Button href='/profile' link style={styles.logoutStyle}><i className={`icon ion-logo-facebook`} /></Button>
               </Container>
             ) : (
@@ -36,7 +36,7 @@ const Footer = () => {
         {matches =>
           !matches ? (
             <Container style={styles.rightNavContainer}>
-              <Button href='/profile' link style={styles.logoutStyle}><i className={`icon ion-logo-twitter`} /></Button>
+              <Button href='https://twitter.com/bitcharge_co' link style={styles.logoutStyle}><i className={`icon ion-logo-twitter`} /></Button>
               <Button href='/profile' link style={styles.logoutStyle}><i className={`icon ion-logo-facebook`} /></Button>
             </Container>
           ) : (
