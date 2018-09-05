@@ -4,6 +4,7 @@ import { cx } from 'emotion'
 import Select from 'react-select'
 import QRCode from 'qrcode.react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import API from '../../api'
@@ -174,9 +175,24 @@ class Profile extends Component {
     }
   }
 
+  getMetaTags = (user) => {
+    const firstName = user.name.split(' ')[0]
+    return (
+      <Helmet>
+        <meta property='og:title' content={`Pay ${firstName} in crypto with Bitcharge`} />
+        <meta property='og:description' content={`Go to bitcharge.co/${user.username} to pay ${firstName} in your favourite cryptocurrency.`} />
+        <meta property='og:image' content='https://res.cloudinary.com/bitcharge/image/upload/v1536051435/assets/bitcharge-social-graph.png' />
+        <meta property='og:image:alt' content='Bitcharge' />
+        <meta property='og:url' content={`https://bitcharge.co/${user.username}`} />
+      </Helmet>
+    )
+  }
+
   render () {
+    const { user } = this.state
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
+        {user && this.getMetaTags(user)}
         <Navbar />
         <Container fluid style={styles.bodyContainer}>
           <Container style={styles.cardContainer}>
