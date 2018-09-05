@@ -61,6 +61,36 @@ const avatarContainer = css`
   justify-content: center;
 `
 
+const noAddressImageContainer = css`
+  width: 100%;
+  padding: 2em 4em;
+  margin-bottom: 1em;
+  align-items: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 2em 1em 1em 1em;
+  }
+`
+
+const noAddressImage = css`
+  width: 60%;
+  height: auto;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 80%;
+  }
+`
+
+const noAddressText = css`
+  font-weight: 500;
+  margin: 1em 2em;
+  text-align: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1em;
+  }
+`
+
 const avatarIconStyle = css`
   width: 100px;
   height: 100px;
@@ -210,6 +240,9 @@ const styles = {
   cardHeaderContainer,
   cardBodyContainer,
   avatarContainer,
+  noAddressImageContainer,
+  noAddressText,
+  noAddressImage,
   avatarIconStyle,
   headerTextContainer,
   headerTextStyle,

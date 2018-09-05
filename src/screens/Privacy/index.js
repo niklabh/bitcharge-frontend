@@ -7,12 +7,15 @@ import Text from '../../components/Text'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 
+import { ScrollToTopOnMount } from '../../components/Scroll'
+
 import styles from './styles'
 
 class Privacy extends Component {
   render () {
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
+        <ScrollToTopOnMount />
         <Navbar />
         <Container fluid style={styles.bodyContainer}>
           <Container fluid style={styles.headerContainer}>

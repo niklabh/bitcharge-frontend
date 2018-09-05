@@ -72,7 +72,10 @@ class Profile extends Component {
         <Container style={styles.cardBodyContainer}>
           <Container fluid style={styles.bodyDataContainer}>
             <Container style={styles.addressContainer}>
-              <Text tag='h6'>This user has not addded any addresses.</Text>
+              <Container style={styles.noAddressImageContainer}>
+                <img className={cx(styles.noAddressImage)} src='https://res.cloudinary.com/bitcharge/image/upload/v1536110953/assets/building-profile.png' />
+              </Container>
+              <Text tag='h5' style={styles.noAddressText}>This profile is still in progress. No addresses added yet.</Text>
             </Container>
           </Container>
         </Container>
