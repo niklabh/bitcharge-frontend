@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { cx } from 'emotion'
 import { Link } from 'react-router-dom'
+import Media from 'react-media'
 
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+
 import { ScrollToTopOnMount } from '../../components/Scroll'
 
 import styles from './styles'
+import { breakpoints } from '../../styles'
 
 class Privacy extends Component {
   render () {
@@ -19,6 +22,9 @@ class Privacy extends Component {
         <Container fluid style={styles.bodyContainer}>
           <Container fluid style={styles.headerContainer}>
             <Text tag='h1' style={styles.headerTextStyle}>Terms of Use</Text>
+            <Media query={`(max-width: ${breakpoints.tablet})`}>
+              {matches => matches ? <Container style={styles.workItemTextBorder} /> : null}
+            </Media>
           </Container>
           <Container style={styles.detailsContainer}>
             <Container style={styles.sectionContainer}>

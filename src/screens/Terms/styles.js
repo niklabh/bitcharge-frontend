@@ -22,6 +22,17 @@ const bodyContainer = css`
   }
 `
 
+const workItemTextBorder = css`
+  height: 7px;
+  width: 60%;
+  margin-top: .5em;
+  background-color: ${colors.secondary};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 6px;
+  }
+`
+
 const headerContainer = css`
   margin-top: 5em;
   margin-bottom: 3em;
@@ -30,7 +41,7 @@ const headerContainer = css`
 
   @media (max-width: ${breakpoints.tablet}) {
     margin-top: 3em;
-    margin-bottom: 1em;
+    margin-bottom: 0;
   }
 `
 
@@ -101,6 +112,7 @@ const styles = {
   bodyContainer,
   detailsContainer,
   headerContainer,
+  workItemTextBorder,
   headerTextStyle,
   sectionContainer,
   sectionHeader,
