@@ -66,7 +66,6 @@ class UserProfile extends Component {
       this.props.getAuthUser(user)
     } catch (e) {
       this.setState({ isSubmittingAvatar: false })
-      console.log(e)
     }
   }
 
@@ -76,7 +75,6 @@ class UserProfile extends Component {
       bag.setSubmitting(false)
       this.props.getAuthUser(data)
     } catch (e) {
-      console.log(e)
       bag.setSubmitting(false)
       bag.setErrors(API.setErrors(e.response.data.errors.details.errors))
     }

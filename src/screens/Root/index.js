@@ -4,18 +4,6 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
-import Home from '../Home'
-import Privacy from '../Privacy'
-import Terms from '../Terms'
-
-import Signup from '../Signup'
-import Login from '../Login'
-import ForgotPassword from '../ForgotPassword'
-import Profile from '../Profile'
-import Dashboard from '../Dashboard'
-import AddAddress from '../AddAddress'
-import SignupConfirmation from '../SignupConfirmation'
-
 import Container from '../../components/Container'
 import PrivateRoute from '../../containers/PrivateRoute'
 import { getAuthUser } from '../../store/actions/auth'
@@ -29,6 +17,7 @@ class Root extends Component {
     }
   }
   render () {
+    const { routes, initialData } = this.props
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
         <Helmet>
@@ -47,16 +36,23 @@ class Root extends Component {
           <meta name='twitter:creator' content='@bitcharge_co' />
         </Helmet>
         <Switch>
-          <Route path='/signup' component={Signup} />
-          <Route path='/login' component={Login} />
-          <Route path='/confirm' component={SignupConfirmation} />
-          <Route path='/forgot' component={ForgotPassword} />
-          <PrivateRoute path='/profile' component={Dashboard} />
-          <PrivateRoute path='/address/new' component={AddAddress} />
-          <Route path='/privacy' component={Privacy} />
-          <Route path='/terms' component={Terms} />
-          <Route exact path='/' component={Home} />
-          <Route path='/:username' component={Profile} />
+          {
+            routes.map((route, index) => {
+              const Tag = route.private ? PrivateRoute : Route
+              return (
+                <Tag
+                  key={index}
+                  path={route.path}
+                  exact={route.exact || false}
+                  render={props =>
+                    React.createElement(route.component, {
+                      ...props,
+                      initialData: initialData[index] || null
+                    })}
+                />
+              )
+            })
+          }
         </Switch>
       </Container>
     )
@@ -71,7 +67,9 @@ const mapStateToProps = (state) => {
 
 Root.propTypes = {
   isAuthenticated: PropTypes.bool,
-  getAuthUser: PropTypes.func
+  getAuthUser: PropTypes.func,
+  routes: PropTypes.array,
+  initialData: PropTypes.array
 }
 
 export default withRouter(connect(mapStateToProps, { getAuthUser })(Root))

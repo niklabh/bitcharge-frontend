@@ -152,8 +152,6 @@ class API {
   }
 
   getProfile = (username) => {
-    console.log(username)
-
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.axios.get(`${username}`)

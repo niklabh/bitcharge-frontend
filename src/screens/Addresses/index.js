@@ -47,7 +47,6 @@ class Addresses extends Component {
       this.props.addAddress(data.address)
       this.closeAddNewAddressModal()
     } catch (e) {
-      console.log(e)
       bag.setSubmitting(false)
       bag.setErrors(API.setErrors(e.response.data.errors.details.errors))
     }
@@ -118,7 +117,6 @@ class Addresses extends Component {
 
   _renderCurrentState = () => {
     const { isLoading, error, addresses } = this.props
-    console.log(isLoading, error, addresses)
     if (isLoading) {
       return this._renderLoading()
     }

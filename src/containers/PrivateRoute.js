@@ -3,16 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route, Redirect, withRouter } from 'react-router-dom'
 
-const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => (isAuthenticated === true
-      ? <Component {...props} />
-      : <Redirect to={{ pathname: '/login' }} />
-    )}
-  />
-)
-
+const PrivateRoute = ({ isAuthenticated, ...rest }) => {
+  if (isAuthenticated) {
+    return <Route {...rest} />
+  } else {
+    return <Redirect to={{ pathname: '/login' }} />
+  }
+}
 PrivateRoute.propTypes = {
   isAuthenticated: PropTypes.bool,
   component: PropTypes.any

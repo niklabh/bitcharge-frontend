@@ -69,15 +69,12 @@ class Settings extends Component {
       userDetails['password'] = values.password
     }
 
-    console.log(userDetails)
-
     try {
       const data = await API.updateUser(userDetails)
       bag.setSubmitting(false)
       this.props.getAuthUser(data)
       this.setState({ isEditing: false })
     } catch (e) {
-      console.log(e)
       bag.setSubmitting(false)
       bag.setErrors(API.setErrors(e.response.data.errors.details.errors))
     }

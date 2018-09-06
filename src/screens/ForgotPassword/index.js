@@ -22,7 +22,6 @@ class ForgotPassword extends Component {
       bag.setSubmitting(false)
       this.props.history.push('/profile')
     } catch (e) {
-      console.log(e)
       bag.setSubmitting(false)
     }
   }

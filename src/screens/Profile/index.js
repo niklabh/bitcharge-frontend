@@ -37,12 +37,13 @@ class Profile extends Component {
     super(props)
 
     this.state = {
-      isLoading: true,
-      isError: false,
-      user: null,
       selectedAddress: null,
       copiedAddress: false
     }
+  }
+
+  static getInitialData ({ match, req, res }) {
+    return API.getProfile(match.params.username)
   }
 
   onCopyAddress = () => {
@@ -53,11 +54,13 @@ class Profile extends Component {
   }
 
   async componentDidMount () {
-    try {
-      const data = await API.getProfile(this.props.match.params.username)
-      this.setState({ isLoading: false, user: data })
-    } catch (e) {
-      this.setState({ isLoading: false, isError: true })
+    if (!this.props.initialData) {
+      try {
+        const data = await API.getProfile(this.props.match.params.username)
+        this.setState({ isLoading: false, user: data })
+      } catch (e) {
+        this.setState({ isLoading: false, isError: true })
+      }
     }
   }
 
@@ -161,16 +164,22 @@ class Profile extends Component {
   }
 
   _renderCard = () => {
-    if (this.state.isLoading) {
-      return this._renderLoading()
-    }
-
-    if (this.state.user) {
-      return this._renderUser(this.state.user)
-    }
-
-    if (this.state.isError) {
+    if (this.props.initialData) {
+      return this._renderUser(this.props.initialData)
+    } else if (this.props.initialDataError) {
       return this._renderError()
+    } else {
+      if (this.state.isLoading) {
+        return this._renderLoading()
+      }
+
+      if (this.state.user) {
+        return this._renderUser(this.state.user)
+      }
+
+      if (this.state.isError) {
+        return this._renderError()
+      }
     }
   }
 
@@ -188,10 +197,10 @@ class Profile extends Component {
   }
 
   render () {
-    const { user } = this.state
+    const { initialData } = this.props
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
-        {user && this.getMetaTags(user)}
+        {initialData && this.getMetaTags(initialData)}
         <Navbar />
         <Container fluid style={styles.bodyContainer}>
           <Container style={styles.cardContainer}>
@@ -205,7 +214,9 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  match: PropTypes.any
+  match: PropTypes.any,
+  initialData: PropTypes.object,
+  initialDataError: PropTypes.object
 }
 
 export default Profile

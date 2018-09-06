@@ -24,7 +24,6 @@ function * fetchAddressesFlow (action) {
       payload: { ...addresses }
     })
   } catch (e) {
-    console.log(e)
     yield put({
       type: FETCH_ADDRESSES_ERROR
     })
@@ -59,8 +58,7 @@ function * deleteAddressFlow (action) {
     })
   } else {
     try {
-      const response = yield call(API.deleteAddress, payload.address)
-      console.log(response)
+      yield call(API.deleteAddress, payload.address)
 
       yield put({
         type: DELETE_ADDRESS_SUCCESS,

@@ -27,7 +27,6 @@ class Login extends Component {
       this.props.loginAction(data.user)
       this.props.history.push('/profile')
     } catch (e) {
-      console.log(e.response)
       bag.setSubmitting(false)
       bag.setErrors(e.response.data.errors.details.errors.errors)
     }

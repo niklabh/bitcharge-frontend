@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
 const EditProfileForm = ({ onSubmit, user }) => {
   return (
     <Formik
-      initialValues={{ name: user.name, intro: user.intro || null }}
+      initialValues={{ name: user.name, intro: user.intro || '' }}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
       render={({

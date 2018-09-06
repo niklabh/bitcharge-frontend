@@ -120,7 +120,6 @@ class SignupConfirmation extends Component {
       await API.verifyEmail()
       this.setState({ resentVerification: true })
     } catch (e) {
-      console.log(e)
       this.setState({ resentVerification: true, resentVerificationError: true })
     }
   }

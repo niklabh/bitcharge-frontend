@@ -96,9 +96,7 @@ class AddressItem extends Component {
   }
 
   async onEditSubmit (values, bag) {
-    console.log(values)
     const addressDetails = { ...this.props.address, address: values.address }
-    console.log(addressDetails)
     try {
       const data = await API.updateAddress(addressDetails)
       bag.setSubmitting(false)
@@ -106,7 +104,6 @@ class AddressItem extends Component {
       this.props.editAddress(data.address)
       this.setState({ isEditing: false })
     } catch (e) {
-      console.log(e)
       bag.setSubmitting(false)
       bag.setErrors(API.setErrors(e.response.data.errors.details.errors))
     }
