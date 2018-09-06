@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 **WARNING: This is the documentation for `razzle@next` (Webpack 4).**  
 [Go here for for razzle@0.8.x (stable) docs (Webpack 3)](https://github.com/jaredpalmer/razzle/tree/master).
 
@@ -260,3 +261,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+=======
+## Bitcharge Frontend
+
+### Getting Started
+>>>>>>> 4222059ed78e4f3d2161060d4c94e7d5e5c148fb

@@ -5770,14 +5770,14 @@ polished@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/polished/-/polished-2.0.3.tgz#54bb5f474bebe149e760d4015ed04207817fd38e"
 
-popmotion-pose@^3.2.6:
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/popmotion-pose/-/popmotion-pose-3.2.7.tgz#8cf739fb25d1149faf2ba56dce83f2216d499c0f"
+popmotion-pose@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/popmotion-pose/-/popmotion-pose-3.3.0.tgz#6df7843cbb5fee81f8d8977b0233b051247c2f4d"
   dependencies:
     "@popmotion/easing" "^1.0.1"
     hey-listen "^1.0.5"
     popmotion "^8.3.7"
-    pose-core "^1.0.0"
+    pose-core "^2.0.0"
     style-value-types "^3.0.6"
     tslib "^1.9.1"
 
@@ -5800,9 +5800,9 @@ portfinder@^1.0.9:
     debug "^2.2.0"
     mkdirp "0.5.x"
 
-pose-core@^1.0.0:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/pose-core/-/pose-core-1.0.4.tgz#424039c31940109e933f49d74cf4404bad6465ad"
+pose-core@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/pose-core/-/pose-core-2.0.0.tgz#1a1497a18a25ed2556d92dd728e909e96df6d67e"
   dependencies:
     "@types/invariant" "^2.2.29"
     "@types/node" "^10.0.5"
@@ -6482,12 +6482,12 @@ react-modal@^3.5.1:
     warning "^3.0.0"
 
 react-pose@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/react-pose/-/react-pose-3.2.2.tgz#baae0edb69a0464892fe3aa39820e4264c17559d"
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-pose/-/react-pose-3.3.0.tgz#b3f213e49b7d6a58e3525dd8ef30b8d97acbee68"
   dependencies:
     "@emotion/is-prop-valid" "^0.6.5"
     hey-listen "^1.0.5"
-    popmotion-pose "^3.2.6"
+    popmotion-pose "^3.3.0"
     tslib "^1.9.1"
 
 react-redux@^5.0.7:
@@ -6644,6 +6644,10 @@ reduce-function-call@^1.0.1:
   resolved "https://registry.yarnpkg.com/reduce-function-call/-/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
   dependencies:
     balanced-match "^0.4.2"
+
+redux-devtools-extension@^2.13.5:
+  version "2.13.5"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.5.tgz#3ff34f7227acfeef3964194f5f7fc2765e5c5a39"
 
 redux-saga@^0.16.0:
   version "0.16.0"

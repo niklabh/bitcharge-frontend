@@ -1,7 +1,7 @@
 {
-  "name": "my-razzle-app",
-  "version": "2.0.0-alpha.8",
-  "license": "MIT",
+  "name": "Bitcharge",
+  "version": "0.1.0",
+  "license": "ISC",
   "scripts": {
     "start": "razzle start",
     "build": "razzle build",
@@ -32,7 +32,8 @@
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "validator": "^10.3.0",
-    "yup": "^0.26.2"
+    "yup": "^0.26.2",
+    "redux-devtools-extension": "^2.13.5"
   },
   "devDependencies": {
     "eslint": "^5.5.0",

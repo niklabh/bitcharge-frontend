@@ -71,7 +71,7 @@ const SignupConfirmationExpired = ({ hostRef, isAuthenticated, handleVerify, res
         : `Login to resend the verification email.`}</Text>
       <Container style={styles.buttonContainer}>
         {isAuthenticated
-          ? <Button onClick={this.handleVerify} primary style={styles.submitButton} disabled={(action && !(success || error))}>Resend Verifcation</Button>
+          ? <Button onClick={handleVerify} primary style={styles.submitButton} disabled={(action && !(success || error))}>Resend Verifcation</Button>
           : <Button tag={Link} to='/login' primary style={styles.submitButton}>Login Now</Button>
         }
       </Container>
