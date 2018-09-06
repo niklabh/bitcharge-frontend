@@ -13,7 +13,7 @@ import { ScrollToTopOnMount } from '../../components/Scroll'
 import styles from './styles'
 import { breakpoints } from '../../styles'
 
-class Privacy extends Component {
+class Terms extends Component {
   render () {
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
@@ -107,4 +107,4 @@ class Privacy extends Component {
   }
 }
 
-export default Privacy
+export default Terms

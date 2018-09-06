@@ -1,6 +1,7 @@
 import Home from './screens/Home'
 import Privacy from './screens/Privacy'
 import Terms from './screens/Terms'
+import About from './screens/About'
 
 import Signup from './screens/Signup'
 import Login from './screens/Login'
@@ -55,6 +56,12 @@ const routes = [
   {
     path: '/terms',
     component: Terms,
+    name: 'Terms',
+    exact: true
+  },
+  {
+    path: '/about',
+    component: About,
     name: 'Terms',
     exact: true
   },
