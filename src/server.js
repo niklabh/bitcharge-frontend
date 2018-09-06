@@ -57,6 +57,8 @@ server
           <meta charset="utf-8" />
           <link rel="manifest" href="/manifest.json">
           <link rel="shortcut icon" href="/favicon.png">
+          <link href="/styles/fonts.css" rel="stylesheet" />
+          <link href="/styles/app.css" rel="stylesheet" />
           <link href="https://unpkg.com/ionicons@4.0.0/dist/css/ionicons.min.css"rel="stylesheet"/>
           <title>Bitcharge</title>
           <meta name="viewport" content="width=device-width, initial-scale=1">

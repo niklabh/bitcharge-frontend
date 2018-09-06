@@ -5,8 +5,6 @@ import { Provider } from 'react-redux'
 import Root from './screens/Root'
 import store from './store'
 
-import './styles/App.css'
-
 const App = ({ routes, initialData, initialDataError }) => {
   return (
     <Provider store={store}>
