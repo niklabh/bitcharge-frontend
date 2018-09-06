@@ -1,0 +1,47 @@
+{
+  "name": "my-razzle-app",
+  "version": "2.0.0-alpha.8",
+  "license": "MIT",
+  "scripts": {
+    "start": "razzle start",
+    "build": "razzle build",
+    "test": "razzle test --env=jsdom",
+    "start:prod": "NODE_ENV=production node build/server.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "emotion": "^9.1.2",
+    "express": "^4.16.3",
+    "formik": "^1.2.0",
+    "jwt-decode": "^2.2.0",
+    "polished": "^2.0.3",
+    "prop-types": "^15.6.1",
+    "qrcode.react": "^0.8.0",
+    "razzle": "^2.4.0",
+    "react": "^16.4.2",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-dom": "^16.4.2",
+    "react-emotion": "^9.1.2",
+    "react-helmet": "^5.2.0",
+    "react-media": "^1.8.0",
+    "react-modal": "^3.5.1",
+    "react-pose": "^3.2.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-select": "^2.0.0",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "validator": "^10.3.0",
+    "yup": "^0.26.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
