@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
+import { initGA, logPageView } from '../../utils/analytics'
 import Container from '../../components/Container'
 import PrivateRoute from '../../containers/PrivateRoute'
 import { getAuthUser } from '../../store/actions/auth'
@@ -12,6 +13,11 @@ import styles from './styles'
 
 class Root extends Component {
   componentDidMount () {
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      window.GA_INITIALIZED = true
+    }
+    logPageView()
     if (this.props.isAuthenticated) {
       this.props.getAuthUser()
     }
@@ -21,7 +27,8 @@ class Root extends Component {
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
         <Helmet>
-          <meta name='description' content='The easiest way to accept crypto payments.' />
+          <title>Bitcharge - The easiest way to accept crypto payments</title>
+          <meta name='description' content='The easiest way to accept payments in your favourite cryptocurrency.' />
           <meta property='og:title' content='Bitcharge' />
           <meta property='og:site_name' content='Bitcharge' />
           <meta property='og:type' content='website' />
