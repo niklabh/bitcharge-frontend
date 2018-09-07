@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const PUBLIC_URI = process.env.NODE_ENV === 'production'
-  ? process.env.PUBLIC_URL
+  ? 'https://bitcharge.co'
   : 'http://localhost:8080'
 
 class API {
