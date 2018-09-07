@@ -15,8 +15,8 @@ const App = ({ routes, initialData, initialDataError }) => {
 
 App.propTypes = {
   routes: PropTypes.array,
-  initialData: PropTypes.object,
-  initialDataError: PropTypes.object
+  initialData: PropTypes.any,
+  initialDataError: PropTypes.any
 }
 
 export default App

@@ -6,6 +6,7 @@ import About from './screens/About'
 import Signup from './screens/Signup'
 import Login from './screens/Login'
 import ForgotPassword from './screens/ForgotPassword'
+import ResetPassword from './screens/ResetPassword'
 import Profile from './screens/Profile'
 import Dashboard from './screens/Dashboard'
 import AddAddress from './screens/AddAddress'
@@ -27,13 +28,19 @@ const routes = [
   {
     path: '/confirm',
     component: SignupConfirmation,
-    name: 'SignupConfirmation'
+    name: 'SignupConfirmation',
+    exact: true
   },
   {
     path: '/forgot',
     component: ForgotPassword,
     name: 'Forgot',
     exact: true
+  },
+  {
+    path: '/password/reset',
+    component: ResetPassword,
+    name: 'Reset Password'
   },
   {
     path: '/profile',

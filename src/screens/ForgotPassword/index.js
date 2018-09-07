@@ -7,6 +7,8 @@ import { cx } from 'emotion'
 import EmailForm from './EmailForm'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
+import Button from '../../components/Button'
+import API from '../../api'
 
 import styles from './styles'
 
@@ -14,16 +16,52 @@ class ForgotPassword extends Component {
   constructor (props) {
     super(props)
 
+    this.state = {
+      isEmailSubmit: false
+    }
+
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   async handleSubmit (values, bag) {
     try {
+      await API.forgotPassword(values)
       bag.setSubmitting(false)
-      this.props.history.push('/profile')
+      this.setState({ isEmailSubmit: true })
     } catch (e) {
       bag.setSubmitting(false)
     }
+  }
+
+  handleResendEmail = () => {
+    this.setState({ isEmailSubmit: false })
+  }
+
+  sendEmailSuccess = () => {
+    return (
+      <React.Fragment>
+        <Text tag='h1' style={styles.formHeaderText}>Email sent successfully.</Text>
+        <Text tag='h5' style={styles.formDetailsText}>Reset password instructions have been sent to your email address. Please click on the link to reset your password.</Text>
+        <Container style={styles.buttonContainer}>
+          <Button
+            primary
+            style={styles.submitButton}
+            onClick={this.handleResendEmail}
+          >
+            Try Again
+          </Button>
+        </Container>
+      </React.Fragment>
+    )
+  }
+
+  sendEmailForm = () => {
+    return (
+      <React.Fragment>
+        <Text tag='h1' style={styles.formHeaderText}>We have your back.</Text>
+        <EmailForm handleSubmit={this.handleSubmit} />
+      </React.Fragment>
+    )
   }
 
   render () {
@@ -43,8 +81,7 @@ class ForgotPassword extends Component {
           </Container>
         </Container>
         <Container style={styles.bodyContainer}>
-          <Text tag='h1' style={styles.formHeaderText}>We have your back.</Text>
-          <EmailForm onSubmit={this.handleSubmit} />
+          {this.state.isEmailSubmit ? this.sendEmailSuccess() : this.sendEmailForm()}
         </Container>
       </Container>
     )
@@ -52,7 +89,6 @@ class ForgotPassword extends Component {
 }
 
 ForgotPassword.propTypes = {
-  history: PropTypes.any,
   isAuthenticated: PropTypes.bool
 }
 

@@ -161,6 +161,28 @@ class API {
       }
     })
   }
+
+  forgotPassword = (details) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.post('/password/forgot', details)
+        return resolve(response.data)
+      } catch (e) {
+        return reject(e)
+      }
+    })
+  }
+
+  resetPassword = (details) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.axios.post('/password/reset', details)
+        return resolve(response.data)
+      } catch (e) {
+        return reject(e)
+      }
+    })
+  }
 }
 
 export default new API()

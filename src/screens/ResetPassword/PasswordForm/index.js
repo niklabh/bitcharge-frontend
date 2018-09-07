@@ -13,16 +13,19 @@ import Spinner from '../../../components/Spinner'
 import styles from './styles'
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Not a valid email')
-    .required('Email is required')
+  password: Yup.string()
+    .min(6)
+    .required('Password is required'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password', null)], 'Passwords must match')
+    .required('Confirm password is required')
 })
 
-const EmailForm = ({ handleSubmit }) => {
+const PasswordForm = ({ handleSubmit }) => {
   return (
     <Container style={styles.formContainer}>
       <Formik
-        initialValues={{ email: '' }}
+        initialValues={{ password: '', confirmPassword: '' }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
         render={({
@@ -39,13 +42,22 @@ const EmailForm = ({ handleSubmit }) => {
           return (
             <React.Fragment>
               <Input
-                name='email'
-                type='email'
-                placeholder='awesome@doggo.co'
+                label='Password'
+                name='password'
+                type='password'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.email}
-                error={touched.email && errors.email}
+                value={values.password}
+                error={touched.password && errors.password}
+              />
+              <Input
+                label='Confirm Password'
+                name='confirmPassword'
+                type='password'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.confirmPassword}
+                error={touched.confirmPassword && errors.confirmPassword}
               />
               <Container style={styles.buttonContainer}>
                 <Button
@@ -66,8 +78,8 @@ const EmailForm = ({ handleSubmit }) => {
   )
 }
 
-EmailForm.propTypes = {
+PasswordForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 }
 
-export default EmailForm
+export default PasswordForm

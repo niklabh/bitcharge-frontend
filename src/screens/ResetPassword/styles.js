@@ -41,8 +41,7 @@ const bodyContainer = css`
 `
 
 const formContainer = css`
-  padding: 0 4em;
-  width: 80%;
+  padding: 0 3em;
   label: signup-body-form-cntr;
 `
 

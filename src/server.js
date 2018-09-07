@@ -16,14 +16,14 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
     const context = {}
-
+    const routePaths = routes.filter((route) => route.path !== '/:username').map((route) => route.path)
     const matches = routes.map((route, index) => {
-      const match = matchPath(req.url, route.path, route)
+      const match = matchPath(req.path, route)
       if (match) {
         const obj = {
           route,
           match,
-          promise: route.component.getInitialData ? route.component.getInitialData({ match, req, res }) : Promise.resolve(null)
+          promise: (!routePaths.includes(req.path) && route.component.getInitialData) ? route.component.getInitialData({ match, req, res }) : Promise.resolve(null)
         }
         return obj
       }

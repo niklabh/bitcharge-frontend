@@ -168,10 +168,10 @@ class SignupConfirmation extends Component {
           }
         </Container>
         <Container style={styles.bodyContainer}>
-          <PoseSignupConfirming pose={this.state.isConfirming ? 'visible' : 'invisible'} />
-          <PoseSignupConfirmed pose={this.state.isConfirmed ? 'visible' : 'invisible'} isAuthenticated={this.props.isAuthenticated} />
-          <PoseSignupConfirmError pose={this.state.isError ? 'visible' : 'invisible'} isAuthenticated={this.props.isAuthenticated} handleVerify={this.resendVerificationMail} resentVerification={resentVerification} />
-          <PoseSignupConfirmExpired pose={this.state.isExpired ? 'visible' : 'invisible'} isAuthenticated={this.props.isAuthenticated} handleVerify={this.resendVerificationMail} resentVerification={resentVerification} />
+          {this.state.isConfirming && <PoseSignupConfirming pose={this.state.isConfirming ? 'visible' : 'invisible'} />}
+          {this.state.isConfirmed && <PoseSignupConfirmed pose={this.state.isConfirmed ? 'visible' : 'invisible'} isAuthenticated={this.props.isAuthenticated} />}
+          {this.state.isError && <PoseSignupConfirmError pose={this.state.isError ? 'visible' : 'invisible'} isAuthenticated={this.props.isAuthenticated} handleVerify={this.resendVerificationMail} resentVerification={resentVerification} />}
+          {this.state.isExpired && <PoseSignupConfirmExpired pose={this.state.isExpired ? 'visible' : 'invisible'} isAuthenticated={this.props.isAuthenticated} handleVerify={this.resendVerificationMail} resentVerification={resentVerification} />}
         </Container>
       </Container>
     )

@@ -93,7 +93,7 @@ class Profile extends Component {
       return textA.localeCompare(textB)
     })
 
-    const addressText = selectedAddress ? selectedAddress.address : addresses[0].address
+    const addressText = selectedAddress ? selectedAddress.address : addressList[0].address
     return (
       <Container style={styles.cardBodyContainer}>
         <Select
