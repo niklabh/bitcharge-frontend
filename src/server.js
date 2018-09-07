@@ -1,5 +1,3 @@
-/* global Raven */
-
 import App from './App'
 import React from 'react'
 import { StaticRouter, matchPath } from 'react-router-dom'
