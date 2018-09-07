@@ -1,9 +1,12 @@
+/* global Raven */
+
 import App from './App'
 import React from 'react'
 import { StaticRouter, matchPath } from 'react-router-dom'
 import express from 'express'
 import { renderToString } from 'react-dom/server'
 import { renderStylesToString } from 'emotion-server'
+import { Helmet } from 'react-helmet'
 
 import routes from './routes'
 
@@ -45,6 +48,7 @@ server
         </StaticRouter>
       )
       const htmlWithStyles = renderStylesToString(markup)
+      const helmet = Helmet.renderStatic()
 
       if (context.url) {
         return res.redirect(context.url)
@@ -61,9 +65,13 @@ server
           <link href="/styles/app.css" rel="stylesheet" />
           <link href="https://unpkg.com/ionicons@4.0.0/dist/css/ionicons.min.css"rel="stylesheet"/>
           <title>Bitcharge</title>
+          ${helmet.title.toString()}
+          ${helmet.meta.toString()}
           <meta name="viewport" content="width=device-width, initial-scale=1">
           ${assets.client.css ? `<link rel="stylesheet" href="${assets.client.css}">` : ''}
+          <script src="https://cdn.ravenjs.com/3.26.4/raven.min.js" crossorigin="anonymous"></script>
           ${process.env.NODE_ENV === 'production' ? `<script src="${assets.client.js}" defer></script>` : `<script src="${assets.client.js}" defer crossorigin></script>`}
+          <script>${process.env.NODE_ENV === 'production' ? Raven.config('https://59a0c403385e46eaae317bd9064544aa@sentry.io/1274092').install() : null}</script>
       </head>
       <body>
           <div id="root">${htmlWithStyles}</div>

@@ -21,6 +21,7 @@ class Root extends Component {
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
         <Helmet>
+          <meta name='description' content='The easiest way to accept crypto payments.' />
           <meta property='og:title' content='Bitcharge' />
           <meta property='og:site_name' content='Bitcharge' />
           <meta property='og:type' content='website' />
