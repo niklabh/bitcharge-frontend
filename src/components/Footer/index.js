@@ -19,7 +19,7 @@ const Footer = () => {
             matches ? (
               <Container style={styles.rightNavContainer}>
                 <Button href='https://twitter.com/bitcharge_co' target='_blank' link style={styles.logoutStyle}><i className={`icon ion-logo-twitter`} /></Button>
-                <Button href='/profile' link style={styles.logoutStyle}><i className={`icon ion-logo-facebook`} /></Button>
+                <Button href='https://facebook.com/bittcharge' target='_blank' link style={styles.logoutStyle}><i className={`icon ion-logo-facebook`} /></Button>
               </Container>
             ) : (
               null
@@ -31,13 +31,14 @@ const Footer = () => {
         <Button tag={Link} to='/about' link style={styles.linkStyle}>About</Button>
         <Button tag={Link} to='/terms' link style={styles.linkStyle}>Terms</Button>
         <Button tag={Link} to='/privacy' link style={styles.linkStyle}>Privacy</Button>
+        <Button href='https://medium.com/bitcharge' target='_blank' link style={styles.linkStyle}>Blog</Button>
       </Container>
       <Media query={`(max-width: ${breakpoints.tablet})`}>
         {matches =>
           !matches ? (
             <Container style={styles.rightNavContainer}>
-              <Button href='https://twitter.com/bitcharge_co' link style={styles.logoutStyle}><i className={`icon ion-logo-twitter`} /></Button>
-              <Button href='/profile' link style={styles.logoutStyle}><i className={`icon ion-logo-facebook`} /></Button>
+              <Button href='https://twitter.com/bitcharge_co' target='_blank' link style={styles.logoutStyle}><i className={`icon ion-logo-twitter`} /></Button>
+              <Button href='https://facebook.com/bittcharge' target='_blank' link style={styles.logoutStyle}><i className={`icon ion-logo-facebook`} /></Button>
             </Container>
           ) : (
             null
