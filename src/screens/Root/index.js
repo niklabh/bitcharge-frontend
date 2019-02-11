@@ -28,11 +28,11 @@ class Root extends Component {
       <Container fluid fullHeight style={styles.mainContainer}>
         <Helmet>
           <title>Bitcharge - The easiest way to accept crypto payments</title>
-          <meta name='description' content='The easiest way to accept payments in your favourite cryptocurrency.' />
-          <meta property='og:title' content='Bitcharge' />
+          <meta name='description' content='Bitcharge is the easiest way for users and businesses to accept payments in their favourite cryptocurrency. Start accepting payments and donations in Bitcoin, Ethereum and many other cryptocurrencies.' />
+          <meta property='og:title' content='Bitcharge - The easiest way to accept crypto payments' />
           <meta property='og:site_name' content='Bitcharge' />
           <meta property='og:type' content='website' />
-          <meta property='og:description' content='The easiest way to accept crypto payments.' />
+          <meta property='og:description' content='Bitcharge is the easiest way for users and businesses to accept payments in their favourite cryptocurrency. Start accepting payments and donations in Bitcoin, Ethereum and many other cryptocurrencies.' />
           <meta property='og:image' content='https://res.cloudinary.com/bitcharge/image/upload/v1536051435/assets/bitcharge-social-graph.png' />
           <meta property='og:image:alt' content='Bitcharge' />
           <meta property='og:url' content='https://bitcharge.co' />
