@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { cx } from 'emotion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import Media from 'react-media'
 
 import Container from '../../components/Container'
@@ -17,6 +18,12 @@ class About extends Component {
   render () {
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
+        <Helmet>
+          <title>About - Bitcharge</title>
+          <meta property='og:title' content={`About - Bitcharge`} />
+          <meta property='og:url' content='https://bitcharge.co/about' />
+          <meta itemProp='name' content='About - Bitcharge' />
+        </Helmet>
         <ScrollToTopOnMount />
         <Navbar />
         <Container fluid style={styles.bodyContainer}>
@@ -32,7 +39,7 @@ class About extends Component {
                 What is Bitcharge ?
               </Text>
               <Text style={styles.bodyText}>
-                Bitcharge is a platform for freelancers, businesses and just regular people to accept payments in their favourite cryptocurrency. You can get started by signing up on <Link to='/' className={`${cx(styles.linkText)}`}>Bitcharge.com</Link> with a username and creating a profile.
+                Bitcharge is a platform for freelancers, businesses and just regular people to accept payments and donations in their favourite cryptocurrency. You can get started by signing up on <Link to='/' className={`${cx(styles.linkText)}`}>Bitcharge.com</Link> with a username and creating a profile.
               </Text>
             </Container>
             <Container style={styles.sectionContainer}>

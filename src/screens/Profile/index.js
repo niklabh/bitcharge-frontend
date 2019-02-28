@@ -5,6 +5,7 @@ import Select from 'react-select'
 import QRCode from 'qrcode.react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import API from '../../api'
 import Container from '../../components/Container'
@@ -108,8 +109,12 @@ class Profile extends Component {
         />
         <Container fluid style={styles.bodyDataContainer}>
           <Container style={styles.addressContainer}>
-            <Text tag='h5' style={styles.addressHeaderStyle}>Wallet Address</Text>
-            <Text tag='h6' style={styles.addressValueText}>{addressText}</Text>
+            <Text tag='h5' style={styles.addressHeaderStyle}>
+              Wallet Address
+            </Text>
+            <Text tag='h6' style={styles.addressValueText}>
+              <CopyToClipboard text={addressText}><span>{addressText}</span></CopyToClipboard>
+            </Text>
           </Container>
           <Container style={styles.qrcodeContainer}>
             <QRCode value={addressText} size={172} />
@@ -187,11 +192,21 @@ class Profile extends Component {
     const firstName = user.name.split(' ')[0]
     return (
       <Helmet>
+        <title>{`Pay ${firstName} in crypto with Bitcharge`}</title>
+        <meta name='description' content={`Go to bitcharge.co/${user.username} to pay ${firstName} in your favourite cryptocurrency.`} />
         <meta property='og:title' content={`Pay ${firstName} in crypto with Bitcharge`} />
         <meta property='og:description' content={`Go to bitcharge.co/${user.username} to pay ${firstName} in your favourite cryptocurrency.`} />
         <meta property='og:image' content='https://res.cloudinary.com/bitcharge/image/upload/v1536051435/assets/bitcharge-social-graph.png' />
         <meta property='og:image:alt' content='Bitcharge' />
         <meta property='og:url' content={`https://bitcharge.co/${user.username}`} />
+        <meta itemProp='name' content={`Pay ${firstName} in crypto with Bitcharge`} />
+        <meta itemProp='description' content={`Go to bitcharge.co/${user.username} to pay ${firstName} in your favourite cryptocurrency.`} />
+        <meta itemProp='image' content='https://res.cloudinary.com/bitcharge/image/upload/v1536051435/assets/bitcharge-social-graph.png' />
+        <meta property='twitter:title' content={`Pay ${firstName} in crypto with Bitcharge`} />
+        <meta name='twitter:card' content='summary' />
+        <meta name='twitter:site' content='@bitcharge_co' />
+        <meta name='twitter:creator' content='@bitcharge_co' />
+        <meta name='twitter:description' content={`Go to bitcharge.co/${user.username} to pay ${firstName} in your favourite cryptocurrency.`} />
       </Helmet>
     )
   }

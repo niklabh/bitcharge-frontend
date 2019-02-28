@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import { cx } from 'emotion'
 import jwtDecode from 'jwt-decode'
 import qs from 'qs'
@@ -175,6 +176,12 @@ class ResetPassword extends Component {
 
     return (
       <Container fluid style={styles.mainContainer}>
+        <Helmet>
+          <title>Reset Password - Bitcharge</title>
+          <meta property='og:title' content={`Reset Password - Bitcharge`} />
+          <meta property='og:url' content='https://bitcharge.co/password/reset' />
+          <meta itemProp='name' content='Reset Password - Bitcharge' />
+        </Helmet>
         <Container style={styles.heroContainer}>
           <Container style={styles.heroLogoContainer}>
             <a href='/'><img alt='bitcharge-logo' className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-white.png' /></a>

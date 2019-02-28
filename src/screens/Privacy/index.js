@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { cx } from 'emotion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import Media from 'react-media'
 
 import Container from '../../components/Container'
@@ -17,6 +18,12 @@ class Privacy extends Component {
   render () {
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
+        <Helmet>
+          <title>Privacy Policy - Bitcharge</title>
+          <meta property='og:title' content={`Privacy Policy - Bitcharge`} />
+          <meta property='og:url' content='https://bitcharge.co/privacy' />
+          <meta itemProp='name' content='Privacy Policy - Bitcharge' />
+        </Helmet>
         <ScrollToTopOnMount />
         <Navbar />
         <Container fluid style={styles.bodyContainer}>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { cx } from 'emotion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import Media from 'react-media'
 
 import Container from '../../components/Container'
@@ -17,6 +18,12 @@ class Terms extends Component {
   render () {
     return (
       <Container fluid fullHeight style={styles.mainContainer}>
+        <Helmet>
+          <title>Terms & Conditions - Bitcharge</title>
+          <meta property='og:title' content={`Terms & Conditions - Bitcharge`} />
+          <meta property='og:url' content='https://bitcharge.co/terms' />
+          <meta itemProp='name' content='Terms & Conditions - Bitcharge' />
+        </Helmet>
         <ScrollToTopOnMount />
         <Navbar />
         <Container fluid style={styles.bodyContainer}>

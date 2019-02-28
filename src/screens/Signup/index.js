@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import posed from 'react-pose'
 import { Link, Redirect } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { cx } from 'emotion'
 
@@ -54,6 +55,12 @@ class Signup extends Component {
 
     return (
       <Container fluid style={styles.mainContainer}>
+        <Helmet>
+          <title>Signup - Bitcharge</title>
+          <meta property='og:title' content={`Signup - Bitcharge`} />
+          <meta property='og:url' content='https://bitcharge.co/signup' />
+          <meta itemProp='name' content='Signup - Bitcharge' />
+        </Helmet>
         <Container style={styles.heroContainer}>
           <Container style={styles.heroLogoContainer}>
             <a href='/'><img alt='bitcharge-logo' className={cx(styles.logoImageStyle)} src='https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-white.png' /></a>

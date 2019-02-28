@@ -69,6 +69,26 @@ server
           <script src="https://cdn.ravenjs.com/3.26.4/raven.min.js" crossorigin="anonymous"></script>
           ${process.env.NODE_ENV === 'production' ? `<script src="${assets.client.js}" defer></script>` : `<script src="${assets.client.js}" defer crossorigin></script>`}
           <script>${process.env.NODE_ENV === 'production' ? `Raven.config('https://59a0c403385e46eaae317bd9064544aa@sentry.io/1274092').install()` : null}</script>
+          <script type="application/ld+json">
+            {
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              "name": "Bitcharge",
+              "url": "https://www.bitcharge.co/",
+              "sameAs": [
+                "https://www.facebook.com/bittcharge/",
+                "https://www.twitter.com/bitcharge_co"
+              ]
+            }
+            </script>
+            <script type="application/ld+json">
+            {
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              "url": "https://www.bitcharge.co/",
+              "logo": "https://res.cloudinary.com/bitcharge/image/upload/v1532990484/icons/bitcharge-logo-secondary.png"
+             }
+          </script>
       </head>
       <body>
           <div id="root">${htmlWithStyles}</div>

@@ -37,11 +37,16 @@ class Root extends Component {
           <meta property='og:image:alt' content='Bitcharge' />
           <meta property='og:url' content='https://bitcharge.co' />
 
-          <meta property='fb:app_id' content='1928411100786366' />
+          <meta itemProp='name' content='Bitcharge - The easiest way to accept crypto payments' />
+          <meta itemProp='description' content='Bitcharge is the easiest way for users and businesses to accept payments in their favourite cryptocurrency. Start accepting payments and donations in Bitcoin, Ethereum and many other cryptocurrencies.' />
+          <meta itemProp='image' content='https://res.cloudinary.com/bitcharge/image/upload/v1536051435/assets/bitcharge-social-graph.png' />
 
+          <meta property='fb:app_id' content='1928411100786366' />
+          <meta property='twitter:title' content='Bitcharge - The easiest way to accept crypto payments' />
           <meta name='twitter:card' content='summary' />
           <meta name='twitter:site' content='@bitcharge_co' />
           <meta name='twitter:creator' content='@bitcharge_co' />
+          <meta name='twitter:description' content='Bitcharge is the easiest way for users and businesses to accept payments in their favourite cryptocurrency. Start accepting payments and donations in Bitcoin, Ethereum and many other cryptocurrencies.' />
         </Helmet>
         <Switch>
           {

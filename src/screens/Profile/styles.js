@@ -24,8 +24,7 @@ const bodyContainer = css`
 `
 
 const cardContainer = css`
-  min-width: 32em;
-  max-width: 42em;
+  width: 32em;
   margin-top: 3em;
   margin-bottom: 3em;
   background-color: ${colors.white};
@@ -170,6 +169,8 @@ const cardBodyContainer = css`
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
+    min-width: 100%;
+    max-width: 100%;
   }
 
 `
@@ -236,12 +237,18 @@ const iconButton = css`
 `
 
 const copiedTextStyle = css`
+  display: inline-block;
   color: ${colors.primary};
-  font-weight: 500;
-  padding-top: .4em;
-  padding-right: .2em;
-  font-size: 1em;
+  font-weight: 600;
+  line-height: 1;
+  padding-left: .5em;
+  font-size: .6em;
   transition: all 0.15s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    color: ${lighten(0.2, colors.primary)}
+  }
 `
 
 const addNewEmptyButton = css`
