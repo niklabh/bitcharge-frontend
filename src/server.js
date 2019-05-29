@@ -80,6 +80,12 @@ server
                 "https://www.twitter.com/bitcharge_co"
               ]
             }
+            </script>            
+            <script>
+                !function(p,r,i,v,a,c,y){p.Metomic={apiKey:i};p[i]||(p[i]=function(){
+                (p[i].q=p[i].q||[]).push(arguments)});p[i].l=+new Date;c=r.createElement(v);
+                y=r.getElementsByTagName(v)[0];p.Metomic.script=c;c.src=a;y.parentNode.insertBefore(c,y)}
+                (window,document,'prj:9ea79c2c-a7c2-485b-be1c-2c3828d1a7ad','script','https://consent-manager.metomic.io/embed.js');
             </script>
             <script type="application/ld+json">
             {
