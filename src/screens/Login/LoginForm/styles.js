@@ -29,6 +29,11 @@ const submitButton = css`
   }
 `
 
+const blockstackSignInButton = css`
+  background-color: #270F34;
+  margin-left: -70px;
+`
+
 const submitButtonIcon = css`
   padding-left: 0.5em;
   label: login-submit-button-icon;
@@ -58,6 +63,7 @@ const styles = {
   submitButtonIcon,
   spinnerIcon,
   submitButton,
+  blockstackSignInButton,
   cancelButton
 }
 

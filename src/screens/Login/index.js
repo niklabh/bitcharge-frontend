@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { cx } from 'emotion'
+import { UserSession, AppConfig } from 'blockstack'
 
 import LoginForm from './LoginForm'
 import Container from '../../components/Container'
@@ -13,6 +14,9 @@ import API from '../../api'
 import { login as loginAction } from '../../store/actions/auth'
 
 import styles from './styles'
+
+const appConfig = new AppConfig(['email'], process.env.NODE_ENV === 'production' ? 'https://bitcharge.co' : 'http://localhost:3000')
+const userSession = new UserSession({ appConfig: appConfig })
 
 class Login extends Component {
   constructor (props) {
@@ -31,6 +35,10 @@ class Login extends Component {
       bag.setSubmitting(false)
       bag.setErrors(e.response.data.errors.details.errors.errors)
     }
+  }
+
+  handleBlockStackLogin () {
+    userSession.redirectToSignIn()
   }
 
   render () {
@@ -59,7 +67,7 @@ class Login extends Component {
           </Container>
         </Container>
         <Container style={styles.bodyContainer}>
-          <LoginForm onSubmit={this.handleSubmit} />
+          <LoginForm onSubmit={this.handleSubmit} onBlockStackLogin={this.handleBlockStackLogin} />
         </Container>
       </Container>
     )

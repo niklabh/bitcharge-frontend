@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
     .required('Password is required')
 })
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, onBlockStackLogin }) => {
   return (
     <Container style={styles.formContainer}>
       <Formik
@@ -71,6 +71,15 @@ const LoginForm = ({ onSubmit }) => {
                 </Button>
                 <Button tag={Link} to='/forgot' link style={styles.cancelButton}>Forgot Password</Button>
               </Container>
+              <Container style={styles.buttonContainer}>
+                <Button
+                  primary
+                  style={styles.blockstackSignInButton}
+                  onClick={onBlockStackLogin}
+                >
+                  Sign In With Blockstack
+                </Button>
+              </Container>
             </React.Fragment>
           )
         }} />
@@ -79,7 +88,8 @@ const LoginForm = ({ onSubmit }) => {
 }
 
 LoginForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  onBlockStackLogin: PropTypes.func.isRequired
 }
 
 export default LoginForm

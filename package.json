@@ -1,5 +1,5 @@
 {
-  "name": "Bitcharge",
+  "name": "bitcharge",
   "version": "0.1.0",
   "license": "ISC",
   "scripts": {
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "blockstack": "^19.2.1",
     "emotion": "^9.1.2",
     "emotion-server": "^9.2.8",
     "express": "^4.16.3",
