@@ -9,7 +9,7 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "blockstack": "^19.2.1",
     "emotion": "^9.1.2",
     "emotion-server": "^9.2.8",
